@@ -3,6 +3,7 @@ body {
     font-family: 'Raleway', sans-serif;
     height: 100%;
     margin: 0 auto;
+    background-color: black;
 }
 
 .content {
@@ -12,7 +13,7 @@ body {
 
 body {
     font-family: 'Raleway', sans-serif;
-    background-color: #547980;
+
     color: white;
     margin: 0px;
     padding: 0px;
@@ -133,7 +134,7 @@ a:hover {
     cursor: pointer;
 }
 
-.hero-image {
+/*.hero-image {
     background-image: url("Picture/background.jpg");
     height: 500px;
     background-position: center;
@@ -147,7 +148,7 @@ a:hover {
     outline: 0;
     justify-content: space-between;
     border-bottom: 2px solid grey;
-}
+}*/
 
 textarea {
     outline: #45ADA8;
