@@ -1,5 +1,6 @@
-html, body {
-    font-family: 'Raleway', sans-serif; 
+html,
+body {
+    font-family: 'Raleway', sans-serif;
     height: 100%;
     margin: 0 auto;
 }
@@ -9,12 +10,12 @@ html, body {
     margin: 0 auto -50px;
 }
 
-body{
-    font-family: 'Raleway', sans-serif; 
-    background-color:  #547980;
-    color:white;
-    margin:0px; 
-    padding:0px;
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #547980;
+    color: white;
+    margin: 0px;
+    padding: 0px;
 }
 
 /*.header{
@@ -33,7 +34,7 @@ ul {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    font-family: 'Raleway', sans-serif; 
+    font-family: 'Raleway', sans-serif;
 }
 
 li {
@@ -63,7 +64,7 @@ li a:hover:not(.active) {
 }
 
 .footer {
-    font-family: 'Raleway', sans-serif; 
+    font-family: 'Raleway', sans-serif;
     left: 0;
     bottom: 100px;
     width: 100%;
@@ -77,29 +78,36 @@ li a:hover:not(.active) {
     height: 75px;
 }
 
-div h1{
+div h1 {
     font-size: 40px;
-    margin: 0; 
+    margin: 0;
     padding: 0;
 }
 
-a{
+a {
     text-decoration: none;
     color: #547980;
 }
-a:hover{
+
+a:hover {
     text-decoration: none;
     color: RoyalBlue;
 }
 
 .btn {
-    font-family: 'Raleway', sans-serif; 
-    background-color: DodgerBlue; /* Blue background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 60px 75px; /* Some padding */
-    font-size: 15px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
+    font-family: 'Raleway', sans-serif;
+    background-color: DodgerBlue;
+    /* Blue background */
+    border: none;
+    /* Remove borders */
+    color: white;
+    /* White text */
+    padding: 60px 75px;
+    /* Some padding */
+    font-size: 15px;
+    /* Set a font size */
+    cursor: pointer;
+    /* Mouse pointer on hover */
     width: 20%;
     height: 30%;
     white-space: nowrap;
@@ -132,8 +140,8 @@ a:hover{
     background-repeat: no-repeat;
     margin: 0px;
     padding: 0px;
-    width:100%;
-    border-spacing:0 0;
+    width: 100%;
+    border-spacing: 0 0;
     vertical-align: baseline;
     border: 0;
     outline: 0;
@@ -142,9 +150,9 @@ a:hover{
 }
 
 textarea {
-  outline: #45ADA8;
+    outline: #45ADA8;
 }
 
 .suggestion {
-   width: 200px;
+    width: 200px;
 }
