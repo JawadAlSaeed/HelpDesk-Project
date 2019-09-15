@@ -1,2 +1,2 @@
-# IT_Help_Center
+# HelpDesk
 A website to help employees in the company
