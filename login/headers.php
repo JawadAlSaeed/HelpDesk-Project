@@ -3,7 +3,7 @@
 
 <head>
     <title>HelpDesk</title>
-    <link rel="stylesheet" type="text/css" href="../css/mainCSS.css">
+    <link rel="stylesheet" type="text/css" href="../css/main">
 </head>
 
 <body>
