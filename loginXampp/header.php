@@ -21,11 +21,11 @@
         </div>
         <div class="header">
             <ul>
-                <li><a href="../Home.html">Home</a></li>
-                <li><a href="../Requests.html">Requests</a></li>
-                <li><a href="../Suggestions.html">Suggestions</a></li>
-                <li><a href="../FAQ.html">FAQ</a></li>
-                <li><a href="../About.html">About</a></li>
+                <li><a href="../Home.php">Home</a></li>
+                <li><a href="../Requests.php">Requests</a></li>
+                <li><a href="../Suggestions.php">Suggestions</a></li>
+                <li><a href="../FAQ.php">FAQ</a></li>
+                <li><a href="../About.php">About</a></li>
                 <li style="float:right"><a class="active" href="login">Login</a></li>
             </ul>
         </div>

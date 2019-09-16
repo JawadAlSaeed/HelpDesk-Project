@@ -24,11 +24,11 @@
         </div>
         <div class="header">
             <ul>
-                <li><a class="active" href="Home.html">Home</a></li>
-                <li><a href="Requests.html">Requests</a></li>
-                <li><a href="Suggestions.html">Suggestions</a></li>
-                <li><a href="FAQ.html">FAQ</a></li>
-                <li><a href="About.html">About</a></li>
+                <li><a class="active" href="Home.php">Home</a></li>
+                <li><a href="Requests.php">Requests</a></li>
+                <li><a href="Suggestions.php">Suggestions</a></li>
+                <li><a href="FAQ.php">FAQ</a></li>
+                <li><a href="About.php">About</a></li>
                 <li style="float:right"><div>   
                         <?php
                         if (isset($_SESSION['userId'])) {
@@ -57,11 +57,11 @@
         <br>
         <div style="font-size: 24px;">
             <center>
-                <a href="Requests.html"><button class="btn"><i class="fa fa-bars fa-5x"></i><br><br>Requests</button></a>
+                <a href="Requests.php"><button class="btn"><i class="fa fa-bars fa-5x"></i><br><br>Requests</button></a>
                 &nbsp;
-                <a href="Requests.html"><button class="btn"><i class="far fa-lightbulb fa-5x"></i><br><br>Suggestions</button></a>
+                <a href="Requests.php"><button class="btn"><i class="far fa-lightbulb fa-5x"></i><br><br>Suggestions</button></a>
                 &nbsp;
-                <a href="FAQ.html"><button class="btn"><i class="fas fa-question fa-5x"></i><br><br>FAQ</button></a>
+                <a href="FAQ.php"><button class="btn"><i class="fas fa-question fa-5x"></i><br><br>FAQ</button></a>
             </center>
         </div>
     </div>
