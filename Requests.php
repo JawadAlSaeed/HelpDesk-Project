@@ -1,5 +1,3 @@
-
-
 <?php 
     session_start();
 ?>
@@ -41,8 +39,8 @@
                             <input type="text" name="mailuid" placeholder="Username/E-mail...">
                             <input type="Password" name="pwd" placeholder="Password">
                             <button type="submit" name="login-submit">Login</button>
-                            </form>
-                             <a href="signup.php">signup</a>';
+                            <button href="signup.php">signup</button>
+                            </form>';
                         }
                         ?></div>
                 </li>
