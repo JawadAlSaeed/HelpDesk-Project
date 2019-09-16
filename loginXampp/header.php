@@ -7,14 +7,28 @@
 
 <head>
     <title>HelpDesk</title>
-    <link rel="stylesheet" type="text/css" href="../css/main">
+    <link rel="stylesheet" type="text/css" href="../css/mainCSS.css">
+    <script src="https://kit.fontawesome.com/25823c862e.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <a href="#">
-            <img src="../picture/help.png" alt="logo">
-        </a>
+           <i class="fas fa-hands-helping"></i>
+        <div>
+            <h1>&nbsp;HelpDesk</h1>
+        </div>
+        <div class="header">
+            <ul>
+                <li><a class="active" href="../Home.html">Home</a></li>
+                <li><a href="../Requests.html">Requests</a></li>
+                <li><a href="../Suggestions.html">Suggestions</a></li>
+                <li><a href="../FAQ.html">FAQ</a></li>
+                <li><a href="../About.html">About</a></li>
+                <li style="float:right"><a href="../loginXampp">Login</a></li>
+            </ul>
+        </div>
+        <br>
 <!--         <ul>
             <li><a href="home"></a></li>
             <li><a href="protfolio"></a></li>

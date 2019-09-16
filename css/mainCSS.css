@@ -82,6 +82,7 @@ div h1 {
     font-size: 40px;
     margin: 0;
     padding: 0;
+    display: inline;
 }
 
 a {
@@ -155,4 +156,8 @@ textarea {
 
 .suggestion {
     width: 200px;
+}
+
+i {
+            float: left;
 }
