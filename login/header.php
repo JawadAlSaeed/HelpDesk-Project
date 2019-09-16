@@ -26,7 +26,7 @@
                 <li><a href="../Suggestions.html">Suggestions</a></li>
                 <li><a href="../FAQ.html">FAQ</a></li>
                 <li><a href="../About.html">About</a></li>
-                <li style="float:right"><a class="active" href="loginXampp">Login</a></li>
+                <li style="float:right"><a class="active" href="login">Login</a></li>
             </ul>
         </div>
         <br>
