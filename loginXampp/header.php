@@ -14,8 +14,9 @@
 
 <body>
     <header>
-           <i class="fas fa-hands-helping"></i>
+
         <div>
+            <i class="fas fa-hands-helping"></i>
             <h1>&nbsp;HelpDesk</h1>
         </div>
         <div class="header">
@@ -25,7 +26,7 @@
                 <li><a href="../Suggestions.html">Suggestions</a></li>
                 <li><a href="../FAQ.html">FAQ</a></li>
                 <li><a href="../About.html">About</a></li>
-                <li style="float:right"><a href="../loginXampp">Login</a></li>
+                <li style="float:right"><a href="loginXampp">Login</a></li>
             </ul>
         </div>
         <br>
