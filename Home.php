@@ -1,3 +1,8 @@
+<?php 
+    session_start();
+?>
+
+
 <html>
 
 <head>
@@ -24,7 +29,23 @@
                 <li><a href="Suggestions.html">Suggestions</a></li>
                 <li><a href="FAQ.html">FAQ</a></li>
                 <li><a href="About.html">About</a></li>
-                <li style="float:right"><a href="loginXampp/">Login</a></li>
+                <li style="float:right"><div>   
+                        <?php
+                        if (isset($_SESSION['userId'])) {
+                            echo '<form action="includes/logout.inc.php" method="post">
+                            <button type="submit" name="logout-submit">logout</button>
+                            </form>';
+                        }
+                        else{
+                            echo '<form action="includes/login.inc.php" method="post">
+                            <input type="text" name="mailuid" placeholder="Username/E-mail...">
+                            <input type="Password" name="pwd" placeholder="Password">
+                            <button type="submit" name="login-submit">Login</button>
+                            </form>
+                             <a href="signup.php">signup</a>';
+                        }
+                        ?></div>
+                </li>
             </ul>
         </div>
         <br>

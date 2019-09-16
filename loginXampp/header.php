@@ -29,14 +29,7 @@
                 <li style="float:right"><a class="active" href="login">Login</a></li>
             </ul>
         </div>
-        <br>
-<!--         <ul>
-            <li><a href="home"></a></li>
-            <li><a href="protfolio"></a></li>
-            <li><a href="about me"></a></li>
-            <li><a href="contact"></a></li>
-        </ul>
- -->   
+        <br>   
         <div>
             <?php
                 if (isset($_SESSION['userId'])) {
