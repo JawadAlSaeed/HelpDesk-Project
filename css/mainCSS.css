@@ -158,6 +158,8 @@ textarea {
     width: 200px;
 }
 
-/*i {
+.title i {
             float: left;
-}*/
+            padding-left: 15px;
+            padding-top: 20px;
+}
