@@ -17,7 +17,8 @@
 
 <body>
     <div class="content">
-        <div>
+        <div class="title">
+            <i class="fas fa-hands-helping fa-2x"></i>
             <h1>&nbsp;HelpDesk</h1>
         </div>
         <div class="header">
