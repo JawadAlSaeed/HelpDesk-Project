@@ -31,8 +31,11 @@
                     <div>   
                         <?php
                         if (isset($_SESSION['userId'])) {
+                            echo "Welcome back, {$_SESSION['userUid']}";
                             echo '<form action="includes/logout.inc.php" method="post">
-                            <button type="submit" name="logout-submit">logout</button>
+                            <div style="float: left">
+                                <button id="log" type="submit" name="logout-submit">logout</button>
+                            </div>
                             </form>';
                         }
                         else{
