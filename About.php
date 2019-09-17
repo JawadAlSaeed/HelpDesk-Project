@@ -59,6 +59,8 @@
             </ul>
         </div>
         <br>
+        <center>
+        <h1 style="font-size:50px">About</h1>
         <br>
         <br>
         <br>
@@ -66,6 +68,8 @@
         <br>
         <br>
         <br>
+        <br>
+        </center>
     </div>
  
 </body>

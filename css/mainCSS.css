@@ -18,26 +18,24 @@ body {
     padding: 0px;
 }
 
-
 #log {
-  font-size: 15x;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  float:right;
-  background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
+    font-size: 15x;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    float: right;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
 }
 
-ul{
+ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: DodgerBlue;
-    position: fixed;
     top: 0;
     width: 100%;
     position: -webkit-sticky;
@@ -58,7 +56,8 @@ li a {
     text-decoration: none;
 }
 
-li a:hover, #log:hover {
+li a:hover,
+#log:hover {
     background-color: RoyalBlue;
     color: white;
 }
@@ -142,22 +141,6 @@ a:hover {
     cursor: pointer;
 }
 
-.hero-image {
-    background-image: url("Picture/background.jpg");
-    height: 500px;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 0px;
-    padding: 0px;
-    width: 100%;
-    border-spacing: 0 0;
-    vertical-align: baseline;
-    border: 0;
-    outline: 0;
-    justify-content: space-between;
-    border-bottom: 2px solid grey;
-}
-
 textarea {
     outline: #45ADA8;
 }
@@ -172,6 +155,10 @@ textarea {
     padding-top: 20px;
 }
 
-.errors{
-    color:red;
+.errors {
+    color: red;
+}
+
+.inp {
+    margin-top: 7px;
 }

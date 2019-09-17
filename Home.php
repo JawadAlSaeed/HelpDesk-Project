@@ -1,7 +1,6 @@
 <?php 
     session_start();
 ?>
-
 <html>
 
 <head>
@@ -21,19 +20,21 @@
             <i class="fas fa-hands-helping fa-2x"></i>
             <h1>&nbsp;HelpDesk</h1>
         </div>
-        <?php 
-        if (isset($_GET['error'])) {
-            if ($_GET['error'] == "emptyfields") {
-                echo '<p class="errors">Fill in all of the fields</p>';
+        <div>
+            <?php 
+            if (isset($_GET['error'])) {
+                if ($_GET['error'] == "emptyfields") {
+                    echo '<p class="errors">Fill in all of the fields</p>';
+                }
+                else if ($_GET['error'] == "wrongpwd") {
+                    echo '<p class="errors">Wrong Username or password</p>';
+                }
+                else if ($_GET['error'] == "nouser") {
+                    echo '<p class="errors">Wrong Username or password </p>';
+                }
             }
-            else if ($_GET['error'] == "wrongpwd") {
-                echo '<p class="errors">Wrong Username or password</p>';
-            }
-            else if ($_GET['error'] == "nouser") {
-                echo '<p class="errors">Wrong Username or password </p>';
-            }
-        }
-        ?>
+            ?>
+        </div>
         <div class="header">
             <ul>
                 <li><a class="active" href="Home.php">Home</a></li>
@@ -42,7 +43,7 @@
                 <li><a href="FAQ.php">FAQ</a></li>
                 <li><a href="About.php">About</a></li>
                 <li style="float:right">
-                    <div>   
+                    <div>
                         <?php
                         if (isset($_SESSION['userId'])) {
                             echo "Welcome back, {$_SESSION['userUid']}";
@@ -56,8 +57,8 @@
                             echo '
                                 <div style="float: left">
                                     <form action="includes/login.inc.php" method="post">
-                                    <input type="text" name="mailuid" placeholder="Username/E-mail...">
-                                    <input type="Password" name="pwd" placeholder="Password">
+                                    <input class="inp" type="text" name="mailuid" placeholder="Username/E-mail...">
+                                    <input class="inp" type="Password" name="pwd" placeholder="Password">
                                     <button id="log" type="submit" name="login-submit">Login</button>
                                     </form>
                                 </div>
@@ -87,11 +88,9 @@
             </center>
         </div>
     </div>
- 
 </body>
 
 </html>
-
 <?php 
 require "footer.php";
- ?>
+?>
