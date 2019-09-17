@@ -28,7 +28,8 @@
                 <li><a class="active" href="Suggestions.php">Suggestions</a></li>
                 <li><a href="FAQ.php">FAQ</a></li>
                 <li><a href="About.php">About</a></li>
-                <li style="float:right"><div>   
+                <li style="float:right">
+                    <div>   
                         <?php
                         if (isset($_SESSION['userId'])) {
                             echo '<form action="includes/logout.inc.php" method="post">
@@ -36,14 +37,20 @@
                             </form>';
                         }
                         else{
-                            echo '<form action="includes/login.inc.php" method="post">
-                            <input type="text" name="mailuid" placeholder="Username/E-mail...">
-                            <input type="Password" name="pwd" placeholder="Password">
-                            <button type="submit" name="login-submit">Login</button>
-                            <button href="signup.php">signup</button>
-                            </form>';
+                            echo '
+                                <div style="float: left">
+                                    <form action="includes/login.inc.php" method="post">
+                                    <input type="text" name="mailuid" placeholder="Username/E-mail...">
+                                    <input type="Password" name="pwd" placeholder="Password">
+                                    <button id="log" type="submit" name="login-submit">Login</button>
+                                    </form>
+                                </div>
+                                <div style="float: right">
+                                    <a style="float: right" href="signup.php">Signup</a>
+                                </div>';
                         }
-                        ?></div>
+                        ?>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -73,11 +80,11 @@
         <br>
         <br>
     </div>
-    <footer class="footer">
-        <p>Designed by: Jawad Al-Saeed <br>
-            Contact Me: <a href="mailto:JawadAlsaeed266@gmail.com"> Email</a></p>
-        <br>
-    </footer>
+ 
 </body>
 
 </html>
+
+<?php 
+require "footer.php";
+ ?>
