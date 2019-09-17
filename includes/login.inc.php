@@ -45,7 +45,7 @@ if (isset($_POST['login-submit'])) {
 
 			}
 			else{
-				header("location: ../home.php?error=");
+				header("location: ../home.php?error=nouser");
 				exit();
 			}
 		}

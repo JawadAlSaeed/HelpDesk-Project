@@ -1,0 +1,37 @@
+.group{ 
+  float:left;
+}
+input         {
+  font-size:16px;
+  display:block;
+  width:150px;
+  border:none;
+  margin-bottom: 5px;
+  border-bottom:1px solid #757575;
+}
+input:focus     { outline:none; }
+
+/* BOTTOM BARS ================================= */
+.bar  { position:relative; display:block;}
+.bar:before, .bar:after   {
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}

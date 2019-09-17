@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-    <link href="css/PhotoCSS.css" rel="stylesheet" type="text/css" />
+    <link href="css/input.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -30,7 +30,7 @@
                     echo '<p class="errors">Wrong Username or password</p>';
                 }
                 else if ($_GET['error'] == "nouser") {
-                    echo '<p class="errors">Wrong Username or password </p>';
+                    echo '<p class="errors">No such user</p>';
                 }
             }
             ?>
@@ -46,20 +46,28 @@
                     <div>
                         <?php
                         if (isset($_SESSION['userId'])) {
-                            echo "Welcome back, {$_SESSION['userUid']}";
                             echo '<form action="includes/logout.inc.php" method="post">
                             <div style="float: left">
-                                <button id="log" type="submit" name="logout-submit">logout</button>
+                                <button id="log" type="submit" name="logout-submit">logout</button>     
                             </div>
                             </form>';
+                            echo "<article> Welcome back, {$_SESSION['userUid']} &nbsp;&nbsp;</article>";
+                            ;
                         }
                         else{
                             echo '
                                 <div style="float: left">
                                     <form action="includes/login.inc.php" method="post">
-                                    <input class="inp" type="text" name="mailuid" placeholder="Username/E-mail...">
-                                    <input class="inp" type="Password" name="pwd" placeholder="Password">
+                                    <div class="group">  
+                                    <input type="text" name="mailuid" placeholder="Username"> 
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span> 
+                                    <input type="Password" name="pwd" placeholder="Password">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    </div>
                                     <button id="log" type="submit" name="login-submit">Login</button>
+                                    
                                     </form>
                                 </div>
                                 <div style="float: right">
