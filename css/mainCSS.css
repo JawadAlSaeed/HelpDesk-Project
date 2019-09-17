@@ -18,11 +18,20 @@ body {
     padding: 0px;
 }
 
-/*.header{
-    color: white;
-}*/
 
-ul {
+#log {
+  font-size: 15x;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  float:right;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -47,10 +56,9 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-
 }
 
-li a:hover {
+li a:hover, #log:hover {
     background-color: RoyalBlue;
     color: white;
 }
@@ -159,7 +167,7 @@ textarea {
 }
 
 .title i {
-            float: left;
-            padding-left: 15px;
-            padding-top: 20px;
+    float: left;
+    padding-left: 15px;
+    padding-top: 20px;
 }
