@@ -9,10 +9,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/mainCSS.css" rel="stylesheet" type="text/css" />
-    <link href="css/PhotoCSS.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link href="css/input.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -30,28 +30,38 @@
                 <li><a href="FAQ.php">FAQ</a></li>
                 <li><a href="About.php">About</a></li>
                 <li style="float:right">
-                    <div>   
+                    <div>
                         <?php
                         if (isset($_SESSION['userId'])) {
-                            echo "Welcome back, {$_SESSION['userUid']}";
+                            echo '<div class="aligner">';
+                            
                             echo '<form action="includes/logout.inc.php" method="post">
-                            <div style="float: left">
+                            <div style="float: right; padding-bottom: 10px;">
                                 <button id="log" type="submit" name="logout-submit">logout</button>
                             </div>
                             </form>';
+                            echo "<article> Welcome, {$_SESSION['userUid']} &nbsp;&nbsp;</article>";
+                            echo '</div>';
                         }
                         else{
                             echo '
                                 <div style="float: left">
                                     <form action="includes/login.inc.php" method="post">
-                                    <input type="text" name="mailuid" placeholder="Username/E-mail...">
+                                    <div class="group">
+                                    <input type="text" name="mailuid" placeholder="Username"> 
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
                                     <input type="Password" name="pwd" placeholder="Password">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    </div>
                                     <button id="log" type="submit" name="login-submit">Login</button>
                                     </form>
                                 </div>
                                 <div style="float: right">
                                     <a style="float: right" href="signup.php">Signup</a>
-                                </div>';
+                                </div>
+                            ';
                         }
                         ?>
                     </div>
