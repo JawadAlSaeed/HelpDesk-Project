@@ -39,7 +39,6 @@ ul {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    font-family: 'Raleway', sans-serif;
 }
 
 li {
@@ -85,11 +84,20 @@ li a:hover:not(.active) {
 }
 
 div h1 {
-    font-size: 40px;
+    font-size: 35px;
     margin: 0;
     padding: 0;
     display: inline;
 }
+
+.title {
+    float: left;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
 
 a {
     text-decoration: none;
@@ -144,11 +152,7 @@ a:hover {
     width: 200px;
 }
 
-.title i {
-    float: left;
-    padding-left: 15px;
-    padding-top: 20px;
-}
+
 
 .aligner{
     float: left;

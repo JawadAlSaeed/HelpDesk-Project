@@ -8,8 +8,7 @@
     <title>HelpDesk</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/mainCSS.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="css/mainCSS.css" rel="stylesheet" type="text/css" />                                   
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="css/input.css" rel="stylesheet" type="text/css" />
@@ -94,7 +93,7 @@
         </div>
         <br>
         <center>
-        <h1 style="font-size:50px">About</h1>
+        <h1 style="font-size:45px">About</h1>
         <br>
         <br>
         <br>
