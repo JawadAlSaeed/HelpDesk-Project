@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="css/input.css" rel="stylesheet" type="text/css" />
     <link href="css/infoMessages.css" rel="stylesheet" type="text/css" />
-    <link href="css/infoMessages.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>

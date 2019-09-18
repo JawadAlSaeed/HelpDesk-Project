@@ -33,7 +33,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: DodgerBlue;
+    background-color: #254358;
     top: 0;
     width: 100%;
     position: -webkit-sticky;
@@ -43,6 +43,11 @@ ul {
 
 li {
     float: left;
+    border-right: 1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
 }
 
 li a {
@@ -79,7 +84,7 @@ li a:hover:not(.active) {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: DodgerBlue;
+    background-color: #112d32;
     height: 75px;
 }
 
@@ -111,7 +116,7 @@ a:hover {
 
 .btn {
     font-family: 'Raleway', sans-serif;
-    background-color: DodgerBlue;
+    background-color: #254358;
     /* Blue background */
     border: none;
     /* Remove borders */
