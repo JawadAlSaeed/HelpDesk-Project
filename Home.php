@@ -12,6 +12,8 @@
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="css/input.css" rel="stylesheet" type="text/css" />
+    <link href="css/infoMessages.css" rel="stylesheet" type="text/css" />
+    <link href="css/infoMessages.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -20,17 +22,26 @@
             <i class="fas fa-hands-helping fa-2x"></i>
             <h1>&nbsp;HelpDesk</h1>
         </div>
-        <div>
+        <div class="loginErrors">
             <?php 
             if (isset($_GET['error'])) {
                 if ($_GET['error'] == "emptyfields") {
-                    echo '<p class="errors">Fill in all of the fields</p>';
+                    echo '  <div class="isa_error">
+                            <i class="fa fa-times-circle"></i>
+                            Fill in all of the fields.
+                            </div>';
                 }
                 else if ($_GET['error'] == "wrongpwd") {
-                    echo '<p class="errors">Wrong Username or password</p>';
+                    echo '  <div class="isa_error">
+                            <i class="fa fa-times-circle"></i>
+                            Wrong Username or password.
+                            </div>';
                 }
                 else if ($_GET['error'] == "nouser") {
-                    echo '<p class="errors">No such user</p>';
+                    echo '  <div class="isa_error">
+                            <i class="fa fa-times-circle"></i>
+                            No such user.
+                            </div>';
                 }
             }
             ?>

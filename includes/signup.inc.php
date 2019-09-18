@@ -13,7 +13,7 @@ if (isset($_POST['signup-submit'])) {
 		exit();
 	}
 	else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-		header("location: ../signup.php?error=invailduidmail&uid" );
+		header("location: ../signup.php?error=invaildmailuid");
 		exit();
 	}
 	else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -21,7 +21,7 @@ if (isset($_POST['signup-submit'])) {
 		exit();
 	}
 	else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-		header("location: ../signup.php?error=invailduid&uid=".$email);
+		header("location: ../signup.php?error=invailduid&mail=".$email);
 		exit();
 	}
 	else if ($password !== $passwordRepeat) {
@@ -40,7 +40,7 @@ if (isset($_POST['signup-submit'])) {
 			mysqli_stmt_bind_param($stmt, "s", $username);
 			mysqli_stmt_execute($stmt);
 			mysqli_stmt_store_result($stmt);
-			$resultCheck = mysqli_stmt_num_rows();
+			$resultCheck = mysqli_stmt_num_rows($stmt);
 			if ($resultCheck > 0) {
 				header("location: ../signup.php?error=usertaken&mail=".$email);
 				exit();

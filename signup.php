@@ -13,6 +13,7 @@
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="css/input.css" rel="stylesheet" type="text/css" />
+    <link href="css/infoMessages.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -20,6 +21,30 @@
         <div class="title">
             <i class="fas fa-hands-helping fa-2x"></i>
             <h1>&nbsp;HelpDesk</h1>
+        </div>
+        <div class="loginErrors">
+            <?php 
+            if (isset($_GET['error'])) {
+                if ($_GET['error'] == "emptyfields") {
+                    echo '  <div class="isa_error">
+                            <i class="fa fa-times-circle"></i>
+                            Fill in all of the fields.
+                            </div>';
+                }
+                else if ($_GET['error'] == "wrongpwd") {
+                    echo '  <div class="isa_error">
+                            <i class="fa fa-times-circle"></i>
+                            Wrong Username or password.
+                            </div>';
+                }
+                else if ($_GET['error'] == "nouser") {
+                    echo '  <div class="isa_error">
+                            <i class="fa fa-times-circle"></i>
+                            No such user.
+                            </div>';
+                }
+            }
+            ?>
         </div>
         <div class="header">
             <ul>
@@ -72,26 +97,53 @@
     <?php 
         if (isset($_GET['error'])) {
             if ($_GET['error'] == "emptyfields") {
-                echo '<p class="errors">Fill in all of the fields</p>';
+            echo '    <div class="isa_error">
+                    <i class="fa fa-times-circle"></i>
+                    Fill in all of the fields.
+                </div>';
             }
             else if ($_GET['error'] == "invaliduidmail") {
-                echo '<p class="errors">Invalid username and E-mail!</p>';
+            echo '    <div class="isa_error">
+                    <i class="fa fa-times-circle"></i>
+                    Invalid username and E-mail.
+                </div>';
             }
             else if ($_GET['error'] == "invaliduid") {
-                echo '<p class="errors">Invalid username</p>';
+            echo '    <div class="isa_error">
+                    <i class="fa fa-times-circle"></i>
+                    Invalid username.
+                </div>';
             }
             else if ($_GET['error'] == "invalidmail") {
-                echo '<p class="errors">Invalid E-mail</p>';
+            echo '    <div class="isa_error">
+                    <i class="fa fa-times-circle"></i>
+                    Invalid E-mail.
+                </div>';
             }
             else if ($_GET['error'] == "passwordcheck") {
-                echo '<p class="errors">Your passwords do not match</p>';
+            echo '    <div class="isa_error">
+                    <i class="fa fa-times-circle"></i>
+                    Your passwords do not match.
+                </div>';
             }
             else if ($_GET['error'] == "usertaken") {
-                echo '<p class="errors">Username is already taken</p>';
+            echo '    <div class="isa_error">
+                    <i class="fa fa-times-circle"></i>
+                    Username is already taken.
+                </div>';
+            }
+            else if ($_GET['error'] == "emailtaken") {
+            echo '    <div class="isa_error">
+                    <i class="fa fa-times-circle"></i>
+                    email is already taken.
+                </div>';
             }
         }
         else if (isset($_GET['signup']) == "success") {
-            echo '<p>Sign up is successful</p>';
+        echo '    <div class="isa_success">
+                <i class="fa fa-check"></i>
+                Sign up is successful!
+            </div>';
         }
     ?>
     <form action="includes/signup.inc.php" method="post">
