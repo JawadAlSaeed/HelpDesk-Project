@@ -103,7 +103,7 @@
             <center>
                 <a href="Requests.php"><button class="btn"><i class="fa fa-bars fa-5x"></i><br><br>Requests</button></a>
                 &nbsp;
-                <a href="Requests.php"><button class="btn"><i class="far fa-lightbulb fa-5x"></i><br><br>Suggestions</button></a>
+                <a href="Suggestions.php"><button class="btn"><i class="far fa-lightbulb fa-5x"></i><br><br>Suggestions</button></a>
                 &nbsp;
                 <a href="FAQ.php"><button class="btn"><i class="fas fa-question fa-5x"></i><br><br>FAQ</button></a>
             </center>
