@@ -140,10 +140,6 @@ a:hover {
     cursor: pointer;
 }
 
-textarea {
-    outline: #45ADA8;
-}
-
 .suggestion {
     width: 200px;
 }

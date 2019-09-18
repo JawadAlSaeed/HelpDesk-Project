@@ -8,12 +8,14 @@
     <title>HelpDesk</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/formCSS.css" rel="stylesheet" type="text/css" />
     <link href="css/mainCSS.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-    <link href="css/input.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="css/input.css" rel="stylesheet" type="text/css" /> -->
     <link href="css/infoMessages.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -100,24 +102,20 @@
             </center>
         </div>
         <br><br>
-        <form method="post" name="myemailform" action="form-to-email.php">
-            <center>
-                Enter Name: <input placeholder="Jawad Al-Saeed" type="text" name="name">
-                <br><br>
-                Enter Email Address: <input class="suggestion" placeholder="Example@example.com" type="text" name="email">
-                <br><br>
-                Your Suggestion: <textarea placeholder="Remember, be nice!" cols="30" rows="5" name="message"></textarea>
-                <br><br>
-                <input type="submit" value="Send Form">
-            </center>
-        </form>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <div class="container">
+          <form action="/action_page.php">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+            <input type="submit" value="Submit">
+          </form>
+        </div>
     </div>
  
 </body>
