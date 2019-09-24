@@ -2,16 +2,18 @@
 if(!isset($_POST['submit']))
 {
   $name = $_POST['name'];
-  $mailfrom = $_POST['email'];
+  $mailFrom = $_POST['email'];
   $subject = $_POST['subject'];
   $message = $_POST['message'];
 
-}
-$name = $_POST['name'];
-$visitor_email = $_POST['email'];
-$subject = $_POST['subject'];
-$message = $_POST['message'];
+  $mailTo = "dragonx1x1x1@hotmial.com";
+  $headers = "From: ".$mailFrom;
+  $txt = "You have received an e-mail from ".$name.".\n\n".$message;
 
+  mail($mailTo, $subject, $txt, $headers);
+
+  header("Location: suggestions.php?mailsent");
+}
 //Validate first
 if(empty($name)||empty($visitor_email)) 
 {
@@ -24,20 +26,6 @@ if(IsInjected($visitor_email))
     echo "Bad email value!";
     exit;
 }
-
-$email_from = 'jawadalsaeed266@gmail.com';//<== update the email address
-$email_subject = "New Form submission";
-$email_body = "You have received a new message from the user $name.\n".
-    "Here is the message:\n $message".
-    
-$to = "jawadalsaeed266@gmail.com";//<== update the email address
-$headers = "From: $email_from \r\n";
-$headers .= "Reply-To: $visitor_email \r\n";
-//Send the email!
-mail($to,$email_subject,$email_body,$headers);
-//done. redirect to thank-you page.
-header('Location: thank-you.html');
-
 
 // Function to validate against any email injection attempts
 function IsInjected($str)
