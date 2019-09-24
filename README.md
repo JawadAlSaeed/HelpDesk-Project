@@ -2,9 +2,11 @@
 A website to help employees in the company. the website has many basic features which include:
 
 ## Request system
-this is a tab that a user can request something from the company.
+This is a tab that a user can request something from the company.
 he can ether request a feature or view his requests
 
 ## Suggestion form
+This is used to contact the company to suggest something, this doesnt required to be implemented, its just as a feedback.
 
 ## FAQs tab
+Frequently asked questions in the site, this can be confgured by the IT department.
