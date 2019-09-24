@@ -113,10 +113,10 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="mail">Email</label>
+                    <label for="email">Email</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="mail" name="mail" placeholder="example@example.com">
+                    <input type="text" id="email" name="email" placeholder="example@example.com">
                 </div>
             </div>
             <div class="row">
@@ -132,7 +132,7 @@
                     <label for="message">Message</label>
                 </div>
                 <div class="col-75">
-                    <textarea id="message" name="message" placeholder="What's on your mind?" style="height:200px"></textarea>
+                    <textarea id="body" name="body" placeholder="What's on your mind?" style="height:200px"></textarea>
                 </div>
             </div>
             <div class="row">
@@ -147,6 +147,50 @@
 
 
     </div>
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+    <script type="text/javascript">
+        function sendEmail(){
+            var name = $("#name");
+            var email = $("#email");
+            var subject = $("#subject");
+            var body = $("#body");
+
+            if (isNotEmpty(name) && isNotEmpty(email)  && isNotEmpty(subject) && isNotEmpty(body)){
+                $.ajax({
+                    url: 'contactForm.php',
+                    method: 'POST',
+                    dataType: 'json',
+                    data: {
+                        name: name.val(),
+                        email: email.val(),
+                        subject: subject(),
+                        body: body.val()
+                    }, success: function (responce){
+                        console.log(responce);
+                    }
+                });
+            }
+
+            function isNotEmpty(caller){
+                if (caller.val() == ""){
+                    caller.css('border'.'1px solid red');
+                    return false;
+                }
+                else{
+                    caller.css('border'.'');
+                    return true;
+                }
+            }
+        }
+
+
+    </script>
 </body>
 
 </html>
