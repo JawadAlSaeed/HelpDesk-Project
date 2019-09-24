@@ -91,9 +91,14 @@
                 </li>
             </ul>
         </div>
-        <br>
-        <center>
-        <h1 style="font-size:45px">What would you like to request?</h1>
+        <br><br>
+        <div class="subTitle">
+            <center>
+                <h1 style="font-size:45px">What would you like to request?</h1>
+            </center>
+        </div>
+        <br><br>
+        
         <?php
         if (isset($_SESSION['userId'])) {
 
@@ -114,7 +119,7 @@
         <br>
         <br>
         <br>
-        </center>
+
     </div>
  
 </body>

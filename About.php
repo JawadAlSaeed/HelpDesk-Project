@@ -91,10 +91,13 @@
                     </div>
             </ul>
         </div>
-        <br>
-        <center>
-        <h1 style="font-size:45px">About</h1>
-        <br>
+        <br><br>
+        <div class="subTitle">
+            <center>
+                <h1 style="font-size:45px">About</h1>
+            <br><br>
+        </div>
+        
         <br>
         <br>
         <br>

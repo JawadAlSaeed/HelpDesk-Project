@@ -91,20 +91,23 @@
                     </div>
             </ul>
         </div>
-        <br>
-        <div>
+        <br><br>
+        <div class="subTitle">
             <center>
                 <h1 style="font-size:45px">FAQ</h1>
                 <h3>search the FAQs or browse by category below</h3>
-                <br>
-                <div class="search-container">
-                    <form action="/action_page.php">
-                        <input type="text" placeholder="Search.." name="search">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
             </center>
         </div>
+        <br><br>
+        
+        <center>
+            <div class="search-container">
+                <form action="/action_page.php">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </center>
         <br>
         <br>
         <div style="font-size: 24px;">

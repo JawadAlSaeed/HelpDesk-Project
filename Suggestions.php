@@ -8,7 +8,7 @@
     <title>HelpDesk</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/mainCSS.css" rel="stylesheet" type="text/css" />                                      
+    <link href="css/mainCSS.css" rel="stylesheet" type="text/css" />                          
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="css/input.css" rel="stylesheet" type="text/css" />
@@ -93,41 +93,30 @@
                 </li>
             </ul>
         </div>
-        <br>
-        <div>
+        <br><br>
+        <div class="subTitle">
             <center>
                 <h1 style="font-size:45px">help us improve the improve the company</h1>
             </center>
         </div>
         <br><br>
+        
         <div class="container">
-        <form action="/action_page.php">
+        <form action="contactform.php" method="post">
             <div class="row">
                 <div class="col-25">
-                    <label for="fname">First Name</label>
+                    <label for="name">Name</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                    <input type="text" id="name" name="name" placeholder="Your name...">
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="lname">Last Name</label>
+                    <label for="email">Email</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-25">
-                    <label for="country">Country</label>
-                </div>
-                <div class="col-75">
-                    <select id="country" name="country">
-                        <option value="australia">Australia</option>
-                        <option value="canada">Canada</option>
-                        <option value="usa">USA</option>
-                    </select>
+                    <input type="text" id="mail" name="mail" placeholder="example@example.com">
                 </div>
             </div>
             <div class="row">
@@ -135,7 +124,15 @@
                     <label for="subject">Subject</label>
                 </div>
                 <div class="col-75">
-                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                    <input type="text" id="subject" name="subject" placeholder="Subject">
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-25">
+                    <label for="message">Message</label>
+                </div>
+                <div class="col-75">
+                    <textarea id="message" name="message" placeholder="What's on your mind?" style="height:200px"></textarea>
                 </div>
             </div>
             <div class="row">

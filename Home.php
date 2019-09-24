@@ -90,13 +90,14 @@
                 </li>
             </ul>
         </div>
-        <br>
-        <div>
+        <br><br>
+        <div class="subTitle">
             <center>
-                <h1 style="font-size:45px">How can we help you today?</h1>
+                <h1 class="subTitle" style="font-size:45px">How can we help you today?</h1>
             </center>
         </div>
-        <br>
+        <br><br>
+        
         <div style="font-size: 24px;">
             <center>
                 <a href="Requests.php"><button class="btn"><i class="fa fa-bars fa-5x"></i><br><br>Requests</button></a>
