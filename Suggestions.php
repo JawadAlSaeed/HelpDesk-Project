@@ -100,9 +100,9 @@
             </center>
         </div>
         <br><br>
-        
+
         <div class="container">
-        <form action="contactform.php" method="post">
+        <form action="contactForm.php" method="post">
             <div class="row">
                 <div class="col-25">
                     <label for="name">Name</label>
@@ -113,7 +113,7 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="email">Email</label>
+                    <label for="mail">Email</label>
                 </div>
                 <div class="col-75">
                     <input type="text" id="mail" name="mail" placeholder="example@example.com">
