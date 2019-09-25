@@ -96,13 +96,13 @@
         <br><br>
         <div class="subTitle">
             <center>
-                <h1 style="font-size:45px">help us improve the improve the company</h1>
+                <h1 style="font-size:45px">help us improve the company</h1>
             </center>
         </div>
         <br><br>
 
         <div class="container">
-        <form action="contactForm.php" method="post">
+        <!-- <form action="sendEmail()" method="post"> -->
             <div class="row">
                 <div class="col-25">
                     <label for="name">Name</label>
@@ -136,9 +136,9 @@
                 </div>
             </div>
             <div class="row">
-                <input type="submit" value="Submit">
+                <input type="button" onclick="sendEmail()" value="Submit">
             </div>
-        </form>
+        <!-- </form> -->
     </div>
     <br>
     <br>
@@ -154,6 +154,7 @@
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous">
     </script>
+
     <script type="text/javascript">
         function sendEmail(){
             var name = $("#name");
@@ -176,21 +177,21 @@
                     }
                 });
             }
+        }
 
-            function isNotEmpty(caller){
+                    function isNotEmpty(caller){
                 if (caller.val() == ""){
                     caller.css('border'.'1px solid red');
                     return false;
                 }
-                else{
+                else
                     caller.css('border'.'');
-                    return true;
+
+                return true;
                 }
             }
-        }
-
-
     </script>
+
 </body>
 
 </html>
