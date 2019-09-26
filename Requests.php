@@ -22,27 +22,10 @@
             <h1>&nbsp;HelpDesk</h1>
         </div>
         <div class="loginErrors">
+            <br>
+            <br>
             <?php 
-            if (isset($_GET['error'])) {
-                if ($_GET['error'] == "emptyfields") {
-                    echo '  <div class="isa_error">
-                            <i class="fa fa-times-circle"></i>
-                            Fill in all of the fields.
-                            </div>';
-                }
-                else if ($_GET['error'] == "wrongpwd") {
-                    echo '  <div class="isa_error">
-                            <i class="fa fa-times-circle"></i>
-                            Wrong Username or password.
-                            </div>';
-                }
-                else if ($_GET['error'] == "nouser") {
-                    echo '  <div class="isa_error">
-                            <i class="fa fa-times-circle"></i>
-                            No such user.
-                            </div>';
-                }
-            }
+                require "tools\loginErrors.php";
             ?>
         </div>
         <div class="header">
@@ -101,9 +84,13 @@
         
         <?php
         if (isset($_SESSION['userId'])) {
-
-
-        }   
+            echo '  <center>
+                 <a href="requestSections\newRequests.php"><button class="btn"><i class="fas fa-plus fa-5x"></i><br><br>Make a new request</button></a>
+                    &nbsp;
+                    <a href="requestSections\viewRequests.php"><button class="btn"><i class="fas fa-eye fa-5x"></i><br><br>view requests</button></a>
+                    &nbsp;
+                </center>';
+        }
         else{
             echo '  <div class="isa_error">
                         <i class="fa fa-times-circle"></i>
@@ -119,7 +106,6 @@
         <br>
         <br>
         <br>
-
     </div>
  
 </body>
