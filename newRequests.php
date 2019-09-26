@@ -79,8 +79,52 @@
                 <h1 style="font-size:45px">Fill in your info</h1>
             <br><br>
         </div>
-        <br>
-        <br>
+        <br><br>
+
+        <div class="container">
+            <form action="sendEmail()" method="post">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="name" name="name" placeholder="Your name...">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="area">Request area</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="area" name="area" placeholder="example@example.com">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="priority">Priority</label>
+                    </div>
+                    <div class="col-75">                   
+                        <select id="priority" name="priority">
+                          <option value="1">Low</option>
+                          <option value="2">Moderate</option>
+                          <option value="3">High</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="message">Request description</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea id="description" name="description" style="height:200px"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
         <br>
         <br>
         <br>
@@ -96,3 +140,11 @@
 <?php 
 require "footer.php";
  ?>
+
+
+ <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select>
