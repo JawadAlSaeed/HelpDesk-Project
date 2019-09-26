@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="css/input.css" rel="stylesheet" type="text/css" />
     <link href="css/infoMessages.css" rel="stylesheet" type="text/css" />
+    <link href="css/form.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -96,7 +97,7 @@
                         <label for="area">Request area</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="area" name="area" placeholder="example@example.com">
+                        <input type="text" id="area" name="area" placeholder="Where do you want this request to go?">
                     </div>
                 </div>
                 <div class="row">
@@ -139,12 +140,4 @@
 
 <?php 
 require "footer.php";
- ?>
-
-
- <label for="country">Country</label>
-    <select id="country" name="country">
-      <option value="australia">Australia</option>
-      <option value="canada">Canada</option>
-      <option value="usa">USA</option>
-    </select>
+?>
