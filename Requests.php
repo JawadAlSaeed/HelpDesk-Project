@@ -85,9 +85,9 @@
         <?php
         if (isset($_SESSION['userId'])) {
             echo '  <center>
-                 <a href="requestSections\newRequests.php"><button class="btn"><i class="fas fa-plus fa-5x"></i><br><br>Make a new request</button></a>
+                 <a href="newRequests.php"><button class="btn"><i class="fas fa-plus fa-5x"></i><br><br>Make a new request</button></a>
                     &nbsp;
-                    <a href="requestSections\viewRequests.php"><button class="btn"><i class="fas fa-eye fa-5x"></i><br><br>view requests</button></a>
+                    <a href="viewRequests.php"><button class="btn"><i class="fas fa-eye fa-5x"></i><br><br>view requests</button></a>
                     &nbsp;
                 </center>';
         }

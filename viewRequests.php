@@ -33,7 +33,7 @@
             <a href="About.php"></a>
             <ul>
                 <li><a href="Home.php">Home</a></li>
-                <li><a href="Requests.php">Requests</a></li>
+                <li><a class="active" href="Requests.php">Requests</a></li>
                 <li><a href="Suggestions.php">Suggestions</a></li>
                 <li><a href="FAQ.php">FAQ</a></li>
                 <li><a class="active" href="About.php">About</a></li>

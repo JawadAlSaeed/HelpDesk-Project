@@ -30,7 +30,6 @@
             ?>
         </div>
         <div class="header">
-            <a href="About.php"></a>
             <ul>
                 <li><a href="Home.php">Home</a></li>
                 <li><a href="Requests.php">Requests</a></li>
@@ -84,7 +83,7 @@
         </div>
         <br><br>
 
-        <div class="container">
+    <div class="container">
         <form action="sendEmail()" method="post">
             <div class="row">
                 <div class="col-25">

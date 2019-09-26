@@ -29,7 +29,6 @@
             ?>
         </div>
         <div class="header">
-            <a href="About.php"></a>
             <ul>
                 <li><a href="Home.php">Home</a></li>
                 <li><a href="Requests.php">Requests</a></li>
