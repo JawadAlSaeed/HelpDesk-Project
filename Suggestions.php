@@ -8,7 +8,7 @@
     <title>HelpDesk</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/mainCSS.css" rel="stylesheet" type="text/css" />                          
+    <link href="css/mainCSS.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="css/input.css" rel="stylesheet" type="text/css" />
@@ -85,7 +85,7 @@
         <br><br>
 
         <div class="container">
-        <!-- <form action="sendEmail()" method="post"> -->
+        <form action="sendEmail()" method="post">
             <div class="row">
                 <div class="col-25">
                     <label for="name">Name</label>
@@ -121,7 +121,7 @@
             <div class="row">
                 <input type="button" onclick="sendEmail()" value="Submit">
             </div>
-        <!-- </form> -->
+        </form>
     </div>
     <br>
     <br>
