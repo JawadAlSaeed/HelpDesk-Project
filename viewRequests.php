@@ -36,7 +36,7 @@
                 <li><a class="active" href="Requests.php">Requests</a></li>
                 <li><a href="Suggestions.php">Suggestions</a></li>
                 <li><a href="FAQ.php">FAQ</a></li>
-                <li><a class="active" href="About.php">About</a></li>
+                <li><a href="About.php">About</a></li>
                 <li style="float:right">
                     <div>
                         <?php

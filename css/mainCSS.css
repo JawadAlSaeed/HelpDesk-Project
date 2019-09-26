@@ -111,7 +111,7 @@ a {
 
 a:hover {
     text-decoration: none;
-    color: RoyalBlue;
+    color: #45ADA8;
 }
 
 .btn {
@@ -156,8 +156,6 @@ a:hover {
 .suggestion {
     width: 200px;
 }
-
-
 
 .aligner{
     float: left;
