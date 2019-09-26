@@ -12,7 +12,7 @@ if(!isset($_POST['submit']))
 
   mail($mailTo, $subject, $txt, $headers);
 
-  header("Location: suggestions.php?mailsent");
+  header("Location: contactUs.php?mailsent");
 }
 //Validate first
 if(empty($name)||empty($visitor_email)) 

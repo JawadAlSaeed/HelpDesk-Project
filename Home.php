@@ -31,7 +31,7 @@
             <ul>
                 <li><a class="active" href="Home.php">Home</a></li>
                 <li><a href="Requests.php">Requests</a></li>
-                <li><a href="Suggestions.php">Suggestions</a></li>
+                <li><a href="contactUs.php">Contact us</a></li>
                 <li><a href="FAQ.php">FAQ</a></li>
                 <li><a href="About.php">About</a></li>
                 <li style="float:right">
@@ -85,7 +85,7 @@
             <center>
                 <a href="Requests.php"><button class="btn"><i class="fa fa-bars fa-5x"></i><br><br>Requests</button></a>
                 &nbsp;
-                <a href="Suggestions.php"><button class="btn"><i class="far fa-lightbulb fa-5x"></i><br><br>Suggestions</button></a>
+                <a href="contactUs.php"><button class="btn"><i class="far fa-lightbulb fa-5x"></i><br><br>Contact us</button></a>
                 &nbsp;
                 <a href="FAQ.php"><button class="btn"><i class="fas fa-question fa-5x"></i><br><br>FAQ</button></a>
             </center>
