@@ -24,7 +24,7 @@
 
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
+    background-color: #254358;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
@@ -44,4 +44,18 @@
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+ .popupbutton {
+  margin: 10px;
+  background-color: #45ADA8;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popupbutton:hover {
+  background-color: #547980;
 }
