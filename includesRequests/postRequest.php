@@ -81,43 +81,43 @@
         
         <hr>
         <?php
-	$EMPLOYEE_ID =  $_POST["EMPLOYEE_ID"];
-	$FIRST_NAME =  $_POST["FIRST_NAME"];
-	$LAST_NAME =  $_POST["LAST_NAME"];
-	$HIRE_DATE =  $_POST["HIRE_DATE"];
-	$SALARY =  $_POST["SALARY"];
-	$JOB_ID =  $_POST["JOB_ID"];
-	$DEPARTMENT_ID =  $_POST["DEPARTMENT_ID"];
-	$PostMessage = addslashes("$EMPLOYEE_ID|$FIRST_NAME|$LAST_NAME|$HIRE_DATE|$SALARY|$JOB_ID|$DEPARTMENT_ID\n");
-	$MessageStore = fopen("employee.txt", "a");
-	fwrite($MessageStore, "$PostMessage");
-	fclose($MessageStore);
+			$EMPLOYEE_ID =  $_POST["EMPLOYEE_ID"];
+			$FIRST_NAME =  $_POST["FIRST_NAME"];
+			$LAST_NAME =  $_POST["LAST_NAME"];
+			$HIRE_DATE =  $_POST["HIRE_DATE"];
+			$SALARY =  $_POST["SALARY"];
+			$JOB_ID =  $_POST["JOB_ID"];
+			$DEPARTMENT_ID =  $_POST["DEPARTMENT_ID"];
+			$PostMessage = addslashes("$EMPLOYEE_ID|$FIRST_NAME|$LAST_NAME|$HIRE_DATE|$SALARY|$JOB_ID|$DEPARTMENT_ID\n");
+			$MessageStore = fopen("employee.txt", "a");
+			fwrite($MessageStore, "$PostMessage");
+			fclose($MessageStore);
 
-echo "<p><strong>EMPLOYEE_ID</strong>: $EMPLOYEE_ID<br />";
-echo "<strong>FIRST_NAME</strong>: $FIRST_NAME<br />";
-echo "<strong>LAST_NAME</strong>: $LAST_NAME <br />";
-echo "<strong>HIRE_DATE</strong>: $HIRE_DATE<br />";
-echo "<strong>SALARY</strong>: $SALARY<br />";
-echo "<strong>JOB_ID</strong>: $JOB_ID<br />";
-echo "<strong>DEPARTMENT_ID</strong>: $DEPARTMENT_ID</p>";
-//-------------------------------------------------------------------------
-$DBConnect = mysqli_connect("localhost","root","");
-if (!$DBConnect) 
-{
-    die('Could not connect: ' . mysqli_error());
-}
-$DBName = "shipping";
-mysqli_select_db($DBConnect,$DBName);
-$QueryString = "INSERT INTO employees VALUES ( '$EMPLOYEE_ID','$FIRST_NAME','$LAST_NAME','$HIRE_DATE','$SALARY','$JOB_ID', '$DEPARTMENT_ID' ) ";
-$QueryResult = mysqli_query($DBConnect,$QueryString)
-     Or die("<p> Unable to execute query. </p>"
-     . "<p> Error code  " .  mysqli_errno($DBConnect)
-     .  ": " . mysqli_error($DBConnect)) . "</p>" ;
-echo "<p>Data Successfully uploaded into the table. </p>";
+		echo "<p><strong>EMPLOYEE_ID</strong>: $EMPLOYEE_ID<br />";
+		echo "<strong>FIRST_NAME</strong>: $FIRST_NAME<br />";
+		echo "<strong>LAST_NAME</strong>: $LAST_NAME <br />";
+		echo "<strong>HIRE_DATE</strong>: $HIRE_DATE<br />";
+		echo "<strong>SALARY</strong>: $SALARY<br />";
+		echo "<strong>JOB_ID</strong>: $JOB_ID<br />";
+		echo "<strong>DEPARTMENT_ID</strong>: $DEPARTMENT_ID</p>";
+		//-------------------------------------------------------------------------
+		$DBConnect = mysqli_connect("localhost","root","");
+		if (!$DBConnect) 
+		{
+		    die('Could not connect: ' . mysqli_error());
+		}
+		$DBName = "shipping";
+		mysqli_select_db($DBConnect,$DBName);
+		$QueryString = "INSERT INTO employees VALUES ( '$EMPLOYEE_ID','$FIRST_NAME','$LAST_NAME','$HIRE_DATE','$SALARY','$JOB_ID', '$DEPARTMENT_ID' ) ";
+		$QueryResult = mysqli_query($DBConnect,$QueryString)
+		     Or die("<p> Unable to execute query. </p>"
+		     . "<p> Error code  " .  mysqli_errno($DBConnect)
+		     .  ": " . mysqli_error($DBConnect)) . "</p>" ;
+		echo "<p>Data Successfully uploaded into the table. </p>";
 
-mysqli_close($DBConnect);
- //-------------------------------------------------------------------------
-?>
+		mysqli_close($DBConnect);
+		 //-------------------------------------------------------------------------
+		?>
         </form>
         <hr />
         <p><a href="employees.html">Post Another Employee</a>
