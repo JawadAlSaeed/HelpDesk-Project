@@ -84,7 +84,7 @@
         <br><br>
 
         <div class="container">
-            <form action="sendEmail()" method="post">
+            <form action="includesRequests/postRequest.php" method="post">
                 <div class="row">
                     <div class="col-25">
                         <label for="name">Name</label>
@@ -98,7 +98,7 @@
                         <label for="area">Request area</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="area" name="area" placeholder="Where do you want this request to go?">
+                        <input type="text" id="area" name="area" placeholder="which department do you want this request to go?">
                     </div>
                 </div>
                 <div class="row">
@@ -121,9 +121,13 @@
                         <textarea id="description" name="description" style="height:200px"></textarea>
                     </div>
                 </div>
+                <br>
                 <div class="row">
                     <input type="submit" value="Submit">
                 </div>
+                <?php
+                $theDate = date("Y/m/d");
+                ?>
             </form>
             <!-- Trigger/Open The Modal -->
             <button class="popupbutton" id="myBtn">Available Departments</button>
@@ -141,6 +145,9 @@
 
               </div>
             </div>
+            <br>
+            <br>
+            <br>
         </div>
 
         <br>
