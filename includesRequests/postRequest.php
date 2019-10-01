@@ -24,7 +24,7 @@
             <br>
             <br>
             <?php 
-                require "tools\loginErrors.php";
+                require "HelpDeskProject\_tools\loginErrors.php";
             ?>
         </div>
         <div class="header">
@@ -75,40 +75,30 @@
         <br><br>
         <div class="subTitle">
             <center>
-                <h1 style="font-size:45px">Request submited</h1>
+                <h1 style="font-size:45px">Request has beensubmited</h1>
                 <br><br>
         </div>
         
-        <hr>
         <?php
-			$EMPLOYEE_ID =  $_POST["EMPLOYEE_ID"];
-			$FIRST_NAME =  $_POST["FIRST_NAME"];
-			$LAST_NAME =  $_POST["LAST_NAME"];
-			$HIRE_DATE =  $_POST["HIRE_DATE"];
-			$SALARY =  $_POST["SALARY"];
-			$JOB_ID =  $_POST["JOB_ID"];
-			$DEPARTMENT_ID =  $_POST["DEPARTMENT_ID"];
-			$PostMessage = addslashes("$EMPLOYEE_ID|$FIRST_NAME|$LAST_NAME|$HIRE_DATE|$SALARY|$JOB_ID|$DEPARTMENT_ID\n");
-			$MessageStore = fopen("employee.txt", "a");
-			fwrite($MessageStore, "$PostMessage");
-			fclose($MessageStore);
+			$name =  $_POST["name"];
+			$department =  $_POST["department"];
+			$priority =  $_POST["priority"];
+			$description =  $_POST["description"];
 
-		echo "<p><strong>EMPLOYEE_ID</strong>: $EMPLOYEE_ID<br />";
-		echo "<strong>FIRST_NAME</strong>: $FIRST_NAME<br />";
-		echo "<strong>LAST_NAME</strong>: $LAST_NAME <br />";
-		echo "<strong>HIRE_DATE</strong>: $HIRE_DATE<br />";
-		echo "<strong>SALARY</strong>: $SALARY<br />";
-		echo "<strong>JOB_ID</strong>: $JOB_ID<br />";
-		echo "<strong>DEPARTMENT_ID</strong>: $DEPARTMENT_ID</p>";
-		//-------------------------------------------------------------------------
+
+			echo "<p><strong>name</strong>: $name<br />";
+			echo "<strong>department</strong>: $department<br />";
+			echo "<strong>priority</strong>: $priority <br />";
+			echo "<strong>description</strong>: $description<br />";
+
 		$DBConnect = mysqli_connect("localhost","root","");
 		if (!$DBConnect) 
 		{
 		    die('Could not connect: ' . mysqli_error());
 		}
-		$DBName = "shipping";
+		$DBName = "requests";
 		mysqli_select_db($DBConnect,$DBName);
-		$QueryString = "INSERT INTO employees VALUES ( '$EMPLOYEE_ID','$FIRST_NAME','$LAST_NAME','$HIRE_DATE','$SALARY','$JOB_ID', '$DEPARTMENT_ID' ) ";
+		$QueryString = "INSERT INTO requeststable VALUES ( '$name','$department','$priority','$description') ";
 		$QueryResult = mysqli_query($DBConnect,$QueryString)
 		     Or die("<p> Unable to execute query. </p>"
 		     . "<p> Error code  " .  mysqli_errno($DBConnect)
@@ -120,8 +110,8 @@
 		?>
         </form>
         <hr />
-        <p><a href="employees.html">Post Another Employee</a>
-            <a href="ViewEmployees.php">View Employee</a></p>
+        <p><a href="home.html">return home</a>
+            <a href="viewRequest.php">View Requests</a></p>
 </body>
 
 </html>

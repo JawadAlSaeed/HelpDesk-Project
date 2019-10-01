@@ -27,7 +27,7 @@
             <br>
             <br>
             <?php 
-                require "tools\loginErrors.php";
+                require "_tools\loginErrors.php";
             ?>
         </div>
         <div class="header">
@@ -98,7 +98,7 @@
                         <label for="area">Request area</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="area" name="area" placeholder="which department do you want this request to go?">
+                        <input type="text" id="area" name="department" placeholder="which department do you want this request to go?">
                     </div>
                 </div>
                 <div class="row">

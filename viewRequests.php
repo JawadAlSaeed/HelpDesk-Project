@@ -26,7 +26,7 @@
             <br>
             <br>
             <?php 
-                require "tools\loginErrors.php";
+                require "_tools\loginErrors.php";
             ?>
         </div>
         <div class="header">
