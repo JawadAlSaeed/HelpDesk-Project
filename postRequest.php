@@ -97,9 +97,9 @@
     		{
     		    die('Could not connect: ' . mysqli_error());
     		}
-    		$DBName = "requests";
+    		$DBName = "helpdeskdb";
     		mysqli_select_db($DBConnect,$DBName);
-    		$QueryString = "INSERT INTO requeststables (name, dpartment, priority, description) VALUES ( '$name','$department','$priority','$description') ";
+    		$QueryString = "INSERT INTO requests (name, dpartment, priority, description) VALUES ( '$name','$department','$priority','$description') ";
     		$QueryResult = mysqli_query($DBConnect,$QueryString)
     		     Or die("<p> Unable to execute query. </p>"
     		     . "<p> Error code  " .  mysqli_errno($DBConnect)
