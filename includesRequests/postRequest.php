@@ -24,12 +24,12 @@
             <br>
             <br>
             <?php 
-                require "HelpDeskProject\_tools\loginErrors.php";
+                require "..\_tools\loginErrors.php";
             ?>
         </div>
         <div class="header">
             <ul>
-                <li><a href="Home.php">Home</a></li>
+                <li><a href="http://localhost/HelpDeskProject/home.php">Home</a></li>
                 <li><a href="Requests.php">Requests</a></li>
                 <li><a href="contactUs.php">Contact us</a></li>
                 <li><a href="FAQ.php">FAQ</a></li>
@@ -98,7 +98,7 @@
 		}
 		$DBName = "requests";
 		mysqli_select_db($DBConnect,$DBName);
-		$QueryString = "INSERT INTO requeststable VALUES ( '$name','$department','$priority','$description') ";
+		$QueryString = "INSERT INTO requeststables (name, dpartment, priority, description) VALUES ( '$name','$department','$priority','$description') ";
 		$QueryResult = mysqli_query($DBConnect,$QueryString)
 		     Or die("<p> Unable to execute query. </p>"
 		     . "<p> Error code  " .  mysqli_errno($DBConnect)
@@ -116,5 +116,5 @@
 
 </html>
 <?php 
-require "footer.php";
+require "../footer.php";
  ?>
