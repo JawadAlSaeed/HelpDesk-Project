@@ -5,7 +5,7 @@
   margin-right:15%;
   margin-left:15%;
 }
-.col-75 input[type=text], select, textarea {
+.col-75 input[type=text],input[type=password], select, textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -18,7 +18,7 @@ label {
   display: inline-block;
 }
 
- input[type=submit] {
+ input[type=submit], .signupBtn {
   margin: 10px;
   background-color: #45ADA8;
   color: white;
@@ -29,7 +29,7 @@ label {
   float: right;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, .signupBtn {
   background-color: #547980;
 }
 

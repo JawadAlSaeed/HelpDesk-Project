@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="css/input.css" rel="stylesheet" type="text/css" />
     <link href="css/infoMessages.css" rel="stylesheet" type="text/css" />
+    <link href="css/form.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -30,7 +31,7 @@
         </div>
         <div class="header">
             <ul>
-                <li><a class="active" href="Home.php">Home</a></li>
+                <li><a href="Home.php">Home</a></li>
                 <li><a href="Requests.php">Requests</a></li>
                 <li><a href="contactUs.php">Contact us</a></li>
                 <li><a href="FAQ.php">FAQ</a></li>
@@ -65,7 +66,7 @@
                                     </form>
                                 </div>
                                 <div style="float: right">
-                                    <a style="float: right" href="signup.php">Signup</a>
+                                    <a class="active" style="float: right" href="signup.php">Signup</a>
                                 </div>
                             ';
                         }
@@ -73,85 +74,60 @@
                     </div>
             </ul>
         </div>
-
-        <main>
-    <h1>Signup</h1>
-    <?php 
-        if (isset($_GET['error'])) {
-            if ($_GET['error'] == "emptyfields") {
-            echo '    <div class="isa_error">
-                    <i class="fa fa-times-circle"></i>
-                    Fill in all of the fields.
-                </div>';
-            }
-            else if ($_GET['error'] == "invaliduidmail") {
-            echo '    <div class="isa_error">
-                    <i class="fa fa-times-circle"></i>
-                    Invalid username and E-mail.
-                </div>';
-            }
-            else if ($_GET['error'] == "invaliduid") {
-            echo '    <div class="isa_error">
-                    <i class="fa fa-times-circle"></i>
-                    Invalid username.
-                </div>';
-            }
-            else if ($_GET['error'] == "invalidmail") {
-            echo '    <div class="isa_error">
-                    <i class="fa fa-times-circle"></i>
-                    Invalid E-mail.
-                </div>';
-            }
-            else if ($_GET['error'] == "passwordcheck") {
-            echo '    <div class="isa_error">
-                    <i class="fa fa-times-circle"></i>
-                    Your passwords do not match.
-                </div>';
-            }
-            else if ($_GET['error'] == "usertaken") {
-            echo '    <div class="isa_error">
-                    <i class="fa fa-times-circle"></i>
-                    Username is already taken.
-                </div>';
-            }
-            else if ($_GET['error'] == "emailtaken") {
-            echo '    <div class="isa_error">
-                    <i class="fa fa-times-circle"></i>
-                    email is already taken.
-                </div>';
-            }
-        }
-        else if (isset($_GET['signup']) == "success") {
-        echo '    <div class="isa_success">
-                <i class="fa fa-check"></i>
-                Sign up is successful!
-            </div>';
-        }
-    ?>
-    <form action="includes/signup.inc.php" method="post">
-        <input type="text" name="uid" placeholder="Username">
-        <input type="text" name="mail" placeholder="E-mail">
-        <input type="password" name="pwd" placeholder="password">
-        <input type="password" name="pwd-repeat" placeholder="repeat password">
-        <button type="submit" name="signup-submit">Signup</button>
-    </form>
-    </main>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <div class="subTitle">
+            <center>
+                <h1 class="subTitle" style="font-size:45px">Signup</h1>
+            </center>
+        </div>
+        <dir class="signupErrors">
+            <?php 
+                require "_tools\loginErrors.php";
+            ?>
+        </dir>
+        <div class="container">
+            <form action="includes/signup.inc.php" method="post">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" name="uid" placeholder="Username">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" name="mail" placeholder="E-mail">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="Password">Password</label>
+                    </div>
+                    <div class="col-75">
+                       <input type="password" name="pwd" placeholder="password">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="pwd-repeat">repeat password</label>
+                    </div>
+                    <div class="col-75">
+                       <input type="password" name="pwd-repeat" placeholder="repeat password">
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="signupBtn" type="submit" name="signup-submit">Signup</button>
+                </div>
+            </form>
+        </div>
     </div>
- 
 </body>
 
 </html>
 
-    
- <?php 
-require "footer.php";
- ?>
+<?php 
+    require "footer.php";
+?>

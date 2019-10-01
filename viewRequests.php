@@ -78,17 +78,10 @@
         <div class="subTitle">
             <center>
                 <h1 style="font-size:45px">Your requests</h1>
-            <br><br>
+            </center>
+        <br><br>
         </div>
-        
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        </center>
+
     </div>
  
 </body>
@@ -96,5 +89,5 @@
 </html>
 
 <?php 
-require "footer.php";
- ?>
+    require "footer.php";
+?>
