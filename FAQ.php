@@ -8,11 +8,12 @@
     <title>HelpDesk</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/mainCSS.css" rel="stylesheet" type="text/css" />                                   
+    <link href="css/mainCSS.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="css/input.css" rel="stylesheet" type="text/css" />
     <link href="css/infoMessages.css" rel="stylesheet" type="text/css" />
+    <link href="css/form.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -103,7 +104,7 @@
                 <a href="#Network"><button class="btn"><i class="fas fa-network-wired fa-5x"></i><br><br>Network</button></a>
                 <br>
                 <br>
-                <a href="#Database"><button class="btn"><i class="fas fa-database fa-5x"></i><br><br>Database</button></a>
+                <a href="#Database"><button class="btn"><i class="fas fa-wifi fa-5x"></i><br><br>Internet</button></a>
                 &nbsp;
                 <a href="#Rights_and_roles"><button class="btn"><i class="far fa-hand-rock fa-5x"></i><br><br>Rights and Roles</button></a>
                 &nbsp;
@@ -115,12 +116,12 @@
         <br>
         <hr>
         <br>
-        <div>
+        <div class="container">
             <h2 id="Getting_started">Getting started</h2>
             <p>
-                Q:where can i get my own PC?
+                Q: where can i get my own PC?
                 <br>
-                A: You can request a PC/Laptop using the Request tap or by coming to the Support team.
+                A: You can request a PC/Laptop in the request tab.
             </p>
         </div>
         <br>

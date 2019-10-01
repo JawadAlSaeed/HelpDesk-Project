@@ -27,7 +27,7 @@
             <br>
             <br>
             <?php 
-                require "_tools\loginErrors.php";
+                require "_tools/loginErrors.php";
             ?>
         </div>
         <div class="header">
@@ -84,7 +84,7 @@
         <br><br>
 
         <div class="container">
-            <form action="includesRequests/postRequest.php" method="post">
+            <form action="postRequest.php" method="post">
                 <div class="row">
                     <div class="col-25">
                         <label for="name">Name</label>

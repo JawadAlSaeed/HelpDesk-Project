@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="css/input.css" rel="stylesheet" type="text/css" />
     <link href="css/infoMessages.css" rel="stylesheet" type="text/css" />
+    <link href="css/form.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -24,7 +25,7 @@
             <br>
             <br>
             <?php 
-                require "..\_tools\loginErrors.php";
+                require "_tools\loginErrors.php";
             ?>
         </div>
         <div class="header">
@@ -78,7 +79,8 @@
                 <h1 style="font-size:45px">Your request has been submited</h1>
                 <br><br>
         </div>
-        <div class="postingReqeust">
+        <br>
+        <div class="container">
             <?php
     		$name =  $_POST["name"];
     		$department =  $_POST["department"];
@@ -102,15 +104,24 @@
     		     Or die("<p> Unable to execute query. </p>"
     		     . "<p> Error code  " .  mysqli_errno($DBConnect)
     		     .  ": " . mysqli_error($DBConnect)) . "</p>" ;
-    		echo "<p>Data Successfully uploaded into the table. </p>";
 
     		mysqli_close($DBConnect);
     		 //-------------------------------------------------------------------------
     		?>
         </div>
         <br>
-        <a href="home.html">return home</a>
-        <a href="viewRequest.php">View Requests</a>
+                <div style="font-size: 24px;">
+            <center>
+                <a href="home.php"><button class="btn"><i class="fa fa-home fa-5x"></i><br><br>Return home</button></a>
+                &nbsp;
+                <a href="viewRequests.php"><button class="btn"><i class="fas fa-eye  fa-5x"></i><br><br>View Requests</button></a>
+                &nbsp;
+            </center>
+        </div>
+
+    </div>
+    <br>
+    <br>
 </body>
 
 </html>
