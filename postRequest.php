@@ -88,10 +88,14 @@
     		$priority =  $_POST["priority"];
     		$description =  $_POST["description"];
 
-    		echo "<p><strong>name</strong>: $name<br>";
-    		echo "<strong>department</strong>: $department<br>";
-    		echo "<strong>priority</strong>: $priority <br>";
-    		echo "<strong>description</strong>: $description<br>";
+            date_default_timezone_set("Asia/Riyadh"); 
+            $theDate = date("Y-m-d h:i:sa");
+
+    		echo "<strong>Name</strong>: $name<br>";
+    		echo "<strong>Department</strong>: $department<br>";
+    		echo "<strong>Priority</strong>: $priority<br>";
+    		echo "<strong>Description</strong>: $description<br>";
+            echo "<strong>Date created</strong>: $theDate<br>";
 
     		$DBConnect = mysqli_connect("localhost","root","");
     		if (!$DBConnect) 
@@ -100,7 +104,7 @@
     		}
     		$DBName = "helpdeskdb";
     		mysqli_select_db($DBConnect,$DBName);
-    		$QueryString = "INSERT INTO requests (name, dpartment, priority, description) VALUES ( '$name','$department','$priority','$description') ";
+    		$QueryString = "INSERT INTO requests (name, dpartment, priority, description, date) VALUES ( '$name','$department','$priority','$description', '$theDate') ";
     		$QueryResult = mysqli_query($DBConnect,$QueryString)
     		     Or die("<p> Unable to execute query. </p>"
     		     . "<p> Error code  " .  mysqli_errno($DBConnect)

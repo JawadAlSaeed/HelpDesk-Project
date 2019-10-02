@@ -126,9 +126,6 @@
                 <div class="row">
                     <input type="submit" value="Submit">
                 </div>
-                <?php
-                $theDate = date("Y/m/d");
-                ?>
             </form>
             <!-- Trigger/Open The Modal -->
             <button class="popupbutton" id="myBtn">Available Departments</button>
