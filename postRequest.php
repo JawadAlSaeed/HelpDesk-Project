@@ -83,7 +83,9 @@
         <br>
         <div class="container">
             <?php
-    		$name =  $_POST["name"];
+
+            uidUser = $_SESSION['userUid'];
+    		$telephone =  $_POST["telephone"];
     		$department =  $_POST["department"];
     		$priority =  $_POST["priority"];
     		$description =  $_POST["description"];
@@ -91,12 +93,15 @@
             date_default_timezone_set("Asia/Riyadh"); 
             $theDate = date("Y-m-d h:i:sa");
 
-    		echo "<strong>Name</strong>: $name<br>";
+    		echo "<strong>Created by</strong>: $uidUser<br>";
+            echo "<strong>Phone number</strong>: $telephone<br>";
     		echo "<strong>Department</strong>: $department<br>";
     		echo "<strong>Priority</strong>: $priority<br>";
     		echo "<strong>Description</strong>: $description<br>";
             echo "<strong>Date created</strong>: $theDate<br>";
 
+
+            //--------------------------------------------------------------------------
     		$DBConnect = mysqli_connect("localhost","root","");
     		if (!$DBConnect) 
     		{
@@ -115,7 +120,7 @@
     		?>
         </div>
         <br>
-                <div style="font-size: 24px;">
+        <div style="font-size: 24px;">
             <center>
                 <a href="home.php"><button class="btn"><i class="fa fa-home fa-5x"></i><br><br>Return home</button></a>
                 &nbsp;
@@ -123,7 +128,6 @@
                 &nbsp;
             </center>
         </div>
-
     </div>
     <br>
     <br>
@@ -132,5 +136,5 @@
 </html>
 
 <?php 
-require "footer.php";
+    require "footer.php";
 ?>

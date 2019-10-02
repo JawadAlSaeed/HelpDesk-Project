@@ -88,10 +88,10 @@
             <form action="postRequest.php" method="post">
                 <div class="row">
                     <div class="col-25">
-                        <label for="name">Name</label>
+                        <label for="telephone">Phone number</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="name" name="name" placeholder="Your name...">
+                        <input type="text" id="telephone" name="telephone" placeholder="+96612345678">
                     </div>
                 </div>
                 <div class="row">
@@ -155,7 +155,7 @@
         <br>
         </center>
     </div>
-        <script>
+    <script>
         // Get the modal
         var modal = document.getElementById("myModal");
 
