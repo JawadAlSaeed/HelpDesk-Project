@@ -83,7 +83,46 @@
             <br><br>
         </div>
         <div class="container">
-            
+            <?php
+                //--------------------------------------------------------------------------
+                $DBConnect = mysqli_connect("localhost","root","");
+                if (!$DBConnect) 
+                {
+                    die('Could not connect: ' . mysqli_error());
+                }
+                $DBName = "helpdeskdb";
+                mysqli_select_db($DBConnect,$DBName);
+                $QueryString = "SELECT * FROM requests WHERE uidUsers = $uidUsers";
+                $QueryResult = mysqli_query($DBConnect,$QueryString)
+                     Or die("<p> Unable to execute query. </p>"
+                     . "<p> Error code  " .  mysqli_errno($DBConnect)
+                     .  ": " . mysqli_error($DBConnect)) . "</p>" ;
+
+                mysqli_close($DBConnect);
+                //-------------------------------------------------------------------------
+                echo "<table border='4'>";
+                echo "<tr> <th>Requests ID</th> <th>Username</th> <th>Telephone</th> <th>Department</th> <th>priority</th> <th>description</th> <th>Date created</th> <th>state</th> </tr>";
+                // keeps getting the next row until there are no more to get
+                while($row = mysqli_fetch_array( $result )) {
+                    echo "<tr> <td>"; 
+                    echo $row['RequestsID'];
+                    echo "</td><td>"; 
+                    echo $row['uidUsers'];
+                    echo "</td><td>"; 
+                    echo $row['telephone'];
+                    echo "</td><td>"; 
+                    echo $row['dpartment'];        
+                    echo "</td><td>"; 
+                    echo $row['priority'];
+                    echo "</td><td>"; 
+                    echo $row['description'];
+                    echo "</td><td>"; 
+                    echo $row['state'];
+                    echo "</td></tr>";
+                } 
+                echo "</table>";
+                mysqli_close($link);
+            ?> 
         </div>
     </div>
 </body>

@@ -100,7 +100,6 @@
     		echo "<strong>Description</strong>: $description<br>";
             echo "<strong>Date created</strong>: $theDate<br>";
 
-
             //--------------------------------------------------------------------------
     		$DBConnect = mysqli_connect("localhost","root","");
     		if (!$DBConnect) 
@@ -129,6 +128,8 @@
             </center>
         </div>
     </div>
+    <br>
+    <br>
     <br>
     <br>
 </body>

@@ -108,9 +108,9 @@
                     </div>
                     <div class="col-75">                   
                         <select id="priority" name="priority">
-                          <option value="1">Low</option>
-                          <option value="2">Moderate</option>
-                          <option value="3">High</option>
+                          <option value="Low">Low</option>
+                          <option value="Moderate">Moderate</option>
+                          <option value="High">High</option>
                         </select>
                     </div>
                 </div>
