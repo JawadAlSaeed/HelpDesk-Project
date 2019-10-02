@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="css/input.css" rel="stylesheet" type="text/css" />
     <link href="css/infoMessages.css" rel="stylesheet" type="text/css" />
+    <link href="css/form.css" rel="stylesheet" type="text/css" />
+    <link href="css/table.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -98,10 +100,8 @@
                      Or die("<p> Unable to execute query. </p>"
                      . "<p> Error code  " .  mysqli_errno($DBConnect)
                      .  ": " . mysqli_error($DBConnect)) . "</p>" ;
-
-                mysqli_close($DBConnect);
                 //-------------------------------------------------------------------------
-                echo "<table border='4'>";
+                echo "<center> <table class='tab'>";
                 echo "<tr> <th>Requests ID</th> <th>Username</th> <th>Telephone</th> <th>Department</th> <th>priority</th> <th>description</th> <th>Date created</th> <th>state</th> </tr>";
                 // keeps getting the next row until there are no more to get
                 while($row = mysqli_fetch_array( $QueryResult )) {
@@ -123,7 +123,7 @@
                     echo $row['state'];
                     echo "</td></tr>";
                 } 
-                echo "</table>";
+                echo "</table></center>";
                 mysqli_close($DBConnect);
             ?> 
         </div>
