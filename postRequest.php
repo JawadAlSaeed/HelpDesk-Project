@@ -84,7 +84,7 @@
         <div class="container">
             <?php
 
-            uidUser = $_SESSION['userUid'];
+            $uidUsers = $_SESSION['userUid'];
     		$telephone =  $_POST["telephone"];
     		$department =  $_POST["department"];
     		$priority =  $_POST["priority"];
@@ -93,7 +93,7 @@
             date_default_timezone_set("Asia/Riyadh"); 
             $theDate = date("Y-m-d h:i:sa");
 
-    		echo "<strong>Created by</strong>: $uidUser<br>";
+    		echo "<strong>Created by</strong>: $uidUsers<br><br>";
             echo "<strong>Phone number</strong>: $telephone<br>";
     		echo "<strong>Department</strong>: $department<br>";
     		echo "<strong>Priority</strong>: $priority<br>";
@@ -109,7 +109,7 @@
     		}
     		$DBName = "helpdeskdb";
     		mysqli_select_db($DBConnect,$DBName);
-    		$QueryString = "INSERT INTO requests (name, dpartment, priority, description, date) VALUES ( '$name','$department','$priority','$description', '$theDate') ";
+    		$QueryString = "INSERT INTO requests (uidUsers, telephone, dpartment, priority, description, date) VALUES ( '$uidUsers','$telephone','$department','$priority','$description', '$theDate') ";
     		$QueryResult = mysqli_query($DBConnect,$QueryString)
     		     Or die("<p> Unable to execute query. </p>"
     		     . "<p> Error code  " .  mysqli_errno($DBConnect)
