@@ -84,6 +84,7 @@
         </div>
         <div class="container">
             <?php
+                $uidUsers = $_SESSION['userUid'];
                 //--------------------------------------------------------------------------
                 $DBConnect = mysqli_connect("localhost","root","");
                 if (!$DBConnect) 
@@ -92,7 +93,7 @@
                 }
                 $DBName = "helpdeskdb";
                 mysqli_select_db($DBConnect,$DBName);
-                $QueryString = "SELECT * FROM requests WHERE uidUsers = $uidUsers";
+                $QueryString = "SELECT * FROM requests WHERE uidUsers = '$uidUsers'";
                 $QueryResult = mysqli_query($DBConnect,$QueryString)
                      Or die("<p> Unable to execute query. </p>"
                      . "<p> Error code  " .  mysqli_errno($DBConnect)
@@ -103,9 +104,9 @@
                 echo "<table border='4'>";
                 echo "<tr> <th>Requests ID</th> <th>Username</th> <th>Telephone</th> <th>Department</th> <th>priority</th> <th>description</th> <th>Date created</th> <th>state</th> </tr>";
                 // keeps getting the next row until there are no more to get
-                while($row = mysqli_fetch_array( $result )) {
+                while($row = mysqli_fetch_array( $QueryResult )) {
                     echo "<tr> <td>"; 
-                    echo $row['RequestsID'];
+                    echo $row['requestID'];
                     echo "</td><td>"; 
                     echo $row['uidUsers'];
                     echo "</td><td>"; 
@@ -116,12 +117,14 @@
                     echo $row['priority'];
                     echo "</td><td>"; 
                     echo $row['description'];
-                    echo "</td><td>"; 
+                    echo "</td><td>";
+                    echo $row['date'];
+                    echo "</td><td>";  
                     echo $row['state'];
                     echo "</td></tr>";
                 } 
                 echo "</table>";
-                mysqli_close($link);
+                mysqli_close($DBConnect);
             ?> 
         </div>
     </div>
