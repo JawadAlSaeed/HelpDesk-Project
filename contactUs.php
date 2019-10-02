@@ -96,6 +96,14 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
+                        <label for="telephone">Telephone</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="telephone" name="telephone" placeholder="+966000000000">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
                         <label for="email">Email</label>
                     </div>
                     <div class="col-75">
