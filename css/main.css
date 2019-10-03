@@ -88,6 +88,9 @@ div h1 {
     padding-left: 5px;
 }
 
+.tabs {
+    font-size: 24px;
+}
 
 a {
     text-decoration: none;

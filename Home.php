@@ -1,6 +1,7 @@
 <?php 
     session_start();
 ?>
+
 <html>
 
 <head>
@@ -81,8 +82,7 @@
             </center>
         </div>
         <br><br>
-        
-        <div style="font-size: 24px;">
+        <div class="tabs">
             <center>
                 <a href="Requests.php"><button class="btn"><i class="fa fa-bars fa-5x"></i><br><br>Requests</button></a>
                 &nbsp;
@@ -95,6 +95,7 @@
 </body>
 
 </html>
+
 <?php 
-require "footer.php";
+    require "footer.php";
 ?>

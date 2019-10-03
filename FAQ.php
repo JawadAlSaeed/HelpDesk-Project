@@ -82,19 +82,17 @@
                 <h3>search the FAQs or browse by category below</h3>
             </center>
         </div>
-        <br><br>
-        
-        <center>
-            <div class="search-container">
+        <br><br> 
+        <div class="search-container">
+            <center>
                 <form action="/action_page.php">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
-            </div>
-        </center>
-        <br>
-        <br>
-        <div style="font-size: 24px;">
+            </center>
+        </div>
+        <br><br>
+        <div class="tabs">
             <center>
                 <a href="#Getting_started"><button class="btn"><i class="far fa-play-circle fa-5x"></i><br><br>Getting started</button></a>
                 &nbsp;
@@ -135,5 +133,5 @@
 </html>
 
 <?php 
-require "footer.php";
- ?>
+    require "footer.php";
+?>
