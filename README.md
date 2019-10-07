@@ -14,3 +14,7 @@ This is used to contact the company to suggest something, this doesnt required t
 
 ## FAQs tab
 Frequently asked questions in the site, this can be confgured by the IT department.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+# HelpDesk server side
+A java program that is used in the IT side which hsow the requests of the users.
