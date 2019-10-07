@@ -5,11 +5,6 @@
  */
 package helpdeskseverside;
 
-import com.sun.jdi.connect.spi.Connection;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +12,7 @@ import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
+
 
 /**
  *
@@ -50,12 +46,10 @@ public class ServerUI extends javax.swing.JFrame {
     private void createAConnectionObject() {
         try {
             String URL = "jdbc:mysql://localhost:3306/" + dbName;
-            Class.forName("com.mysql.jdbc.Driver"); // Load ODBC driver
+//            Class.forName("com.mysql.jdbc.Driver"); // Load ODBC driver
             conn = DriverManager.getConnection(URL, userID, password);
         } catch (SQLException ex) {
             System.err.println("SQLException: " + ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-            System.err.println("ClassNotFound: " + ex.getMessage());
         }
     }
     /**
@@ -86,13 +80,10 @@ public class ServerUI extends javax.swing.JFrame {
 
         requestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "requestID", "User ID", "telephone", "dpartment", "priority", "description", "date", "state"
             }
         ));
         jScrollPane1.setViewportView(requestTable);
