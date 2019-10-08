@@ -71,7 +71,7 @@ public class ServerUI extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 133, Short.MAX_VALUE)
+            .addGap(0, 139, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,7 +83,7 @@ public class ServerUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "requestID", "User ID", "telephone", "dpartment", "priority", "description", "date", "state"
+                "requestID", "User ID", "telephone", "department", "priority", "description", "date", "state"
             }
         ));
         jScrollPane1.setViewportView(requestTable);
@@ -99,10 +99,10 @@ public class ServerUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -127,7 +127,7 @@ public class ServerUI extends javax.swing.JFrame {
             String SQL = "select * from requests";
             Statement statement;
             try {
-                statement = conn.createStatement();
+                statement = conn.prepareStatement();
                 ResultSet rs = statement.executeQuery(SQL);
                 
                 requestTable.setModel(DbUtils.resultSetToTableModel(rs));
