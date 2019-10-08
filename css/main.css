@@ -94,7 +94,7 @@ div h1 {
 
 a {
     text-decoration: none;
-    color: #547980;
+    color: white;
 }
 
 a:hover {
@@ -162,5 +162,10 @@ a:hover {
     padding: 0;
     overflow: hidden;
     background-color: #112d32;
-    height: 75px;
+    height: 100px;
+
+}
+
+.footer a{
+    color = white;
 }

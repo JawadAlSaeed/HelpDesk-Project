@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2019 at 01:43 PM
+-- Generation Time: Oct 08, 2019 at 08:07 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -30,10 +30,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `requests` (
   `requestID` int(11) NOT NULL,
-  `name` tinytext NOT NULL,
+  `uidUsers` tinytext NOT NULL,
+  `telephone` varchar(13) NOT NULL,
   `dpartment` tinytext NOT NULL,
-  `priority` int(11) NOT NULL,
+  `priority` tinytext NOT NULL,
   `description` longtext NOT NULL,
+  `date` tinytext NOT NULL,
   `state` tinytext NOT NULL DEFAULT 'open'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,8 +43,11 @@ CREATE TABLE `requests` (
 -- Dumping data for table `requests`
 --
 
-INSERT INTO `requests` (`requestID`, `name`, `dpartment`, `priority`, `description`, `state`) VALUES
-(1, 'dragonrot', 'Network Department', 3, 'ddfafdsas', 'open');
+INSERT INTO `requests` (`requestID`, `uidUsers`, `telephone`, `dpartment`, `priority`, `description`, `date`, `state`) VALUES
+(4, 'dany', '+966536960662', 'Network Department', 'Low', 'adfafsd', '2019-10-02 10:19:35am', 'open'),
+(5, 'dany', '+966536960662', 'Network Department', 'High', 'adfadsf', '2019-10-02 10:55:09am', 'open'),
+(6, 'dany', '+966536960662', 'Support Department', 'High', 'BRUH BRUH BRUH BURH\r\n\r\nbruh bru bruh?\r\n\r\nburhBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURH.\r\n\r\nbruh,\r\nbruh bruh', '2019-10-02 11:08:09am', 'open'),
+(7, 'Jawadalsaeed', '+966536960662', 'fdfa', 'Moderate', 'sdfasdadf', '2019-10-02 11:11:05am', 'open');
 
 -- --------------------------------------------------------
 
@@ -52,7 +57,7 @@ INSERT INTO `requests` (`requestID`, `name`, `dpartment`, `priority`, `descripti
 
 CREATE TABLE `users` (
   `idUsers` int(11) NOT NULL,
-  `uidUsers` tinytext NOT NULL,
+  `uidUsers` varchar(20) NOT NULL,
   `emailUsers` tinytext NOT NULL,
   `pwdUsers` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -90,7 +95,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `requestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `requestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
