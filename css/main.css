@@ -19,6 +19,7 @@ body {
 }
 
 #log {
+    font-family: 'Oswald', sans-serif;
     font-size: 16px;
     border: none;
     outline: none;
