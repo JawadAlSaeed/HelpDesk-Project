@@ -24,13 +24,7 @@
             <i class="fas fa-hands-helping fa-2x"></i>
             <h1>&nbsp;HelpDesk</h1>
         </div>
-        <div class="loginErrors">
-            <br>
-            <br>
-            <?php 
-                require "_tools\loginErrors.php";
-            ?>
-        </div>
+ 
         <div class="header">
             <a href="About.php"></a>
             <ul>

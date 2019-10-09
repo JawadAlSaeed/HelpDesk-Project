@@ -12,7 +12,6 @@
     <link href="css/main.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
-    <!-- <link href="css/input.css" rel="stylesheet" type="text/css" /> -->
     <link href="css/alerts.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -22,13 +21,7 @@
             <i class="fas fa-hands-helping fa-2x"></i>
             <h1>&nbsp;HelpDesk</h1>
         </div>
-        <div class="loginErrors">
-            <br>
-            <br>
-            <?php 
-                require "_tools\loginErrors.php";
-            ?>
-        </div>
+ 
         <div class="header">
             <ul>
                 <li><a class="active" href="Home.php">Home</a></li>

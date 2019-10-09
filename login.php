@@ -52,14 +52,12 @@
         </div>
         <div class="container">
                 <form action="includes/login.inc.php" method="post">
-                    <div class="group">
                         <input type="text" name="mailuid" placeholder="Username"> 
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <input type="Password" name="pwd" placeholder="Password">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                    </div>
                     <button id="log" type="submit" name="login-submit">Login</button>
                 </form>
             </form>
