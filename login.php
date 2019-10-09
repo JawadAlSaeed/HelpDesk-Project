@@ -12,7 +12,6 @@
     <link href="css/main.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
-    <!-- <link href="css/input.css" rel="stylesheet" type="text/css" /> -->
     <link href="css/alerts.css" rel="stylesheet" type="text/css" />
     <link href="css/form.css" rel="stylesheet" type="text/css" />
 </head>
@@ -40,7 +39,7 @@
         </div>
         <div class="subTitle">
             <center>
-                <h1 class="subTitle" style="font-size:45px">Signup</h1>
+                <h1 class="subTitle" style="font-size:45px">Login</h1>
             </center>
         </div>
         <div class="loginErrors">
@@ -50,16 +49,27 @@
                 require "_tools\loginErrors.php";
             ?>
         </div>
-        <div class="container">
-                <form action="includes/login.inc.php" method="post">
-                        <input type="text" name="mailuid" placeholder="Username"> 
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <input type="Password" name="pwd" placeholder="Password">
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
+        <div class="login-container">
+            <form action="includes/login.inc.php" method="post">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" name="mailuid" placeholder="Username">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="Password">Password</label>
+                    </div>
+                    <div class="col-75">
+                       <input type="Password" name="pwd" placeholder="Password">
+                    </div>
+                </div>
+                <div class="row">
                     <button id="log" type="submit" name="login-submit">Login</button>
-                </form>
+                </div>
             </form>
         </div>
     </div>
