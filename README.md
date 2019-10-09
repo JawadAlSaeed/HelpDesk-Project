@@ -32,7 +32,7 @@ The feedback will be sent to the companies via Email.
 ### FAQs:
 Frequently asked questions on the site, these questions are categorized to help users find related questions.
 
-FAQs have a search feature to find a specific question faster
+FAQs have a search feature to find a specific question faster.
 
 these questions can be configured by IT Employees.
 
