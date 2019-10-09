@@ -9,11 +9,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="picture/help.ico" />
-    <link href="css/main.css" rel="stylesheet" type="text/css" />                                   
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
-    <!-- <link href="css/input.css" rel="stylesheet" type="text/css" /> -->
     <link href="css/alerts.css" rel="stylesheet" type="text/css" />
+    <link href="css/form.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -22,7 +22,6 @@
             <i class="fas fa-hands-helping fa-2x"></i>
             <h1>&nbsp;HelpDesk</h1>
         </div>
- 
         <div class="header">
             <ul>
                 <li><a href="Home.php">Home</a></li>
@@ -36,6 +35,7 @@
                             require "_tools/session.php"; 
                         ?>
                     </div>
+                </li>
             </ul>
         </div>
         <br><br>
@@ -44,14 +44,9 @@
                 <h1 style="font-size:45px">About</h1>
             <br><br>
         </div>
-        
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <div class="container">
+            
+        </div>
         </center>
     </div>
  
@@ -60,5 +55,5 @@
 </html>
 
 <?php 
-require "footer.php";
- ?>
+    require "footer.php";
+?>
