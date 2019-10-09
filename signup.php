@@ -47,7 +47,7 @@
                 require "_tools\loginErrors.php";
             ?>
         </dir>
-        <div class="signup-container">
+        <div class="container">
             <form action="includes/signup.inc.php" method="post">
                 <div class="row">
                     <div class="col-25">

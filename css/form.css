@@ -6,24 +6,6 @@
     margin-left: 15%;
 }
 
-.login-container {
-    border-radius: 2px;
-    background-color: #254358;
-    padding: 20px;
-    margin-right: 15%;
-    margin-left: 15%;
-}
-
-.signup-container {
-    border-radius: 2px;
-    background-color: #254358;
-    padding: 20px;
-    margin-right: 15%;
-    margin-left: 15%;
-}
-
-
-
 .col-75 input[type=text],
 .col-75 input[type=password],
 select,

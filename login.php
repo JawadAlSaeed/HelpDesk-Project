@@ -49,7 +49,7 @@
                 require "_tools\loginErrors.php";
             ?>
         </div>
-        <div class="login-container">
+        <div class="container">
             <form action="includes/login.inc.php" method="post">
                 <div class="row">
                     <div class="col-25">
@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button id="log" type="submit" name="login-submit">Login</button>
+                    <button class="signupBtn" type="submit" name="login-submit">Login</button>
                 </div>
             </form>
         </div>
