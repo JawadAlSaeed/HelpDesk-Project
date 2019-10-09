@@ -6,8 +6,8 @@ body {
 }
 
 .content {
-    min-height: 100%;
-    margin: 0 auto -50px;
+    min-height: auto;
+    margin: 0 auto auto;
 }
 
 body {
@@ -47,9 +47,6 @@ ul li {
     border-right: 1px solid #bbb;
 }
 
-ul li:last-child {
-    border-right: none;
-}
 
 ul li a {
     display: block;

@@ -37,11 +37,13 @@
                     </div>
             </ul>
         </div>
+        <br><br>
         <div class="subTitle">
             <center>
                 <h1 class="subTitle" style="font-size:45px">Signup</h1>
             </center>
         </div>
+        <br><br>
         <dir class="signupErrors">
             <?php 
                 require "tools/loginErrors.php";
@@ -87,6 +89,10 @@
             </form>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
 </body>
 
 </html>

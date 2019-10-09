@@ -29,12 +29,10 @@
                 <li><a href="contactUs.php">Contact us</a></li>
                 <li><a href="FAQ.php">FAQ</a></li>
                 <li><a class="active" href="About.php">About</a></li>
-                <li style="float:right">
-                    <div>
-                        <?php
-                            require "tools/session.php"; 
-                        ?>
-                    </div>
+                <li>
+                    <?php
+                        require "tools/session.php"; 
+                    ?>
                 </li>
             </ul>
         </div>
