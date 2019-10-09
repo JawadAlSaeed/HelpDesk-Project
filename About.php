@@ -77,6 +77,7 @@
             <br><br>
             these questions can be configured by IT Employees.
             <h2>The IT Application</h2>
+            The applications is a java program that is used in the IT side which shows the requests of the users. This program will bring the info from the database into a table that the IT employee can sort and search through.
         </div>
         </center>
 
