@@ -3,7 +3,7 @@ A website to help employees in the company. the website has many basic features 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-##About
+## About
 
 Hi, my name is Jawad Al-Saeed, I'm 23 years old, I live in Qatif city in the eastern province. currently, I'm a trainee at the Al Tuwairqi Holding Company. 
 I'm a student at the Jubail University College (JUC) and major in Computer Science. 
