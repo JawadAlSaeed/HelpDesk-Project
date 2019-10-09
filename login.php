@@ -36,15 +36,13 @@
                 </li>
             </ul>
         </div>
-        <br>
-        <br>
+        <br><br>
         <div class="subTitle">
             <center>
                 <h1 class="subTitle" style="font-size:45px">Login</h1>
             </center>
         </div>
-        <br>
-        <br>
+        <br><br>
         <div class="loginErrors">
             <br>
             <br>
