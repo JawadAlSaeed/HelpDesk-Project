@@ -17,4 +17,5 @@ Frequently asked questions in the site, this can be confgured by the IT departme
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 # HelpDesk server side
-A java program that is used in the IT side which hsow the requests of the users.
+A java program that is used in the IT side which shows the requests of the users.
+This program will bring the info from the database into a table that the IT employee can sort and search through.
