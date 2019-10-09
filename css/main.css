@@ -142,15 +142,6 @@ a:hover {
     cursor: pointer;
 }
 
-.suggestion {
-    width: 200px;
-}
-
-.aligner {
-    float: left;
-    font-size: 16px;
-}
-
 .footer {
     font-family: 'Oswald', sans-serif;
     left: 0;
