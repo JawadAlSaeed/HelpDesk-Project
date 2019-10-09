@@ -11,7 +11,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="picture/help.ico" />
     <link href="css/main.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
     <link href="css/input.css" rel="stylesheet" type="text/css" />
     <link href="css/infoMessages.css" rel="stylesheet" type="text/css" />
 </head>

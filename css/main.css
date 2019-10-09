@@ -1,6 +1,6 @@
 html,
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Oswald', sans-serif;
     height: 100%;
     margin: 0 auto;
 }
@@ -11,7 +11,7 @@ body {
 }
 
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Oswald', sans-serif;
     background-color: #547980;
     color: white;
     margin: 0px;
@@ -103,7 +103,7 @@ a:hover {
 }
 
 .btn {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Oswald', sans-serif;
     background-color: #254358;
     /* Blue background */
     border: none;
@@ -117,7 +117,7 @@ a:hover {
     cursor: pointer;
     /* Mouse pointer on hover */
     width: 20%;
-    height: 30%;
+    height: 35%;
     white-space: nowrap;
 }
 
@@ -151,7 +151,7 @@ a:hover {
 }
 
 .footer {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Oswald', sans-serif;
     left: 0;
     bottom: 100px;
     width: 100%;
