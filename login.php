@@ -31,7 +31,7 @@
                 <li><a href="About.php">About</a></li>
                 <li style="float:right">
                     <?php
-                        require "_tools/session.php"; 
+                        require "tools/session.php"; 
                     ?>
                 </li>
             </ul>
@@ -45,7 +45,7 @@
             <br>
             <br>
             <?php 
-                require "_tools\loginErrors.php";
+                require "tools/loginErrors.php";
             ?>
         </div>
         <div class="container">

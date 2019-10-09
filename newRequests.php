@@ -28,7 +28,7 @@
             <br>
             <br>
             <?php 
-                require "_tools/loginErrors.php";
+                require "tools/loginErrors.php";
             ?>
         </div>
         <div class="header">
@@ -41,7 +41,7 @@
                 <li style="float:right">
                     <div>
                         <?php
-                            require "_tools/session.php"; 
+                            require "tools/session.php"; 
                         ?>
                     </div>
             </ul>

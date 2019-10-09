@@ -31,7 +31,7 @@
                 <li style="float:right">
                     <div>
                         <?php
-                            require "_tools/session.php"; 
+                            require "tools/session.php"; 
                         ?>
                     </div>
             </ul>

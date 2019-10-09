@@ -32,7 +32,7 @@
                 <li style="float:right">
                     <div>
                         <?php
-                            require "_tools/session.php"; 
+                            require "tools/session.php"; 
                         ?>
                     </div>
             </ul>
@@ -44,7 +44,7 @@
         </div>
         <dir class="signupErrors">
             <?php 
-                require "_tools\loginErrors.php";
+                require "tools/loginErrors.php";
             ?>
         </dir>
         <div class="container">
