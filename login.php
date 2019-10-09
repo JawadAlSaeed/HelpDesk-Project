@@ -30,11 +30,10 @@
                 <li><a href="FAQ.php">FAQ</a></li>
                 <li><a href="About.php">About</a></li>
                 <li style="float:right">
-                    <div>
-                        <?php
-                            require "_tools/session.php"; 
-                        ?>
-                    </div>
+                    <?php
+                        require "_tools/session.php"; 
+                    ?>
+                </li>
             </ul>
         </div>
         <div class="subTitle">
