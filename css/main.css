@@ -42,16 +42,16 @@ ul {
     top: 0;
 }
 
-li {
+ul li {
     float: left;
     border-right: 1px solid #bbb;
 }
 
-li:last-child {
+ul li:last-child {
     border-right: none;
 }
 
-li a {
+ul li a {
     display: block;
     color: white;
     text-align: center;
@@ -60,13 +60,13 @@ li a {
     font-size: 16px;
 }
 
-li a:hover,
+ul li a:hover,
 #log:hover {
     background-color: RoyalBlue;
     color: white;
 }
 
-li a:hover:not(.active) {
+ul li a:hover:not(.active) {
     background-color: RoyalBlue;
 }
 
