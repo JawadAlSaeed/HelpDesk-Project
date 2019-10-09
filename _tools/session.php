@@ -11,18 +11,8 @@
     }
     else{
         echo '
-            <div style="float: left">
-                <form action="includes/login.inc.php" method="post">
-                    <div class="group">
-                        <input type="text" name="mailuid" placeholder="Username"> 
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <input type="Password" name="pwd" placeholder="Password">
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                    </div>
-                    <button id="log" type="submit" name="login-submit">Login</button>
-                </form>
+            <div style="float: right">
+                <a style="float: right" href="login.php">Login</a>
             </div>
             <div style="float: right">
                 <a style="float: right" href="signup.php">Signup</a>

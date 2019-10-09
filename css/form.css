@@ -7,7 +7,7 @@
 }
 
 .col-75 input[type=text],
-input[type=password],
+.col-75 input[type=password],
 select,
 textarea {
     width: 100%;

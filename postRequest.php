@@ -11,7 +11,7 @@
     <link href="css/main.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/25823c862e.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
-    <link href="css/input.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="css/input.css" rel="stylesheet" type="text/css" /> -->
     <link href="css/alerts.css" rel="stylesheet" type="text/css" />
     <link href="css/form.css" rel="stylesheet" type="text/css" />
 </head>
