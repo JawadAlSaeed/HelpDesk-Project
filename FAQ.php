@@ -72,7 +72,7 @@
                 &nbsp;
                 <a href="#Desktop"><button class="btn"><i class="fas fa-desktop fa-5x"></i><br><br>Desktop</button></a>
                 &nbsp;
-                <a href="#desktop"><button class="btn"><i class="fas fa-ellipsis-h fa-5x"></i><br><br>Other</button></a>
+                <a href="#other"><button class="btn"><i class="fas fa-ellipsis-h fa-5x"></i><br><br>Other</button></a>
             </center>
         </div>
         <br>
@@ -80,6 +80,48 @@
         <br>
         <div class="container">
             <h2 id="Getting_started">Getting started</h2>
+            <p>
+                Q: where can i get my own PC?
+                <br>
+                A: You can request a PC/Laptop in the request tab.
+            </p>
+            <h2 id="Your_account">Your account</h2>
+            <p>
+                Q: where can i get my own PC?
+                <br>
+                A: You can request a PC/Laptop in the request tab.
+            </p>
+            <h2 id="General">General</h2>
+            <p>
+                Q: where can i get my own PC?
+                <br>
+                A: You can request a PC/Laptop in the request tab.
+            </p>
+            <h2 id="Network">Network</h2>
+            <p>
+                Q: where can i get my own PC?
+                <br>
+                A: You can request a PC/Laptop in the request tab.
+            </p>
+            <h2 id="Database">Database</h2>
+            <p>
+                Q: where can i get my own PC?
+                <br>
+                A: You can request a PC/Laptop in the request tab.
+            </p>
+            <h2 id="Rights_and_roles">Rights and Roles</h2>
+            <p>
+                Q: where can i get my own PC?
+                <br>
+                A: You can request a PC/Laptop in the request tab.
+            </p>
+            <h2 id="Desktop">Desktop</h2>
+            <p>
+                Q: where can i get my own PC?
+                <br>
+                A: You can request a PC/Laptop in the request tab.
+            </p>
+            <h2 id="other">other</h2>
             <p>
                 Q: where can i get my own PC?
                 <br>
