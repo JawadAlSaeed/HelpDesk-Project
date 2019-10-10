@@ -17,7 +17,7 @@
         }
 
         echo '<div class="session">';
-            echo "<p>&nbsp;Welcome, {$_SESSION['userUid']} &nbsp;&nbsp;</p>";
+            echo "<p>&nbsp;&nbsp;&nbsp;Welcome, {$_SESSION['userUid']} &nbsp;&nbsp;</p>";
         echo '</div>';
     }
     else{
