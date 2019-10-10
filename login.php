@@ -44,8 +44,6 @@
         </div>
         <br><br>
         <div class="loginErrors">
-            <br>
-            <br>
             <?php 
                 require "tools/loginErrors.php";
             ?>
