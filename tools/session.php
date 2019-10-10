@@ -16,7 +16,9 @@
             echo '<li style="float:right"><a href="account.php">Account</a></li>';
         }
 
-        echo "<article> Welcome, {$_SESSION['userUid']} &nbsp;&nbsp;</article>";
+        echo '<div class="session">';
+            echo "<p>&nbsp;Welcome, {$_SESSION['userUid']} &nbsp;&nbsp;</p>";
+        echo '</div>';
     }
     else{
 
