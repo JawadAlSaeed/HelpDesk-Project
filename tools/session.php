@@ -5,13 +5,39 @@
                     <button id="log" type="submit" name="logout-submit">logout</button>
                 </form>
             <li>';
-        echo '<li style="float:right"><a href="account.php">Account</a></li>';
+
+        $url = $_SERVER["REQUEST_URI"]; 
+        $pos = strrpos($url, "account.php"); 
+
+        if($pos != false) {
+            echo '<li style="float:right"><a class="active" href="account.php">Account</a></li>';
+        }
+        else{
+            echo '<li style="float:right"><a href="account.php">Account</a></li>';
+        }
+
         echo "<article> Welcome, {$_SESSION['userUid']} &nbsp;&nbsp;</article>";
     }
     else{
-        echo '
-            <li style="float:right"><a href="login.php">Login</a></li>
-            <li style="float:right"><a href="signup.php">Signup</a></li>
-        ';
+
+        $url = $_SERVER["REQUEST_URI"]; 
+        $pos = strrpos($url, "login.php"); 
+
+        if($pos != false) {
+            echo '<li style="float:right"><a class="active" href="login.php">Login</a></li>';
+        }
+        else{
+            echo '<li style="float:right"><a href="login.php">Login</a></li>';
+        }
+
+        $url = $_SERVER["REQUEST_URI"]; 
+        $pos = strrpos($url, "signup.php"); 
+
+        if($pos != false) {
+            echo '<li style="float:right"><a class="active" href="signup.php">Signup</a></li>';
+        }
+        else{
+            echo '<li style="float:right"><a href="signup.php">Signup</a></li>';
+        }
     }
 ?>
