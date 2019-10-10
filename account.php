@@ -43,7 +43,7 @@
             <br><br>
         </div>
         <div class="container">
-         
+            
         </div>
         </center>
 
@@ -57,5 +57,5 @@
 </html>
 
 <?php 
-    require "footer.php";
+    require "tools/footer.php";
 ?>

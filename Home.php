@@ -21,7 +21,6 @@
             <i class="fas fa-hands-helping fa-2x"></i>
             <h1>&nbsp;HelpDesk</h1>
         </div>
- 
         <div class="header">
             <ul>
                 <li><a class="active" href="Home.php">Home</a></li>
@@ -64,5 +63,5 @@
 </html>
 
 <?php 
-    require "footer.php";
+    require "tools/footer.php";
 ?>

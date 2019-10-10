@@ -100,5 +100,5 @@
 </html>
 
 <?php 
-    require "footer.php";
+    require "tools/footer.php";
 ?>
