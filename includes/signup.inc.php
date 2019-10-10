@@ -60,21 +60,21 @@ if (isset($_POST['signup-submit'])) {
 					header("location: ../signup.php?error=emailtaken&uid=".$username);
 					exit();
 				}
-			} 
-			else{
-				$sql = "INSERT INTO users (uidUsers, emailUsers, pwdUsers) VALUES (?, ?, ?);";
-				$stmt = mysqli_stmt_init($conn);
-				if (!mysqli_stmt_prepare($stmt, $sql)) {
-					header("location: ../signup.php?error=sqlerror");
-					exit();
-				}
 				else{
-					$hachedPwd = password_hash($password, PASSWORD_DEFAULT);
+					$sql = "INSERT INTO users (uidUsers, emailUsers, pwdUsers) VALUES (?, ?, ?);";
+					$stmt = mysqli_stmt_init($conn);
+					if (!mysqli_stmt_prepare($stmt, $sql)) {
+						header("location: ../signup.php?error=sqlerror");
+						exit();
+					}
+					else{
+						$hachedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-					mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hachedPwd);
-					mysqli_stmt_execute($stmt);
-					header("location: ../signup.php?signup=success");
-					exit();
+						mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hachedPwd);
+						mysqli_stmt_execute($stmt);
+						header("location: ../signup.php?signup=success");
+						exit();
+					}
 				}
 			}
 		}
