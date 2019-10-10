@@ -46,7 +46,7 @@
         <br><br>
         <dir class="signupErrors">
             <?php 
-                require "tools/loginErrors.php";
+                require "tools/signupErrors.php";
             ?>
         </dir>
         <div class="container">

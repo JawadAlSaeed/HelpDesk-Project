@@ -57,7 +57,7 @@
                         <label for="username">Username</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" name="mailuid" placeholder="Username">
+                        <input type="text" name="uid" placeholder="Username">
                     </div>
                 </div>
                 <div class="row">
