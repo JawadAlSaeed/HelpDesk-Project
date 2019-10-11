@@ -31,11 +31,9 @@
                 <li><a href="FAQ.php">FAQ</a></li>
                 <li><a href="About.php">About</a></li>
                 <li style="float:right">
-                    <div>
-                        <?php
-                            require "tools/session.php"; 
-                        ?>
-                    </div>
+                    <?php
+                        require "tools/session.php"; 
+                    ?>
                 </li>
             </ul>
         </div>
