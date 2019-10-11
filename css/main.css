@@ -1,13 +1,13 @@
 html,
 body {
     font-family: 'Oswald', sans-serif;
-    height: 100%;
-    margin: 0 auto;
+/*    height: 100%;
+    margin: 0 auto;*/
 }
 
 .content {
-    min-height: auto;
-    margin: 0 auto auto;
+    min-height: 100%;
+    margin: 0 auto -50px;
 }
 
 body {
@@ -157,7 +157,7 @@ a:hover {
     padding: 0;
     overflow: hidden;
     background-color: #112d32;
-    height: 100px;
+    height: 100px;    
 }
 
 .footer a{
