@@ -16,6 +16,11 @@ the HelpDesk system has two main parts, the website you currently in, and the IT
   1. Requests/View Requests
   2. Contact Us Form
   3. Frequently Asked Questions (FAQs)
+ 
+In the IT application, it will have the basic functions to view requests such as:
+  1. Requests/View Requests
+  2. Contact Us Form
+  3. Frequently Asked Questions (FAQs)
 
 ## The Website
 
