@@ -14,6 +14,11 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
     <link href="css/alerts.css" rel="stylesheet" type="text/css" />
     <link href="css/form.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        function search(string){
+            window.find(string);
+        }
+    </script>
 </head>
 
 <body>
@@ -46,10 +51,8 @@
         <br><br> 
         <div class="search-container">
             <center>
-                <form action="/action_page.php">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
+                <input placeholder="Search.." type="text" id="search">
+                <input type="button" value="Go" onclick="search(document.getElementById('search').value)">
             </center>
         </div>
         <br><br>
