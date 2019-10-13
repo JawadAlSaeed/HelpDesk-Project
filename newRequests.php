@@ -51,6 +51,11 @@
             <br><br>
         </div>
         <br><br>
+        <dir class="signupErrors">
+            <?php 
+                require "tools/requestsErrors.php";
+            ?>
+        </dir>
 
         <div class="container">
             <form action="postRequest.php" method="post">
@@ -66,8 +71,12 @@
                     <div class="col-25">
                         <label for="area">Request area</label>
                     </div>
-                    <div class="col-75">
-                        <input type="text" id="area" name="department" placeholder="which department do you want this request to go?">
+                    <div class="col-75">                   
+                        <select id="department" name="department">
+                          <option value="Network Department">Network Department</option>
+                          <option value="Support Department">Support Department</option>
+                          <option value="System Department">System Department</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -95,27 +104,24 @@
                     <button class="signupBtn" type="submit" name="request-submit">Signup</button>
                 </div>
             </form>
-            <!-- Trigger/Open The Modal -->
-            <button class="popupbutton" id="myBtn">Available Departments</button>
-            <!-- The Modal -->
+
+        <!--<button class="popupbutton" id="myBtn">Available Departments</button>
             <div id="myModal" class="modal">
-              <!-- Modal content -->
               <div class="modal-content">
                 <span class="close">&times;</span>
-                <b>Available Departments:</b> <br>
-                  <p>Network Department </p>
-                  <p>Support Department </p>
-                  <p>System Department </p>
-                  <small style="float: right">*copy and paste the exact department name from above list</small>
+                <b>Available Departments:&nbsp;code*:</b> <br>
+                  <p>Network Department:&nbsp;ND</p>
+                  <p>Support Department:&nbsp;SUPD</p>
+                  <p>System Department:&nbsp;SYSD</p>
+                  <small style="float: right">*copy and paste the exact department code from above list</small>
                   <br>
-
               </div>
             </div>
             <br>
             <br>
-            <br>
-        </div>
+            <br> -->
 
+        </div>
         <br>
         <br>
         <br>
