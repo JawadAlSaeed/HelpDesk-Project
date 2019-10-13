@@ -43,23 +43,27 @@
             </center>
         </div>
         <br><br>
-        
-        <?php
-        if (isset($_SESSION['userId'])) {
-            echo '  <center>
-                 <a href="newRequests.php"><button class="btn"><i class="fas fa-plus fa-5x"></i><br><br>Make a new request</button></a>
-                    &nbsp;
-                    <a href="viewRequests.php"><button class="btn"><i class="fas fa-eye fa-5x"></i><br><br>view requests</button></a>
-                    &nbsp;
-                </center>';
-        }
-        else{
-            echo '  <div class="isa_error">
+        <div>
+            <?php
+            if (isset($_SESSION['userId'])) {
+                echo '  <center>
+                     <a href="newRequests.php"><button class="btn"><i class="fas fa-plus fa-5x"></i><br><br>Make a new request</button></a>
+                        &nbsp;
+                        <a href="viewRequests.php"><button class="btn"><i class="fas fa-eye fa-5x"></i><br><br>view requests</button></a>
+                        &nbsp;
+                    </center>
+                ';
+            }
+            else{
+                echo '  
+                    <div class="isa_error">
                         <i class="fa fa-times-circle"></i>
                         You need to login first
-                    </div>';
-        }
-        ?>
+                    </div>
+                ';
+            }
+            ?>
+        </div>
         <br>
         <br>
         <br>
