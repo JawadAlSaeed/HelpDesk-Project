@@ -1,6 +1,7 @@
 <?php 
     session_start();
 ?>
+
 <html>
 
 <head>
@@ -50,6 +51,19 @@
     		$department =  $_POST["department"];
     		$priority =  $_POST["priority"];
     		$description =  $_POST["description"];
+
+        if (empty($uidUsers) || empty($telephone) || empty($department) || empty($priority) || empty($description)){
+            header("location: ../newRequests.php?error=emptyfields");
+            exit();
+        }
+        else if (!preg_match("/^(966)([0-9]{9})$/", $telephone)) {
+            header("location: ../newRequests.php?error=invaildtelephone");
+            exit();
+        }
+        else if (!preg_match("/^([A-Za-z]{1})(D|d)$/", $department)) {
+            header("location: ../newRequests.php?error=invailddepartment);
+            exit();
+        }
 
             date_default_timezone_set("Asia/Riyadh"); 
             $theDate = date("Y-m-d h:i:sa");

@@ -59,7 +59,7 @@
                         <label for="telephone">Phone number</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="telephone" name="telephone" placeholder="+96612345678">
+                        <input type="text" id="telephone" name="telephone" placeholder="966123456789">
                     </div>
                 </div>
                 <div class="row">
@@ -92,7 +92,7 @@
                 </div>
                 <br>
                 <div class="row">
-                    <input type="submit" value="Submit">
+                    <button class="signupBtn" type="submit" name="request-submit">Signup</button>
                 </div>
             </form>
             <!-- Trigger/Open The Modal -->

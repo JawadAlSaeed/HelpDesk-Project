@@ -60,7 +60,7 @@
                         <label for="telephone">Telephone</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="telephone" name="telephone" placeholder="+966000000000">
+                        <input type="text" id="telephone" name="telephone" placeholder="966123456789">
                     </div>
                 </div>
                 <div class="row">
