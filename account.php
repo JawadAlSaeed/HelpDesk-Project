@@ -48,7 +48,7 @@
                 if (isset($_SESSION['userId'])) {
                     echo '  
                         <center>
-                            <a href="newRequests.php"><button class="btn"><i class="fas fa-plus fa-5x"></i><br><br>Make a new request</button></a>
+                            <a href="change.php"><button class="btn"><i class="fas fa-plus fa-5x"></i><br><br>Change Email/Password</button></a>
                             &nbsp;
                             <a href="viewRequests.php"><button class="btn"><i class="fas fa-eye fa-5x"></i><br><br>view requests</button></a>
                             &nbsp;
