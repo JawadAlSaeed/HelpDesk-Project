@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
     <link href="css/alerts.css" rel="stylesheet" type="text/css" />
     <link href="css/form.css" rel="stylesheet" type="text/css" />
+    <link href="css/search.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         function search(string){
             window.find(string);
@@ -50,10 +51,8 @@
         </div>
         <br>
         <div class="search-container">
-            <center>
-                <input placeholder="Search.." type="text" id="search">
-                <input type="button" value="Go" onclick="search(document.getElementById('search').value)">
-            </center>
+            <input placeholder="Search FAQs" type="text" id="search">
+            <input type="button" value="Search" onclick="search(document.getElementById('search').value)">
         </div>
         <br><br>
         <div class="tabs">
