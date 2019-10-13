@@ -59,8 +59,13 @@
             else if (!preg_match("/^(966)([0-9]{9})$/", $telephone)) {
                 header("location: newRequests.php?error=invaildtelephone");
                 exit();
-            }else if (!preg_match("/^(966)([0-9]{9})$/", $telephone)) {
-                header("location: newRequests.php?error=invaildtelephone");
+            }
+            else if ($department == " ") {
+                header("location: newRequests.php?error=invailddepartment");
+                exit();
+            }
+            else if ($priority == " ") {
+                header("location: newRequests.php?error=invaildpriority");
                 exit();
             }
 

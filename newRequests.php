@@ -43,13 +43,11 @@
                 <h1 style="font-size:45px">Fill in your info</h1>
             <br><br>
         </div>
-        <br><br>
-        <dir class="signupErrors">
+        <dir class="requestsErrors">
             <?php 
                 require "tools/requestsErrors.php";
             ?>
         </dir>
-
         <div class="container">
             <form action="postRequest.php" method="post">
                 <div class="row">
@@ -66,9 +64,10 @@
                     </div>
                     <div class="col-75">                   
                         <select id="department" name="department">
-                          <option value="Network Department">Network Department</option>
-                          <option value="Support Department">Support Department</option>
-                          <option value="System Department">System Department</option>
+                            <option value=" "> </option>
+                            <option value="Network Department">Network Department</option>
+                            <option value="Support Department">Support Department</option>
+                            <option value="System Department">System Department</option>
                         </select>
                     </div>
                 </div>
@@ -78,6 +77,7 @@
                     </div>
                     <div class="col-75">                   
                         <select id="priority" name="priority">
+                          <option value=" "> </option>
                           <option value="Low">Low</option>
                           <option value="Moderate">Moderate</option>
                           <option value="High">High</option>

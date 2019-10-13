@@ -6,10 +6,16 @@
                 Fill in all of the fields.
             </div>';
         }
-        else if ($_GET['error'] == "invalidtelephone") {
+        else if ($_GET['error'] == "invailddepartment") {
         echo '    <div class="isa_error">
                 <i class="fa fa-times-circle"></i>
-                Invalid telephone number, make sure it starts with 966 and contain nine numbers.
+                Choose a department
+            </div>';
+        }
+                else if ($_GET['error'] == "invaildpriority") {
+        echo '    <div class="isa_error">
+                <i class="fa fa-times-circle"></i>
+                choose priority level
             </div>';
         }
     }
