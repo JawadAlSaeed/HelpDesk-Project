@@ -48,7 +48,7 @@
                 <h3>search the FAQs or browse by category below</h3>
             </center>
         </div>
-        <br><br> 
+        <br>
         <div class="search-container">
             <center>
                 <input placeholder="Search.." type="text" id="search">

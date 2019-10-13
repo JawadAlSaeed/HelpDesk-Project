@@ -1,15 +1,3 @@
-html,
-body {
-    font-family: 'Oswald', sans-serif;
-/*    height: 100%;
-    margin: 0 auto;*/
-}
-
-.content {
-    min-height: 100%;
-    margin: 0 auto -50px;
-}
-
 body {
     font-family: 'Oswald', sans-serif;
     background-color: #547980;
@@ -17,6 +5,12 @@ body {
     margin: 0px;
     padding: 0px;
 }
+
+.content {
+    min-height: 100%;
+    margin: 0 auto -50px;
+}
+
 
 #log {
     font-family: 'Oswald', sans-serif;
@@ -126,22 +120,6 @@ a:hover {
 
 .btn:hover {
     background-color: RoyalBlue;
-}
-
-.search-container input[type=text] {
-    padding: 6px 110px;
-    border: none;
-    font-size: 17px;
-}
-
-.search-container button {
-    padding: 11px 15px;
-    margin-top: 8px;
-    margin-right: 16px;
-    background: #ddd;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
 }
 
 .footer {
