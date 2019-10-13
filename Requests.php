@@ -49,7 +49,7 @@
                 echo '  <center>
                      <a href="newRequests.php"><button class="btn"><i class="fas fa-plus fa-5x"></i><br><br>Make a new request</button></a>
                         &nbsp;
-                        <a href="viewRequests.php"><button class="btn"><i class="fas fa-eye fa-5x"></i><br><br>view requests</button></a>
+                        <a href="viewRequests.php"><button class="btn"><i class="fas fa-eye fa-5x"></i><br><br>View requests</button></a>
                         &nbsp;
                     </center>
                 ';
