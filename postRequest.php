@@ -53,14 +53,14 @@
     		$description =  $_POST["description"];
 
             if (empty($uidUsers) || empty($telephone) || empty($department) || empty($priority) || empty($description)){
-                header("location: ../newRequests.php?error=emptyfields");
+                header("location: newRequests.php?error=emptyfields");
                 exit();
             }
             else if (!preg_match("/^(966)([0-9]{9})$/", $telephone)) {
-                header("location: ../newRequests.php?error=invaildtelephone");
+                header("location: newRequests.php?error=invaildtelephone");
                 exit();
             }else if (!preg_match("/^(966)([0-9]{9})$/", $telephone)) {
-                header("location: ../newRequests.php?error=invaildtelephone");
+                header("location: newRequests.php?error=invaildtelephone");
                 exit();
             }
 
