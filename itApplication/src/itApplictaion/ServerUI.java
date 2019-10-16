@@ -32,7 +32,6 @@ public class ServerUI extends javax.swing.JFrame {
      */
     public ServerUI() {
         initComponents();
-
         loginDb = new LoginDB("helpdeskdb", "root", "");
         conn = loginDb.getConnection();
     }
@@ -52,12 +51,15 @@ public class ServerUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         searchButtton = new javax.swing.JButton();
         departmentComboBox = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
         closeOpenButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        confirmLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 255));
+        setResizable(false);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         serverTextArea.setColumns(20);
         serverTextArea.setRows(5);
@@ -87,8 +89,6 @@ public class ServerUI extends javax.swing.JFrame {
 
         departmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Network Department", "Support Department", "System Department", "Sales Department" }));
 
-        jTextField1.setText("jTextField1");
-
         closeOpenButton.setText("Close/Open");
         closeOpenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,37 +98,42 @@ public class ServerUI extends javax.swing.JFrame {
 
         jLabel1.setText("Department");
 
+        confirmLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        confirmLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(departmentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(closeOpenButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(departmentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(closeOpenButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(confirmLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106)
+                .addGap(411, 411, 411)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(departmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(closeOpenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(closeOpenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(confirmLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -187,8 +192,10 @@ public class ServerUI extends javax.swing.JFrame {
 
             if (dep == "All") {
                 SQL = "select * from requests";
+                confirmLabel.setText("All reqeuests displayed");
             } else {
                 SQL = "select * from requests where dpartment = '" + dep + "'";
+                confirmLabel.setText("All " + dep + " reqeuests displayed");
             }
 
             System.out.println(SQL);
@@ -227,6 +234,7 @@ public class ServerUI extends javax.swing.JFrame {
             model.setValueAt("closed", index, 7);
             SQL = "UPDATE `requests` SET `state` = 'closed' WHERE `requests`.`requestID` = '" + rID + "'";
             System.out.println(SQL);
+            confirmLabel.setText("Request closed");
             Statement statement;
             try {
                 statement = conn.createStatement();
@@ -238,6 +246,7 @@ public class ServerUI extends javax.swing.JFrame {
             model.setValueAt("open", index, 7);
             SQL = "UPDATE `requests` SET `state` = 'open' WHERE `requests`.`requestID` = '" + rID + "'";
             System.out.println(SQL);
+            confirmLabel.setText("Request opened");
             Statement statement;
             try {
                 statement = conn.createStatement();
@@ -246,8 +255,6 @@ public class ServerUI extends javax.swing.JFrame {
                 Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
-        // UPDATE `requests` SET `state` = 'closed' WHERE `requests`.`requestID` = 2
     }//GEN-LAST:event_closeOpenButtonActionPerformed
 
     private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
@@ -269,7 +276,7 @@ public class ServerUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Napkin".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -295,13 +302,13 @@ public class ServerUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeOpenButton;
+    private javax.swing.JLabel confirmLabel;
     private javax.swing.JComboBox<String> departmentComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable requestTable;
     private javax.swing.JButton searchButtton;
     private javax.swing.JTextArea serverTextArea;
