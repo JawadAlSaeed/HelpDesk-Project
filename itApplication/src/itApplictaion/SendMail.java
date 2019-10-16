@@ -38,7 +38,7 @@ public class SendMail {
 
             Transport.send(message);
 
-            JOptionPane.showMessageDialog(null, "Email sended!");
+            JOptionPane.showMessageDialog(null, "Email sent!");
 
         } catch (MessagingException e) {
             JOptionPane.showMessageDialog(null, "Something happened!");
