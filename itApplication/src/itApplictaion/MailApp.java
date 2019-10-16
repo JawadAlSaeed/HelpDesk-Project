@@ -26,11 +26,11 @@ public class MailApp extends JFrame {
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.setSize(800, 400);
         app.setVisible(true);
-    }
+        }
 
     public MailApp() {
         super("Send Email");
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
         ButtonHandler handler_button = new ButtonHandler();
 
         cp = getContentPane();

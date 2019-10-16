@@ -6,6 +6,12 @@
                 Fill in all of the fields.
             </div>';
         }
+        else if ($_GET['error'] == "invaildtelephone") {
+        echo '    <div class="isa_error">
+                <i class="fa fa-times-circle"></i>
+                type correct phone number that starts with 966 and has 9 numbers.
+            </div>';
+        }
         else if ($_GET['error'] == "invailddepartment") {
         echo '    <div class="isa_error">
                 <i class="fa fa-times-circle"></i>
