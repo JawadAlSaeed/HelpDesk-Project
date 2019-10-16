@@ -63,6 +63,7 @@ public class ServerUI extends javax.swing.JFrame {
         confirmLabel = new javax.swing.JLabel();
         emialButton = new javax.swing.JButton();
         footerLabel = new javax.swing.JLabel();
+        footerLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 255));
@@ -84,7 +85,7 @@ public class ServerUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "requestID", "User ID", "telephone", "department", "priority", "description", "date", "state"
+                "Request ID", "User ID", "Telephone", "Department", "Priority", "Description", "Date", "State"
             }
         ));
         requestTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,6 +94,8 @@ public class ServerUI extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(requestTable);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         searchButtton.setText("Search");
         searchButtton.addActionListener(new java.awt.event.ActionListener() {
@@ -157,19 +160,32 @@ public class ServerUI extends javax.swing.JFrame {
                     .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(closeOpenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emialButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(confirmLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(confirmLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
         );
 
         footerLabel.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         footerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        footerLabel.setText("Designed by Jawad Al-Saeed   |   +96653690662 • JawadAlSaeed266@gmail.com • @JawadAlSaeed266   |   Copyright 2019, HelpDeskProject");
+        footerLabel.setText("Designed by Jawad Al-Saeed");
         footerLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 footerLabelMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 footerLabelMousePressed(evt);
+            }
+        });
+
+        footerLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        footerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        footerLabel1.setText("Copyright 2019, HelpDeskProject");
+        footerLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                footerLabel1MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                footerLabel1MousePressed(evt);
             }
         });
 
@@ -180,26 +196,30 @@ public class ServerUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(footerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(footerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(footerLabel1)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(13, 13, 13)
-                .addComponent(footerLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(footerLabel)
+                    .addComponent(footerLabel1))
                 .addContainerGap())
         );
 
@@ -383,6 +403,14 @@ public class ServerUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_emialButtonActionPerformed
 
+    private void footerLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLabel1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_footerLabel1MouseClicked
+
+    private void footerLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLabel1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_footerLabel1MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -424,6 +452,7 @@ public class ServerUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> departmentComboBox;
     private javax.swing.JButton emialButton;
     private javax.swing.JLabel footerLabel;
+    private javax.swing.JLabel footerLabel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
