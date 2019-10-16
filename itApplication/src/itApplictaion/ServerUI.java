@@ -261,7 +261,6 @@ public class ServerUI extends javax.swing.JFrame {
         int index = requestTable.getSelectedRow();
         TableModel model = requestTable.getModel();
         String description = model.getValueAt(index, 5).toString();
-
         serverTextArea.setText(description);
     }//GEN-LAST:event_requestTableMouseClicked
 
