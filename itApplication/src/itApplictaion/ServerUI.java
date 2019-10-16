@@ -313,14 +313,14 @@ public class ServerUI extends javax.swing.JFrame {
     }//GEN-LAST:event_requestTableMouseClicked
 
     private void footerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLabelMouseClicked
-        JEditorPane editorPane = new JEditorPane();
-        try {
-            editorPane.setPage(new URL("http://www.google.com"));
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        JEditorPane editorPane = new JEditorPane();
+//        try {
+//            editorPane.setPage(new URL("http://www.google.com"));
+//        } catch (MalformedURLException ex) {
+//            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_footerLabelMouseClicked
 
     private void footerLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLabelMousePressed
@@ -377,7 +377,8 @@ public class ServerUI extends javax.swing.JFrame {
         if (requestTable.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "please select a row", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            
+            MailApp popup = new MailApp();
+            popup.setVisible(true);
         }
 
     }//GEN-LAST:event_emialButtonActionPerformed

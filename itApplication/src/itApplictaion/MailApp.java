@@ -1,4 +1,4 @@
-package mailapp;
+package itApplictaion;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -29,7 +29,7 @@ public class MailApp extends JFrame {
     }
 
     public MailApp() {
-        super("TechWorld3g - Send email using java");
+        super("Send Email");
 
         ButtonHandler handler_button = new ButtonHandler();
 
@@ -49,7 +49,7 @@ public class MailApp extends JFrame {
 
         sub_text = new JTextField("...");
         sub_text.setPreferredSize(new Dimension(150, 20));
-
+        
         msg_label = new JLabel("Message : ");
         msg_label.setPreferredSize(new Dimension(100, 20));
 

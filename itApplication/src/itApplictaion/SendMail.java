@@ -1,4 +1,4 @@
-package mailapp;
+package itApplictaion;
 
 import java.util.Properties;
 import javax.mail.Session;
