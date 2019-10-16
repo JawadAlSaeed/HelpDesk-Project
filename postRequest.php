@@ -72,7 +72,7 @@
             date_default_timezone_set("Asia/Riyadh"); 
             $theDate = date("Y-m-d H:i:sa");
 
-    		echo "<strong>Created by</strong>: $uidUsers<br><br>";
+    		echo "<strong>Created by</strong>: $uidUsers<br>";
             echo "<strong>Phone number</strong>: $telephone<br>";
     		echo "<strong>Department</strong>: $department<br>";
     		echo "<strong>Priority</strong>: $priority<br>";
