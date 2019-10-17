@@ -41,7 +41,7 @@ public class MailApp extends JFrame {
         mail_label = new JLabel("Send to : ");
         mail_label.setPreferredSize(new Dimension(100, 20));
 
-        mail_text = new JTextField("...");
+        mail_text = new JTextField("");
         mail_text.setPreferredSize(new Dimension(150, 20));
 
         sub_label = new JLabel("Subject : ");

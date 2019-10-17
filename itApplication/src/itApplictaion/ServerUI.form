@@ -63,16 +63,21 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jPanel1" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" pref="507" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="footerLabel" min="-2" pref="136" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="footerLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jScrollPane1" min="-2" pref="1062" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -126,7 +131,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="9" rowCount="0">
-                    <Column editable="true" title="Request ID" type="java.lang.Object"/>
+                    <Column editable="true" title="No." type="java.lang.Object"/>
                     <Column editable="true" title="User ID" type="java.lang.Object"/>
                     <Column editable="true" title="Email" type="java.lang.Object"/>
                     <Column editable="true" title="Telephone" type="java.lang.Object"/>
@@ -181,9 +186,6 @@
                     </Column>
                   </TableColumnModel>
                 </Property>
-                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                </Property>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="requestTableMouseClicked"/>
@@ -223,7 +225,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -316,10 +318,6 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Designed by Jawad Al-Saeed"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="footerLabelMouseClicked"/>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="footerLabelMousePressed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="footerLabel1">
           <Properties>
@@ -329,10 +327,6 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Copyright 2019, HelpDeskProject"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="footerLabel1MouseClicked"/>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="footerLabel1MousePressed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

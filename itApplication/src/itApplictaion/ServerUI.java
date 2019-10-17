@@ -20,6 +20,7 @@ import javax.management.modelmbean.ModelMBean;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -85,7 +86,7 @@ public class ServerUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Request ID", "User ID", "Email", "Telephone", "Department", "Priority", "Description", "Date", "State"
+                "No.", "User ID", "Email", "Telephone", "Department", "Priority", "Description", "Date", "State"
             }
         ));
         requestTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,7 +147,7 @@ public class ServerUI extends javax.swing.JFrame {
                                 .addComponent(closeOpenButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                .addGap(8, 8, 8))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,26 +169,10 @@ public class ServerUI extends javax.swing.JFrame {
         footerLabel.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         footerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         footerLabel.setText("Designed by Jawad Al-Saeed");
-        footerLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                footerLabelMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                footerLabelMousePressed(evt);
-            }
-        });
 
         footerLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         footerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         footerLabel1.setText("Copyright 2019, HelpDeskProject");
-        footerLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                footerLabel1MouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                footerLabel1MousePressed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -196,15 +181,18 @@ public class ServerUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(footerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(footerLabel1)))
+                        .addComponent(footerLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jScrollPane2))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1062, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -244,7 +232,6 @@ public class ServerUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButttonActionPerformed
-
         try {
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
             model.setRowCount(0);
@@ -280,8 +267,6 @@ public class ServerUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     }//GEN-LAST:event_searchButttonActionPerformed
 
     private void closeOpenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeOpenButtonActionPerformed
@@ -327,33 +312,25 @@ public class ServerUI extends javax.swing.JFrame {
     private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
         int index = requestTable.getSelectedRow();
         TableModel model = requestTable.getModel();
-        String description = model.getValueAt(index, 5).toString();
+        String description = model.getValueAt(index, 6).toString();
         serverTextArea.setText(description);
     }//GEN-LAST:event_requestTableMouseClicked
 
-    private void footerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLabelMouseClicked
-//        JEditorPane editorPane = new JEditorPane();
-//        try {
-//            editorPane.setPage(new URL("http://www.google.com"));
-//        } catch (MalformedURLException ex) {
-//            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }//GEN-LAST:event_footerLabelMouseClicked
-
-    private void footerLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLabelMousePressed
-        JEditorPane editorPane = new JEditorPane();
-        try {
-            editorPane.setPage(new URL("http://www.google.com"));
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_footerLabelMousePressed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        
+        requestTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        requestTable.getColumnModel().getColumn(0).setPreferredWidth(40);
+        requestTable.getColumnModel().getColumn(1).setPreferredWidth(105);
+        requestTable.getColumnModel().getColumn(2).setPreferredWidth(160);
+        requestTable.getColumnModel().getColumn(3).setPreferredWidth(80);
+        requestTable.getColumnModel().getColumn(4).setPreferredWidth(100);
+        requestTable.getColumnModel().getColumn(5).setPreferredWidth(55);
+        requestTable.getColumnModel().getColumn(6).setPreferredWidth(400);
+        requestTable.getColumnModel().getColumn(7).setPreferredWidth(65);
+        requestTable.getColumnModel().getColumn(8).setPreferredWidth(55);
+
+        
         try {
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
             model.setRowCount(0);
@@ -381,14 +358,14 @@ public class ServerUI extends javax.swing.JFrame {
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getDate(7),
-                    rs.getString(8)
+                    rs.getString(7),
+                    rs.getDate(8),
+                    rs.getString(9)
                 });
             }
         } catch (SQLException ex) {
             Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_formWindowOpened
 
     private void emialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emialButtonActionPerformed
@@ -401,14 +378,6 @@ public class ServerUI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_emialButtonActionPerformed
-
-    private void footerLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLabel1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_footerLabel1MouseClicked
-
-    private void footerLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLabel1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_footerLabel1MousePressed
 
     /**
      * @param args the command line arguments
