@@ -47,12 +47,13 @@
             <?php
 
             $uidUsers = $_SESSION['userUid'];
+            $emailUsers = $_SESSION['userEmail'];
     		$telephone =  $_POST["telephone"];
     		$department =  $_POST["department"];
     		$priority =  $_POST["priority"];
     		$description =  $_POST["description"];
 
-            if (empty($uidUsers) || empty($telephone) || empty($department) || empty($priority) || empty($description)){
+            if (empty($uidUsers) || empty($emailUsers) || empty($telephone) || empty($department) || empty($priority) || empty($description)){
                 header("location: newRequests.php?error=emptyfields");
                 exit();
             }
@@ -73,6 +74,7 @@
             $theDate = date("Y-m-d H:i:sa");
 
     		echo "<strong>Created by</strong>: $uidUsers<br>";
+            echo "<strong>Email</strong>: $emailUsers<br>";
             echo "<strong>Phone number</strong>: $telephone<br>";
     		echo "<strong>Department</strong>: $department<br>";
     		echo "<strong>Priority</strong>: $priority<br>";
@@ -87,7 +89,7 @@
     		}
     		$DBName = "helpdeskdb";
     		mysqli_select_db($DBConnect,$DBName);
-    		$QueryString = "INSERT INTO requests (uidUsers, telephone, dpartment, priority, description, date) VALUES ( '$uidUsers','$telephone','$department','$priority','$description', '$theDate') ";
+    		$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, dpartment, priority, description, date) VALUES ( '$uidUsers', '$emailUsers', $telephone','$department','$priority','$description', '$theDate') ";
     		$QueryResult = mysqli_query($DBConnect,$QueryString)
     		     Or die("<p> Unable to execute query. </p>"
     		     . "<p> Error code  " .  mysqli_errno($DBConnect)

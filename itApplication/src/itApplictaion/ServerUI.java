@@ -85,7 +85,7 @@ public class ServerUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Request ID", "User ID", "Telephone", "Department", "Priority", "Description", "Date", "State"
+                "Request ID", "User ID", "Email", "Telephone", "Department", "Priority", "Description", "Date", "State"
             }
         ));
         requestTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -272,8 +272,9 @@ public class ServerUI extends javax.swing.JFrame {
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getDate(7),
-                    rs.getString(8)
+                    rs.getString(7),
+                    rs.getDate(8),
+                    rs.getString(9)
                 });
             }
         } catch (SQLException ex) {
@@ -291,12 +292,10 @@ public class ServerUI extends javax.swing.JFrame {
             int index = requestTable.getSelectedRow();
             TableModel model = requestTable.getModel();
             String rID = model.getValueAt(index, 0).toString();
-            String state = model.getValueAt(index, 7).toString();
-
-            System.out.println(state);
+            String state = model.getValueAt(index, 8).toString();
 
             if ("open".equals(state)) {
-                model.setValueAt("closed", index, 7);
+                model.setValueAt("closed", index, 8);
                 SQL = "UPDATE `requests` SET `state` = 'closed' WHERE `requests`.`requestID` = '" + rID + "'";
                 System.out.println(SQL);
                 confirmLabel.setText("Request closed");
@@ -308,7 +307,7 @@ public class ServerUI extends javax.swing.JFrame {
                     Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else if ("closed".equals(state)) {
-                model.setValueAt("open", index, 7);
+                model.setValueAt("open", index, 8);
                 SQL = "UPDATE `requests` SET `state` = 'open' WHERE `requests`.`requestID` = '" + rID + "'";
                 System.out.println(SQL);
                 confirmLabel.setText("Request opened");
