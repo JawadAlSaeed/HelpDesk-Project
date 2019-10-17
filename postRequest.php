@@ -89,7 +89,7 @@
     		}
     		$DBName = "helpdeskdb";
     		mysqli_select_db($DBConnect,$DBName);
-    		$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, dpartment, priority, description, date) VALUES ( '$uidUsers', '$emailUsers', $telephone','$department','$priority','$description', '$theDate') ";
+    		$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, description, date) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority','$description', '$theDate') ";
     		$QueryResult = mysqli_query($DBConnect,$QueryString)
     		     Or die("<p> Unable to execute query. </p>"
     		     . "<p> Error code  " .  mysqli_errno($DBConnect)

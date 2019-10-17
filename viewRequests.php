@@ -74,7 +74,7 @@
                     echo "</td><td>"; 
                     echo $row['telephone'];
                     echo "</td><td>"; 
-                    echo $row['dpartment'];        
+                    echo $row['department'];        
                     echo "</td><td>"; 
                     echo $row['priority'];
                     echo "</td><td>"; 
