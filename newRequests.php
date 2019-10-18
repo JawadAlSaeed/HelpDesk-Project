@@ -68,6 +68,7 @@
                             <option value="Network Department">Network Department</option>
                             <option value="Support Department">Support Department</option>
                             <option value="System Department">System Department</option>
+                            <option value="Sales Department">Sales Department</option>
                         </select>
                     </div>
                 </div>

@@ -14,12 +14,17 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.management.modelmbean.ModelMBean;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -62,6 +67,10 @@ public class ServerUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         confirmLabel = new javax.swing.JLabel();
         emialButton = new javax.swing.JButton();
+        startDate = new com.toedter.calendar.JDateChooser();
+        endDate = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         footerLabel = new javax.swing.JLabel();
         footerLabel1 = new javax.swing.JLabel();
 
@@ -85,7 +94,7 @@ public class ServerUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Request ID", "User ID", "Telephone", "Department", "Priority", "Description", "Date", "State"
+                "No.", "User ID", "Email", "Telephone", "Department", "Priority", "Description", "Date", "State"
             }
         ));
         requestTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -127,31 +136,69 @@ public class ServerUI extends javax.swing.JFrame {
             }
         });
 
+        startDate.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                startDateComponentAdded(evt);
+            }
+        });
+
+        endDate.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                endDateComponentAdded(evt);
+            }
+        });
+
+        jLabel2.setText("Start Date");
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("End Date");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(confirmLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(emialButton)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(departmentComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(confirmLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(emialButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(closeOpenButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(departmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(8, 8, 8))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(startDate, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                    .addComponent(endDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(startDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(endDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(departmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -168,26 +215,10 @@ public class ServerUI extends javax.swing.JFrame {
         footerLabel.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         footerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         footerLabel.setText("Designed by Jawad Al-Saeed");
-        footerLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                footerLabelMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                footerLabelMousePressed(evt);
-            }
-        });
 
         footerLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         footerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         footerLabel1.setText("Copyright 2019, HelpDeskProject");
-        footerLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                footerLabel1MouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                footerLabel1MousePressed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -196,26 +227,29 @@ public class ServerUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(footerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(footerLabel1)))
+                        .addComponent(footerLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jScrollPane2))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1062, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(footerLabel)
@@ -230,7 +264,7 @@ public class ServerUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,22 +278,39 @@ public class ServerUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButttonActionPerformed
-
         try {
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
             model.setRowCount(0);
             String SQL;
             String dep = departmentComboBox.getSelectedItem().toString();
 
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
+            if (startDate.getDate() == null && endDate.getDate() == null) {
+
+            } else if 
+            
+            
+            
+            else {
+                String sDate = sdf.format(startDate.getDate());
+                String eDate = sdf.format(endDate.getDate()); 
+            }
+               
+            String eDate = sdf.format(endDate.getDate());     
+            
+//            System.out.println(sDate);
+//            System.out.println(eDate);
+
             if (dep == "All") {
                 SQL = "select * from requests";
                 confirmLabel.setText("All reqeuests displayed");
             } else {
-                SQL = "select * from requests where dpartment = '" + dep + "'";
+                SQL = "select * from requests where department = '" + dep + "'";
                 confirmLabel.setText("All " + dep + " reqeuests displayed");
             }
 
-            System.out.println(SQL);
+            //System.out.println(SQL);
             ResultSet rs = loginDb.getResultSet(conn, SQL);
             boolean hasNext = false;
 
@@ -272,15 +323,14 @@ public class ServerUI extends javax.swing.JFrame {
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getDate(7),
-                    rs.getString(8)
+                    rs.getString(7),
+                    rs.getDate(8),
+                    rs.getString(9)
                 });
             }
         } catch (SQLException ex) {
             Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     }//GEN-LAST:event_searchButttonActionPerformed
 
     private void closeOpenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeOpenButtonActionPerformed
@@ -291,12 +341,10 @@ public class ServerUI extends javax.swing.JFrame {
             int index = requestTable.getSelectedRow();
             TableModel model = requestTable.getModel();
             String rID = model.getValueAt(index, 0).toString();
-            String state = model.getValueAt(index, 7).toString();
-
-            System.out.println(state);
+            String state = model.getValueAt(index, 8).toString();
 
             if ("open".equals(state)) {
-                model.setValueAt("closed", index, 7);
+                model.setValueAt("closed", index, 8);
                 SQL = "UPDATE `requests` SET `state` = 'closed' WHERE `requests`.`requestID` = '" + rID + "'";
                 System.out.println(SQL);
                 confirmLabel.setText("Request closed");
@@ -308,7 +356,7 @@ public class ServerUI extends javax.swing.JFrame {
                     Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else if ("closed".equals(state)) {
-                model.setValueAt("open", index, 7);
+                model.setValueAt("open", index, 8);
                 SQL = "UPDATE `requests` SET `state` = 'open' WHERE `requests`.`requestID` = '" + rID + "'";
                 System.out.println(SQL);
                 confirmLabel.setText("Request opened");
@@ -328,33 +376,23 @@ public class ServerUI extends javax.swing.JFrame {
     private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
         int index = requestTable.getSelectedRow();
         TableModel model = requestTable.getModel();
-        String description = model.getValueAt(index, 5).toString();
+        String description = model.getValueAt(index, 6).toString();
         serverTextArea.setText(description);
     }//GEN-LAST:event_requestTableMouseClicked
 
-    private void footerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLabelMouseClicked
-//        JEditorPane editorPane = new JEditorPane();
-//        try {
-//            editorPane.setPage(new URL("http://www.google.com"));
-//        } catch (MalformedURLException ex) {
-//            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }//GEN-LAST:event_footerLabelMouseClicked
-
-    private void footerLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLabelMousePressed
-        JEditorPane editorPane = new JEditorPane();
-        try {
-            editorPane.setPage(new URL("http://www.google.com"));
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_footerLabelMousePressed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        requestTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        requestTable.getColumnModel().getColumn(0).setPreferredWidth(40);
+        requestTable.getColumnModel().getColumn(1).setPreferredWidth(105);
+        requestTable.getColumnModel().getColumn(2).setPreferredWidth(160);
+        requestTable.getColumnModel().getColumn(3).setPreferredWidth(80);
+        requestTable.getColumnModel().getColumn(4).setPreferredWidth(100);
+        requestTable.getColumnModel().getColumn(5).setPreferredWidth(55);
+        requestTable.getColumnModel().getColumn(6).setPreferredWidth(400);
+        requestTable.getColumnModel().getColumn(7).setPreferredWidth(65);
+        requestTable.getColumnModel().getColumn(8).setPreferredWidth(55);
+
         try {
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
             model.setRowCount(0);
@@ -382,14 +420,14 @@ public class ServerUI extends javax.swing.JFrame {
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getDate(7),
-                    rs.getString(8)
+                    rs.getString(7),
+                    rs.getDate(8),
+                    rs.getString(9)
                 });
             }
         } catch (SQLException ex) {
             Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_formWindowOpened
 
     private void emialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emialButtonActionPerformed
@@ -403,13 +441,13 @@ public class ServerUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_emialButtonActionPerformed
 
-    private void footerLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLabel1MouseClicked
+    private void startDateComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_startDateComponentAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_footerLabel1MouseClicked
+    }//GEN-LAST:event_startDateComponentAdded
 
-    private void footerLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLabel1MousePressed
+    private void endDateComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_endDateComponentAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_footerLabel1MousePressed
+    }//GEN-LAST:event_endDateComponentAdded
 
     /**
      * @param args the command line arguments
@@ -451,9 +489,12 @@ public class ServerUI extends javax.swing.JFrame {
     private javax.swing.JLabel confirmLabel;
     private javax.swing.JComboBox<String> departmentComboBox;
     private javax.swing.JButton emialButton;
+    private com.toedter.calendar.JDateChooser endDate;
     private javax.swing.JLabel footerLabel;
     private javax.swing.JLabel footerLabel1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -461,5 +502,6 @@ public class ServerUI extends javax.swing.JFrame {
     private javax.swing.JTable requestTable;
     private javax.swing.JButton searchButtton;
     private javax.swing.JTextArea serverTextArea;
+    private com.toedter.calendar.JDateChooser startDate;
     // End of variables declaration//GEN-END:variables
 }
