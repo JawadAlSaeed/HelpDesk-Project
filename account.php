@@ -48,9 +48,11 @@
                 if (isset($_SESSION['userId'])) {
                     echo '  
                         <center>
+                            <a href="viewRequests.php"><button class="btn"><i class="fas fa-eye fa-5x"></i><br><br>View requests</button></a>
+                            &nbsp;
                             <a href="change.php"><button class="btn"><i class="fas fa-exchange-alt fa-5x"></i><br><br>Change Email/Password</button></a>
                             &nbsp;
-                            <a href="viewRequests.php"><button class="btn"><i class="fas fa-eye fa-5x"></i><br><br>View requests</button></a>
+                            <a href="delete.php"><button class="btn"><i class="fas fa-trash-alt fa-5x"></i></i><br><br>Delete account</button></a>
                             &nbsp;
                         </center>
                     ';
