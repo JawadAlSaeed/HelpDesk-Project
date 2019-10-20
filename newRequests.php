@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
     <link href="css/alerts.css" rel="stylesheet" type="text/css" />
     <link href="css/form.css" rel="stylesheet" type="text/css" />
-    <link href="css/popup.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -104,27 +103,7 @@
                     <button class="submitBtn" type="submit" name="request-submit">Send request</button>
                 </div>
             </form>
-
-        <!--<button class="popupbutton" id="myBtn">Available Departments</button>
-            <div id="myModal" class="modal">
-              <div class="modal-content">
-                <span class="close">&times;</span>
-                <b>Available Departments:&nbsp;code*:</b> <br>
-                  <p>Network Department:&nbsp;ND</p>
-                  <p>Support Department:&nbsp;SUPD</p>
-                  <p>System Department:&nbsp;SYSD</p>
-                  <small style="float: right">*copy and paste the exact department code from above list</small>
-                  <br>
-              </div>
-            </div>
-            <br>
-            <br>
-            <br> -->
-
         </div>
-        <br>
-        <br>
-        <br>
         <br>
         <br>
         </center>
