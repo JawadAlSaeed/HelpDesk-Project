@@ -23,7 +23,6 @@
             <i class="fas fa-hands-helping fa-2x"></i>
             <h1>&nbsp;HelpDesk</h1>
         </div>
- 
         <div class="header">
             <a href="About.php"></a>
             <ul>
@@ -40,6 +39,13 @@
             </ul>
             <br><br>
         </div>
+        <br>
+        <div class="loginChecker">
+            <?php 
+                require "tools/loginChecker.php";
+            ?>
+        </div>
+        <br>
         <div class="subTitle">
             <center>
                 <h1 style="font-size:45px">Your requests</h1>

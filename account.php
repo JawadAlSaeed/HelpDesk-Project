@@ -36,36 +36,28 @@
                 </li>
             </ul>
         </div>
-        <br><br>
+        <br>
+        <div class="loginChecker">
+            <?php 
+                require "tools/loginChecker.php";
+            ?>
+        </div>
+        <br>
         <div class="subTitle">
             <center>
                 <h1 style="font-size:45px">Account</h1>
             <br><br>
         </div>
         <br>
-        <div>
-            <?php
-                if (isset($_SESSION['userId'])) {
-                    echo '  
-                        <center>
-                            <a href="viewRequests.php"><button class="btn"><i class="fas fa-eye fa-5x"></i><br><br>View requests</button></a>
-                            &nbsp;
-                            <a href="change.php"><button class="btn"><i class="fas fa-exchange-alt fa-5x"></i><br><br>Change Email/Password</button></a>
-                            &nbsp;
-                            <a href="delete.php"><button class="btn"><i class="fas fa-trash-alt fa-5x"></i></i><br><br>Delete account</button></a>
-                            &nbsp;
-                        </center>
-                    ';
-                }
-                else{
-                    echo '  
-                        <div class="isa_error">
-                            <i class="fa fa-times-circle"></i>
-                            You need to login first
-                        </div>
-                    ';
-                }
-            ?>
+        <div> 
+            <center>
+                <a href="viewRequests.php"><button class="btn"><i class="fas fa-eye fa-5x"></i><br><br>View requests</button></a>
+                &nbsp;
+                <a href="change.php"><button class="btn"><i class="fas fa-exchange-alt fa-5x"></i><br><br>Change Email/Password</button></a>
+                &nbsp;
+                <a href="delete.php"><button class="btn"><i class="fas fa-trash-alt fa-5x"></i></i><br><br>Delete account</button></a>
+                &nbsp;
+            </center>
         </div>
     </div>
     <br>

@@ -38,11 +38,16 @@
             </ul>
         </div>
         <br>
-        <dir class="requestsErrors">
+        <div class="requestsErrors">
             <?php 
                 require "tools/requestsErrors.php";
             ?>
-        </dir>
+        </div>
+        <div class="loginChecker">
+            <?php 
+                require "tools/loginChecker.php";
+            ?>
+        </div>
         <br>
         <div class="subTitle">
             <center>

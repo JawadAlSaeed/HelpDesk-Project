@@ -42,6 +42,10 @@
                 require "tools/changeErrors.php";
             ?>
         </div>
+        <div class="loginChecker">
+            <?php 
+                require "tools/loginChecker.php";
+            ?>
         <br>
         <div class="subTitle">
             <center>
@@ -70,7 +74,6 @@
                     <button class="submitBtn" type="submit" name="changeEmail-submit">Submit</button>
                 </div>
             </form>
-<!-- ------------------------------------------------------------------------------------ -->
             <div class="miniTitle">
                 <center>
                     <h1 style="font-size:30px">Change Password</h1>
@@ -105,7 +108,7 @@
                 <div class="row">
                     <button class="submitBtn" type="submit" name="changePwd-submit">Submit</button>
                 </div>
-            </form>
+            </form> 
         </div>   
     </div>
     <br>

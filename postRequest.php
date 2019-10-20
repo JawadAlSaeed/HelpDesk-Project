@@ -36,7 +36,13 @@
                 </li>
             </ul>
         </div>
-        <br><br>
+        <br>
+        <div class="loginChecker">
+            <?php 
+                require "tools/loginChecker.php";
+            ?>
+        </div>
+        <br>
         <div class="subTitle">
             <center>
                 <h1 style="font-size:45px">Your request has been submited</h1>
