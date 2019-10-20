@@ -43,11 +43,11 @@
             </center>
         </div>
         <br><br>
-        <dir class="signupErrors">
+        <div class="signupErrors">
             <?php 
                 require "tools/signupErrors.php";
             ?>
-        </dir>
+        </div>
         <div class="container">
             <form action="includes/signup.inc.php" method="post">
                 <div class="row">

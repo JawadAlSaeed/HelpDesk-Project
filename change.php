@@ -43,6 +43,11 @@
             </center>
             <br><br>
         </div>
+        <div class="changeErrors">
+            <?php 
+                require "tools/changeErrors.php";
+            ?>
+        </div>
         <br>
         <div class="container">
             <div class="miniTitle">
