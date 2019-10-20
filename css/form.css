@@ -35,7 +35,7 @@ input[type=submit],
 }
 
 input[type=submit]:hover,
-.signupBtn {
+.signupBtn:hover {
     background-color: #112d32;
 }
 
