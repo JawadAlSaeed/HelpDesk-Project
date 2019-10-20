@@ -23,7 +23,7 @@ label {
 }
 
 input[type=submit],
-.signupBtn {
+.submitBtn {
     margin: 10px;
     background-color: #45ADA8;
     color: white;
@@ -35,7 +35,7 @@ input[type=submit],
 }
 
 input[type=submit]:hover,
-.signupBtn:hover {
+.submitBtn:hover {
     background-color: #112d32;
 }
 

@@ -95,7 +95,7 @@
                 </div>
                 <br>
                 <div class="row">
-                    <button class="signupBtn" type="submit" name="request-submit">Send request</button>
+                    <button class="submitBtn" type="submit" name="request-submit">Send request</button>
                 </div>
             </form>
 

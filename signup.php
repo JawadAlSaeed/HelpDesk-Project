@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button class="signupBtn" type="submit" name="signup-submit">Signup</button>
+                    <button class="submitBtn" type="submit" name="signup-submit">Signup</button>
                 </div>
             </form>
         </div>

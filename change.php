@@ -44,7 +44,62 @@
             <br><br>
         </div>
         <br>
-        
+        <div class="container">
+            <div class="miniTitle">
+                <center>
+                    <h1 style="font-size:30px">Change Email</h1>
+                </center>
+                <br><br>
+            </div>
+            <form action="includes/changeEmail.inc.php" method="post">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="mail">New Email</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" name="mail" placeholder="E-mail">
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="submitBtn" type="submit" name="changeEmail-submit">Submit</button>
+                </div>
+            </form>
+            <div class="miniTitle">
+                <center>
+                    <h1 style="font-size:30px">Change Password</h1>
+                </center>
+                <br><br>
+            </div>
+            <form action="includes/changePwd.inc.php" method="post">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="Password">old Password</label>
+                    </div>
+                    <div class="col-75">
+                       <input type="password" name="old-pwd" placeholder="password">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="Password">new Password</label>
+                    </div>
+                    <div class="col-75">
+                       <input type="password" name="new-pwd" placeholder="password">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="pwd-repeat">repeat password</label>
+                    </div>
+                    <div class="col-75">
+                       <input type="password" name="pwd-repeat" placeholder="repeat password">
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="submitBtn" type="submit" name="changePwd-submit">Submit</button>
+                </div>
+            </form>
+        </div>   
     </div>
     <br>
     <br>

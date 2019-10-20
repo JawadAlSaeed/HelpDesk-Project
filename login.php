@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button class="signupBtn" type="submit" name="login-submit">Login</button>
+                    <button class="submitBtn" type="submit" name="login-submit">Login</button>
                 </div>
             </form>
         </div>
