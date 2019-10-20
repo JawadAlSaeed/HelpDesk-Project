@@ -8,6 +8,10 @@ if (isset($_POST['signup-submit'])) {
 	$password = $_POST['pwd'];
 	$passwordRepeat = $_POST['pwd-repeat'];
 
+	$uppercase = preg_match('@[A-Z]@', $password);
+	$lowercase = preg_match('@[a-z]@', $password);
+	$number    = preg_match('@[0-9]@', $password);
+
 	if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)){
 		header("location: ../signup.php?error=emptyfields&uid=".$username."&mail=".$email);
 		exit();
@@ -22,6 +26,10 @@ if (isset($_POST['signup-submit'])) {
 	}
 	else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
 		header("location: ../signup.php?error=invailduid&mail=".$email);
+		exit();
+	}
+	else if (!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
+  		header("location: ../signup.php?error=weakpassword");
 		exit();
 	}
 	else if ($password !== $passwordRepeat) {
@@ -72,7 +80,7 @@ if (isset($_POST['signup-submit'])) {
 
 						mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hachedPwd);
 						mysqli_stmt_execute($stmt);
-						header("location: ../signup.php?signup=success");
+						header("location: ../home.php?signup=success");
 						exit();
 					}
 				}

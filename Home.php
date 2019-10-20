@@ -35,7 +35,13 @@
                 </li>
             </ul>
         </div>
-        <br><br>
+        <br>
+        <div class="homeErrors">
+            <?php 
+                require "tools/homeErrors.php";
+            ?>
+        </div>
+        <br>
         <div class="subTitle">
             <center>
                 <h1 class="subTitle" style="font-size:45px">How can we help you today?</h1>
@@ -52,6 +58,8 @@
             </center>
         </div>
     </div>
+    <br>
+    <br>
 </body>
 
 </html>

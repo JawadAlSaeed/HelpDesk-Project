@@ -37,7 +37,13 @@
                 </li>
             </ul>
         </div>
-        <br><br>
+        <br>
+        <dir class="deleteErrors">
+            <?php 
+                require "tools/deleteErrors.php";
+            ?>
+        </dir>
+        <br>
         <div class="subTitle">
             <center>
                 <h1 style="font-size:45px">Delete account</h1>

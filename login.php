@@ -36,18 +36,20 @@
                 </li>
             </ul>
         </div>
-        <br><br>
+        <br>
+        <div class="loginErrors">
+            <?php 
+                require "tools/loginErrors.php";
+            ?>
+        </div>
+        <br>
         <div class="subTitle">
             <center>
                 <h1 class="subTitle" style="font-size:45px">Login</h1>
             </center>
         </div>
         <br><br>
-        <div class="loginErrors">
-            <?php 
-                require "tools/loginErrors.php";
-            ?>
-        </div>
+
         <div class="container">
             <form action="includes/login.inc.php" method="post">
                 <div class="row">

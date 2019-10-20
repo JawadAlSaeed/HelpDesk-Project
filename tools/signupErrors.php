@@ -18,10 +18,20 @@
                 Invalid username.
             </div>';
         }
-        else if ($_GET['error'] == "invalidmail") {
+        else if ($_GET['error'] == "weakpassword") {
         echo '    <div class="isa_error">
                 <i class="fa fa-times-circle"></i>
-                Invalid E-mail.
+                Weak password:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Must be a minimum of 8 characters<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Must contain at least 1 number<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Must contain at least one uppercase character<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Must contain at least one lowercase character<br>
+            </div>';
+        }
+        else if ($_GET['error'] == "invaliduidmail") {
+        echo '    <div class="isa_error">
+                <i class="fa fa-times-circle"></i>
+                Invalid username and E-mail.
             </div>';
         }
         else if ($_GET['error'] == "passwordcheck") {

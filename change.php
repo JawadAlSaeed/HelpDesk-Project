@@ -36,17 +36,18 @@
                 </li>
             </ul>
         </div>
-        <br><br>
+        <br>
+        <div class="changeErrors">
+            <?php 
+                require "tools/changeErrors.php";
+            ?>
+        </div>
+        <br>
         <div class="subTitle">
             <center>
                 <h1 style="font-size:45px">Change Email/Password</h1>
             </center>
             <br><br>
-        </div>
-        <div class="changeErrors">
-            <?php 
-                require "tools/changeErrors.php";
-            ?>
         </div>
         <br>
         <div class="container">

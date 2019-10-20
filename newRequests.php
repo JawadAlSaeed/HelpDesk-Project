@@ -37,17 +37,18 @@
                 </li>
             </ul>
         </div>
-        <br><br>
-        <div class="subTitle">
-            <center>
-                <h1 style="font-size:45px">Fill in your info</h1>
-            <br><br>
-        </div>
+        <br>
         <dir class="requestsErrors">
             <?php 
                 require "tools/requestsErrors.php";
             ?>
         </dir>
+        <br>
+        <div class="subTitle">
+            <center>
+                <h1 style="font-size:45px">Fill in your info</h1>
+            <br><br>
+        </div>
         <div class="container">
             <form action="postRequest.php" method="post">
                 <div class="row">
