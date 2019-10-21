@@ -21,7 +21,6 @@
             <i class="fas fa-hands-helping fa-2x"></i>
             <h1>&nbsp;HelpDesk</h1>
         </div>
- 
         <div class="header">
             <ul>
                 <li><a href="Home.php">Home</a></li>
@@ -57,16 +56,10 @@
                 &nbsp;
             </center>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
     </div>
- 
+    <br>
+    <br>
+    <br>
 </body>
 
 </html>
