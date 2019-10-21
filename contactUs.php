@@ -1,5 +1,37 @@
 <?php 
     session_start();
+
+    $response="";
+
+    if(isset($_POST['submit'])){
+        require 'tools/PHPMailer/PHPMailerAutoload.php';
+        require 'tools/PHPMailer/class.phpmailer.php';
+        $mail = new PHPMailer;
+
+        $mail->isSMTP();                                            // Set mailer to use SMTP
+        $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+        $mail->Username   = 'helpdiskproject266@gmail.com';                     // SMTP username
+        $mail->Password   = 'J35110266d';                               // SMTP password
+        $mail->Port       = 587;                                    // TCP port to connect to
+        $mail->SMTPSecure = "tls";                       // Enable TLS encryption, 
+
+        //Recipients
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->setFrom($_POST['email'], $_POST['name']);
+        $mail->addAddress('jawadalsaeed266@gmail.com');     // Add a recipient
+        $mail->Subject = $_POST['subject'];
+        $mail->Body    = $_POST['body'];
+
+        if ($mail->send()){
+            $response = 'Message has been sent';
+        }
+        else{
+            $response = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+
+        exit(json_encode(array("response" => $response)));
+    }
 ?>
 
 <html>
@@ -22,7 +54,6 @@
             <i class="fas fa-hands-helping fa-2x"></i>
             <h1>&nbsp;HelpDesk</h1>
         </div>
- 
         <div class="header">
             <ul>
                 <li><a href="Home.php">Home</a></li>
@@ -37,30 +68,25 @@
                 </li>
             </ul>
         </div>
-        <br><br>
+        <br>
+        <div class="contactErrors">
+            <p><?= $response; ?></p>
+        </div>
+        <br>
         <div class="subTitle">
             <center>
                 <h1 style="font-size:45px">help us improve the company</h1>
             </center>
         </div>
         <br><br>
-
         <div class="container">
-            <form action="sendEmail()" method="post">
+            <form action="" method="post" >
                 <div class="row">
                     <div class="col-25">
                         <label for="name">Name</label>
                     </div>
                     <div class="col-75">
                         <input type="text" id="name" name="name" placeholder="Your name...">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="telephone">Telephone</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" id="telephone" name="telephone" placeholder="966123456789">
                     </div>
                 </div>
                 <div class="row">
@@ -88,7 +114,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <input type="submit" onclick="sendEmail()" value="Submit">
+                    <input type="submit" name="submit" id="submit" value="Send">
                 </div>
             </form>
         </div>
@@ -98,7 +124,7 @@
         <br>
     </div>
 
-    <script
+   <!--  <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous">
@@ -139,12 +165,12 @@
                 return true;
                 }
             }
-    </script>
+    </script> -->
 
 </body>
 
 </html>
 
 <?php 
-require "tools/footer.php";
- ?>
+    require "tools/footer.php";
+?>
