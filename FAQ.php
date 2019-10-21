@@ -14,9 +14,9 @@
             $html = file_get_contents($url);
             if (stristr($html, $search) !== false) {
                     echo "<script>
-                    // var searched = '$search'; 
-                    // window.alert(searched);
-                    window.find('where');
+                    var searched = '<?php echo $search; ?>'; 
+                    window.alert(searched);
+                    window.find(searched);
                     </script>";
             } else {
               header("location: FAQ.php?error=nothingfound");
