@@ -20,7 +20,7 @@
         <div class="title">
             <i class="fas fa-hands-helping fa-2x"></i>
             <h1>&nbsp;HelpDesk</h1>
-            <img style=" max-width:13%; max-height:13%;" src="picture/juc.png" alt="JUC">
+            <!-- <img style=" max-width:13%; max-height:13%;" src="picture/juc.png" alt="JUC"> -->
         </div>
         <div class="header">
             <ul>
