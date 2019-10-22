@@ -49,7 +49,6 @@
             </center>
         </div>
         <br><br>
-
         <div class="container">
             <form action="includes/login.inc.php" method="post">
                 <div class="row">

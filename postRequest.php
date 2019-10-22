@@ -51,58 +51,57 @@
         <br>
         <div class="container">
             <?php
+                $uidUsers = $_SESSION['userUid'];
+                $emailUsers = $_SESSION['userEmail'];
+        		$telephone =  $_POST["telephone"];
+        		$department =  $_POST["department"];
+        		$priority =  $_POST["priority"];
+                $title =  $_POST["title"];
+        		$description =  $_POST["description"];
 
-            $uidUsers = $_SESSION['userUid'];
-            $emailUsers = $_SESSION['userEmail'];
-    		$telephone =  $_POST["telephone"];
-    		$department =  $_POST["department"];
-    		$priority =  $_POST["priority"];
-    		$description =  $_POST["description"];
+                if (empty($uidUsers) || empty($emailUsers) || empty($telephone) || empty($department) || empty($priority) || empty($description)){
+                    header("location: newRequests.php?error=emptyfields");
+                    exit();
+                }
+                else if (!preg_match("/^(966)([0-9]{9})$/", $telephone)) {
+                    header("location: newRequests.php?error=invaildtelephone");
+                    exit();
+                }
+                else if ($department == " ") {
+                    header("location: newRequests.php?error=invailddepartment");
+                    exit();
+                }
+                else if ($priority == " ") {
+                    header("location: newRequests.php?error=invaildpriority");
+                    exit();
+                }
 
-            if (empty($uidUsers) || empty($emailUsers) || empty($telephone) || empty($department) || empty($priority) || empty($description)){
-                header("location: newRequests.php?error=emptyfields");
-                exit();
-            }
-            else if (!preg_match("/^(966)([0-9]{9})$/", $telephone)) {
-                header("location: newRequests.php?error=invaildtelephone");
-                exit();
-            }
-            else if ($department == " ") {
-                header("location: newRequests.php?error=invailddepartment");
-                exit();
-            }
-            else if ($priority == " ") {
-                header("location: newRequests.php?error=invaildpriority");
-                exit();
-            }
+                date_default_timezone_set("Asia/Riyadh"); 
+                $theDate = date("Y-m-d H:i:sa");
 
-            date_default_timezone_set("Asia/Riyadh"); 
-            $theDate = date("Y-m-d H:i:sa");
+        		echo "<strong>Created by</strong>: $uidUsers<br>";
+                echo "<strong>Email</strong>: $emailUsers<br>";
+                echo "<strong>Phone number</strong>: $telephone<br>";
+        		echo "<strong>Department</strong>: $department<br>";
+        		echo "<strong>Priority</strong>: $priority<br>";
+                echo "<strong>Title</strong>: $title<br>";
+        		echo "<strong>Description</strong>: $description<br>";
+                echo "<strong>Date created</strong>: $theDate<br>";
 
-    		echo "<strong>Created by</strong>: $uidUsers<br>";
-            echo "<strong>Email</strong>: $emailUsers<br>";
-            echo "<strong>Phone number</strong>: $telephone<br>";
-    		echo "<strong>Department</strong>: $department<br>";
-    		echo "<strong>Priority</strong>: $priority<br>";
-    		echo "<strong>Description</strong>: $description<br>";
-            echo "<strong>Date created</strong>: $theDate<br>";
+        		$DBConnect = mysqli_connect("localhost","root","");
+        		if (!$DBConnect) 
+        		{
+        		    die('Could not connect: ' . mysqli_error());
+        		}
+        		$DBName = "helpdeskdb";
+        		mysqli_select_db($DBConnect,$DBName);
+        		$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, date) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate') ";
+        		$QueryResult = mysqli_query($DBConnect,$QueryString)
+        		     Or die("<p> Unable to execute query. </p>"
+        		     . "<p> Error code  " .  mysqli_errno($DBConnect)
+        		     .  ": " . mysqli_error($DBConnect)) . "</p>" ;
 
-            //--------------------------------------------------------------------------
-    		$DBConnect = mysqli_connect("localhost","root","");
-    		if (!$DBConnect) 
-    		{
-    		    die('Could not connect: ' . mysqli_error());
-    		}
-    		$DBName = "helpdeskdb";
-    		mysqli_select_db($DBConnect,$DBName);
-    		$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, description, date) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority','$description', '$theDate') ";
-    		$QueryResult = mysqli_query($DBConnect,$QueryString)
-    		     Or die("<p> Unable to execute query. </p>"
-    		     . "<p> Error code  " .  mysqli_errno($DBConnect)
-    		     .  ": " . mysqli_error($DBConnect)) . "</p>" ;
-
-    		mysqli_close($DBConnect);
-    		 //-------------------------------------------------------------------------
+        		mysqli_close($DBConnect);
     		?>
         </div>
         <br>

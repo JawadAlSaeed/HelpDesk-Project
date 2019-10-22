@@ -83,11 +83,18 @@
                     </div>
                     <div class="col-75">                   
                         <select id="priority" name="priority">
-                          <option value=" "> </option>
                           <option value="Low">Low</option>
                           <option value="Moderate">Moderate</option>
                           <option value="High">High</option>
                         </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="title" name="title" placeholder="Title">
                     </div>
                 </div>
                 <div class="row">
@@ -106,6 +113,7 @@
         </div>
         <br>
         <br>
+        <br>
         </center>
     </div>
 </body>
@@ -113,5 +121,5 @@
 </html>
 
 <?php 
-require "tools/footer.php";
+    require "tools/footer.php";
 ?>
