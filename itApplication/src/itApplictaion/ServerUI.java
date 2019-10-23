@@ -69,6 +69,8 @@ public class ServerUI extends javax.swing.JFrame {
         emialButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        startDate = new com.toedter.calendar.JDateChooser();
+        endDate = new com.toedter.calendar.JDateChooser();
         footerLabel = new javax.swing.JLabel();
         footerLabel1 = new javax.swing.JLabel();
 
@@ -92,7 +94,7 @@ public class ServerUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "No.", "User ID", "Email", "Telephone", "Department", "Priority", "Description", "Date", "State"
+                "No.", "User ID", "Email", "Telephone", "Department", "Priority", "Title", "Description", "Date", "State"
             }
         ));
         requestTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,18 +167,26 @@ public class ServerUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(endDate, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                    .addComponent(startDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(79, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(startDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(endDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(departmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -221,7 +231,7 @@ public class ServerUI extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -264,20 +274,19 @@ public class ServerUI extends javax.swing.JFrame {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
             if (startDate.getDate() == null && endDate.getDate() == null) {
-
-            } else if 
+                
+            } else if (startDate.getDate() == null && endDate.getDate() != null) {
+                
             
-            
-            
-            else {
+            } else if (startDate.getDate() != null && endDate.getDate() == null) {
+                
+            }else {
                 String sDate = sdf.format(startDate.getDate());
                 String eDate = sdf.format(endDate.getDate()); 
-            }
-               
-            String eDate = sdf.format(endDate.getDate());     
+                System.out.println(sDate);
+                System.out.println(eDate);
+            }            
             
-//            System.out.println(sDate);
-//            System.out.println(eDate);
 
             if (dep == "All") {
                 SQL = "select * from requests";
@@ -301,8 +310,9 @@ public class ServerUI extends javax.swing.JFrame {
                     rs.getString(5),
                     rs.getString(6),
                     rs.getString(7),
-                    rs.getDate(8),
-                    rs.getString(9)
+                    rs.getString(8),
+                    rs.getDate(9),
+                    rs.getString(10)
                 });
             }
         } catch (SQLException ex) {
@@ -366,9 +376,10 @@ public class ServerUI extends javax.swing.JFrame {
         requestTable.getColumnModel().getColumn(3).setPreferredWidth(80);
         requestTable.getColumnModel().getColumn(4).setPreferredWidth(100);
         requestTable.getColumnModel().getColumn(5).setPreferredWidth(55);
-        requestTable.getColumnModel().getColumn(6).setPreferredWidth(400);
-        requestTable.getColumnModel().getColumn(7).setPreferredWidth(65);
-        requestTable.getColumnModel().getColumn(8).setPreferredWidth(55);
+        requestTable.getColumnModel().getColumn(6).setPreferredWidth(150);
+        requestTable.getColumnModel().getColumn(7).setPreferredWidth(250);
+        requestTable.getColumnModel().getColumn(8).setPreferredWidth(65);
+        requestTable.getColumnModel().getColumn(9).setPreferredWidth(55);
 
         try {
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
@@ -398,8 +409,9 @@ public class ServerUI extends javax.swing.JFrame {
                     rs.getString(5),
                     rs.getString(6),
                     rs.getString(7),
-                    rs.getDate(8),
-                    rs.getString(9)
+                    rs.getString(8),
+                    rs.getDate(9),
+                    rs.getString(10)
                 });
             }
         } catch (SQLException ex) {
@@ -466,6 +478,7 @@ public class ServerUI extends javax.swing.JFrame {
     private javax.swing.JLabel confirmLabel;
     private javax.swing.JComboBox<String> departmentComboBox;
     private javax.swing.JButton emialButton;
+    private com.toedter.calendar.JDateChooser endDate;
     private javax.swing.JLabel footerLabel;
     private javax.swing.JLabel footerLabel1;
     private javax.swing.JLabel jLabel1;
@@ -478,5 +491,6 @@ public class ServerUI extends javax.swing.JFrame {
     private javax.swing.JTable requestTable;
     private javax.swing.JButton searchButtton;
     private javax.swing.JTextArea serverTextArea;
+    private com.toedter.calendar.JDateChooser startDate;
     // End of variables declaration//GEN-END:variables
 }
