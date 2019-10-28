@@ -6,12 +6,18 @@
 package itApplictaion;
 
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.security.Security;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.crypto.*;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  *
@@ -20,8 +26,19 @@ import javax.swing.JOptionPane;
 public class LoginUser extends javax.swing.JFrame {
     
     LoginDB loginDb;
-    Connection conn;
-
+    Connection conn; 
+    
+//    //-------------------------------------------------------
+//    byte[] input;
+//    byte[] keyBytes = "12345678".getBytes();
+//    byte[] ivBytes = "input123".getBytes();
+//    SecretKeySpec key = new SecretKeySpec(keyBytes, "DES");
+//    IvParameterSpec ivSpec = new IvParameterSpec(ivBytes);
+//    Cipher cipher;
+//    byte[] cipherThext;
+//    int ctLength;
+//    //-------------------------------------------------------          
+    
     /**
      * Creates new form LoginUser
      */
@@ -29,6 +46,9 @@ public class LoginUser extends javax.swing.JFrame {
         initComponents();
         setTitle("HelpDesk");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
+        
+        loginDb = new LoginDB("helpdeskdb", "root", "");
+        conn = loginDb.getConnection();
         
     }
 
@@ -39,12 +59,14 @@ public class LoginUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        loginPanel = new javax.swing.JPanel();
         usernameField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         loginButton = new javax.swing.JToggleButton();
+        footerLabel = new javax.swing.JLabel();
+        footerLabel1 = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,34 +90,54 @@ public class LoginUser extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        footerLabel.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        footerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        footerLabel.setText("Designed by Jawad Al-Saeed");
+
+        footerLabel1.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        footerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        footerLabel1.setText("Copyright 2019, HelpDeskProject");
+
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
+        loginPanel.setLayout(loginPanelLayout);
+        loginPanelLayout.setHorizontalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanelLayout.createSequentialGroup()
                 .addContainerGap(121, Short.MAX_VALUE)
                 .addComponent(loginButton)
                 .addContainerGap(122, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(footerLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(footerLabel1)
+                .addContainerGap())
+            .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(passwordField)
-                            .addComponent(usernameField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(passwordField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(usernameField))
                         .addGap(51, 51, 51))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        loginPanelLayout.setVerticalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -105,46 +147,92 @@ public class LoginUser extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
                 .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(footerLabel)
+                    .addComponent(footerLabel1))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        String user = usernameField.getText();
-        char[] pass = passwordField.getPassword();
+        String userLogin = usernameField.getText();
+        String passLogin = passwordField.getText();
+        String SQL;
         
-        if ( "".equals(user) ||  pass == null){
+        if ( "".equals(userLogin) ||  passLogin == null){
             JOptionPane.showMessageDialog(this, "Please Enter the Username and the Password", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
+            SQL = "select * from employees where uidEmployees = '"+ userLogin + "' AND pwdEmployees = '" + passLogin + "';";
+            System.out.println(SQL);
+            Statement statement;
+            try {
+                statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(SQL);
+                boolean found = false;
+                while (rs.next()) {
+                    found = true;
+                    ServerUI app = new ServerUI();
+                    app.setVisible(true);
+                    setVisible(false);
+                 }
+                if (!found){
+                    JOptionPane.showMessageDialog(this, "Wrong Username or password", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+            String userLogin = usernameField.getText();
+            String passLogin = passwordField.getText();
             String SQL;
-            
-                SQL = "";
+
+            if ( "".equals(userLogin) ||  passLogin == null){
+                JOptionPane.showMessageDialog(this, "Please Enter the Username and the Password", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                SQL = "select * from employees where uidEmployees = '"+ userLogin + "' AND pwdEmployees = '" + passLogin + "';";
                 System.out.println(SQL);
                 Statement statement;
                 try {
                     statement = conn.createStatement();
-                    statement.executeUpdate(SQL);
+                    ResultSet rs = statement.executeQuery(SQL);
+                    boolean found = false;
+                    while (rs.next()) {
+                        found = true;
+                        ServerUI app = new ServerUI();
+                        app.setVisible(true);
+                        setVisible(false);
+                     }
+                    if (!found){
+                        JOptionPane.showMessageDialog(this, "Wrong Username or password", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 } catch (SQLException ex) {
                     Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-        }    
-    }//GEN-LAST:event_loginButtonActionPerformed
+            }
+        }
+    }//GEN-LAST:event_passwordFieldKeyPressed
 
     /**
      * @param args the command line arguments
@@ -182,11 +270,13 @@ public class LoginUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel footerLabel;
+    private javax.swing.JLabel footerLabel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton loginButton;
+    private javax.swing.JPanel loginPanel;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables

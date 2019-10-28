@@ -5,28 +5,15 @@
  */
 package itApplictaion;
 
-import java.awt.Point;
-import static java.awt.SystemColor.window;
-import java.awt.TextArea;
 import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.management.modelmbean.ModelMBean;
-import javax.swing.JEditorPane;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -71,7 +58,7 @@ public class ServerUI extends javax.swing.JFrame {
         closeOpenButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         confirmLabel = new javax.swing.JLabel();
-        emialButton = new javax.swing.JButton();
+        emailButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         startDate = new com.toedter.calendar.JDateChooser();
@@ -92,7 +79,6 @@ public class ServerUI extends javax.swing.JFrame {
         openLabel = new javax.swing.JLabel();
         footerLabel = new javax.swing.JLabel();
         footerLabel1 = new javax.swing.JLabel();
-        exitLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 255));
@@ -159,11 +145,11 @@ public class ServerUI extends javax.swing.JFrame {
         confirmLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         confirmLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        emialButton.setText("Email user");
-        emialButton.setActionCommand("");
-        emialButton.addActionListener(new java.awt.event.ActionListener() {
+        emailButton.setText("Email user");
+        emailButton.setActionCommand("");
+        emailButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emialButtonActionPerformed(evt);
+                emailButtonActionPerformed(evt);
             }
         });
 
@@ -199,11 +185,6 @@ public class ServerUI extends javax.swing.JFrame {
         jLabel7.setText("HelpDesk");
 
         allPanel.setBackground(new java.awt.Color(17, 45, 50));
-        allPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                allPanelMouseClicked(evt);
-            }
-        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,9 +208,9 @@ public class ServerUI extends javax.swing.JFrame {
             allPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(allPanelLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(allPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(allLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(allPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(allLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -257,10 +238,10 @@ public class ServerUI extends javax.swing.JFrame {
             closedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(closedPanelLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(closedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(closedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(closedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(closedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         openPanel.setBackground(new java.awt.Color(17, 45, 50));
@@ -287,9 +268,9 @@ public class ServerUI extends javax.swing.JFrame {
             openPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(openPanelLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(openPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(openLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(openPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(openLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -306,7 +287,7 @@ public class ServerUI extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addGroup(sideMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(sideMenuPanelLayout.createSequentialGroup()
-                                .addComponent(emialButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(emailButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(closeOpenButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -382,7 +363,7 @@ public class ServerUI extends javax.swing.JFrame {
                 .addGroup(sideMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(closeOpenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emialButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(emailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(confirmLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
@@ -396,14 +377,6 @@ public class ServerUI extends javax.swing.JFrame {
         footerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         footerLabel1.setText("Copyright 2019, HelpDeskProject");
 
-        exitLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        exitLabel.setText("X");
-        exitLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exitLabelMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -415,9 +388,6 @@ public class ServerUI extends javax.swing.JFrame {
                     .addComponent(jScrollPane2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(exitLabel))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(footerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(footerLabel1)))
@@ -426,11 +396,8 @@ public class ServerUI extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(exitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -476,7 +443,7 @@ public class ServerUI extends javax.swing.JFrame {
                 System.out.println(eDate);
             }
 
-            if (dep == "All") {
+            if ("All".equals(dep)) {
                 SQL = "select * from requests";
                 confirmLabel.setText("All reqeuests displayed");
             } else {
@@ -554,7 +521,7 @@ public class ServerUI extends javax.swing.JFrame {
         int index = requestTable.getSelectedRow();
         TableModel model = requestTable.getModel();
         String description = model.getValueAt(index, 7).toString();
-        serverTextArea.setText(description);
+        serverTextArea.setText("Description:\n" + description);
     }//GEN-LAST:event_requestTableMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -618,7 +585,7 @@ public class ServerUI extends javax.swing.JFrame {
         //-------------------------------------------------------------------------
     }//GEN-LAST:event_formWindowOpened
 
-    private void emialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emialButtonActionPerformed
+    private void emailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailButtonActionPerformed
         String SQL;
         if (requestTable.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "please select a row", "Error", JOptionPane.ERROR_MESSAGE);
@@ -626,27 +593,11 @@ public class ServerUI extends javax.swing.JFrame {
             MailApp popup = new MailApp();
             popup.setVisible(true);
         }
-    }//GEN-LAST:event_emialButtonActionPerformed
-
-    private void startDateComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_startDateComponentAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_startDateComponentAdded
-
-    private void endDateComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_endDateComponentAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_endDateComponentAdded
+    }//GEN-LAST:event_emailButtonActionPerformed
 
     private void searchIdButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchIdButttonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchIdButttonActionPerformed
-
-    private void exitLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitLabelMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_exitLabelMouseClicked
-
-    private void allPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_allPanelMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_allPanelMouseClicked
 
     private void rquestsCounter() {
         //-------------------------------------------------------------------------
@@ -739,9 +690,8 @@ public class ServerUI extends javax.swing.JFrame {
     private javax.swing.JPanel closedPanel;
     private javax.swing.JLabel confirmLabel;
     private javax.swing.JComboBox<String> departmentComboBox;
-    private javax.swing.JButton emialButton;
+    private javax.swing.JButton emailButton;
     private com.toedter.calendar.JDateChooser endDate;
-    private javax.swing.JLabel exitLabel;
     private javax.swing.JLabel footerLabel;
     private javax.swing.JLabel footerLabel1;
     private javax.swing.JLabel jLabel1;
