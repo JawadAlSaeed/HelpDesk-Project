@@ -52,7 +52,7 @@
                 <li><a href="Home.php">Home</a></li>
                 <li><a href="Requests.php">Requests</a></li>
                 <li><a href="contactUs.php">Contact us</a></li>
-                <li><a class="active" href="FAQ.php">FAQ</a></li>
+                <li><a class="active" href="FAQ.php">FAQs</a></li>
                 <li><a href="About.php">About</a></li>
                 <li style="float:right">
                     <?php
@@ -70,17 +70,17 @@
         <br>
         <div class="subTitle">
             <center>
-                <h1 style="font-size:45px">FAQ</h1>
-                <h3>search the FAQs or browse by category below</h3>
+                <h1 style="font-size:45px">FAQs</h1>
+                <!-- <h3>search the FAQs or browse by category below</h3> -->
             </center>
         </div>
         <br>
-        <div class="search-container">
+    <!--<div class="search-container">
             <form action="" method="post">
                 <input style="border-radius: 4px;" placeholder="Search FAQs" type="text" name="search" id="search">
                 <input type="submit" name="search-submit" id="submit" value="Send">
             </form>
-        </div>
+        </div> -->
         <br>
         <br>
         <div class="tabs">

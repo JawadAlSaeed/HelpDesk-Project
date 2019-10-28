@@ -28,7 +28,7 @@
                 <li><a href="Home.php">Home</a></li>
                 <li><a href="Requests.php">Requests</a></li>
                 <li><a href="contactUs.php">Contact us</a></li>
-                <li><a href="FAQ.php">FAQ</a></li>
+                <li><a href="FAQ.php">FAQs</a></li>
                 <li><a href="About.php">About</a></li>
                 <li>
                     <?php

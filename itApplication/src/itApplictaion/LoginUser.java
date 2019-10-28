@@ -44,6 +44,7 @@ public class LoginUser extends javax.swing.JFrame {
      */
     public LoginUser() {
         initComponents();
+        this.setLocationRelativeTo(null);
         setTitle("HelpDesk");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
         

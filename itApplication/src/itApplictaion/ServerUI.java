@@ -33,6 +33,7 @@ public class ServerUI extends javax.swing.JFrame {
      */
     public ServerUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
         setTitle("HelpDesk");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
 
@@ -66,7 +67,7 @@ public class ServerUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         searchIdButtton = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        requestIdTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         allPanel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -77,6 +78,8 @@ public class ServerUI extends javax.swing.JFrame {
         openPanel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         openLabel = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
         footerLabel = new javax.swing.JLabel();
         footerLabel1 = new javax.swing.JLabel();
 
@@ -167,11 +170,11 @@ public class ServerUI extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("search by information:");
+        jLabel4.setText("Search by Information:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("search by ID:");
+        jLabel5.setText("Search by Reqeuest ID:");
 
         searchIdButtton.setText("Search");
         searchIdButtton.addActionListener(new java.awt.event.ActionListener() {
@@ -241,7 +244,7 @@ public class ServerUI extends javax.swing.JFrame {
                 .addGroup(closedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(closedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         openPanel.setBackground(new java.awt.Color(17, 45, 50));
@@ -300,9 +303,22 @@ public class ServerUI extends javax.swing.JFrame {
             .addComponent(allPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(openPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(closedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(sideMenuPanelLayout.createSequentialGroup()
+                .addGroup(sideMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sideMenuPanelLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel7))
+                    .addGroup(sideMenuPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel5)))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(sideMenuPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(sideMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sideMenuPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(sideMenuPanelLayout.createSequentialGroup()
                         .addGroup(sideMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(sideMenuPanelLayout.createSequentialGroup()
@@ -314,19 +330,11 @@ public class ServerUI extends javax.swing.JFrame {
                                     .addComponent(endDate, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                                     .addComponent(startDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(sideMenuPanelLayout.createSequentialGroup()
-                                .addComponent(jTextField1)
+                                .addComponent(requestIdTextField)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(searchIdButtton)))
-                        .addContainerGap())
-                    .addGroup(sideMenuPanelLayout.createSequentialGroup()
-                        .addGroup(sideMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(sideMenuPanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel7)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap())))
+            .addComponent(jSeparator2)
         );
         sideMenuPanelLayout.setVerticalGroup(
             sideMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,13 +347,17 @@ public class ServerUI extends javax.swing.JFrame {
                 .addComponent(openPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(closedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(73, 73, 73)
+                .addGap(33, 33, 33)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addGroup(sideMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchIdButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(requestIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchIdButtton))
+                .addGap(24, 24, 24)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(sideMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -596,7 +608,36 @@ public class ServerUI extends javax.swing.JFrame {
     }//GEN-LAST:event_emailButtonActionPerformed
 
     private void searchIdButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchIdButttonActionPerformed
-        // TODO add your handling code here:
+        try {
+            String requestId = requestIdTextField.getText();
+            DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
+            model.setRowCount(0);
+            String SQL;
+
+            SQL = "SELECT * FROM `requests` WHERE requestID = "+requestId+";";
+            System.out.println(SQL);
+            ResultSet rs = loginDb.getResultSet(conn, SQL);
+            boolean hasNext = false;
+            while (rs.next()) {
+                hasNext = true;
+                model.addRow(new Object[]{
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    rs.getString(7),
+                    rs.getString(8),
+                    rs.getDate(9),
+                    rs.getString(10)
+                });
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }//GEN-LAST:event_searchIdButttonActionPerformed
 
     private void rquestsCounter() {
@@ -706,9 +747,11 @@ public class ServerUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel openLabel;
     private javax.swing.JPanel openPanel;
+    private javax.swing.JTextField requestIdTextField;
     private javax.swing.JTable requestTable;
     private javax.swing.JButton searchButtton;
     private javax.swing.JButton searchIdButtton;
