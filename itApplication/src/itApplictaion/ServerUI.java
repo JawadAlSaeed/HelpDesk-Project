@@ -27,6 +27,7 @@ public class ServerUI extends javax.swing.JFrame {
 
     LoginDB loginDb;
     Connection conn;
+    String email;
 
     /**
      * Creates new form ServerUI
@@ -678,7 +679,7 @@ public class ServerUI extends javax.swing.JFrame {
             model.setRowCount(0);
             String SQL;
 
-            SQL = "select * from requests where state = open";
+            SQL = "select * from requests where state = 'open'";
             confirmLabel.setText("All open reqeuests displayed");
 
             sqlDisplayer(SQL);
@@ -694,7 +695,7 @@ public class ServerUI extends javax.swing.JFrame {
             model.setRowCount(0);
             String SQL;
 
-            SQL = "select * from requests where state = closed";
+            SQL = "select * from requests where state = 'closed'";
             confirmLabel.setText("All open reqeuests displayed");
 
             sqlDisplayer(SQL);
@@ -774,6 +775,12 @@ public class ServerUI extends javax.swing.JFrame {
                 rs.getString(10)
             });
         }
+    }
+    
+    public void getEmail (){
+        int index = requestTable.getSelectedRow();
+        TableModel model = requestTable.getModel();
+        String email = model.getValueAt(index, 2).toString();
     }
 
     /**

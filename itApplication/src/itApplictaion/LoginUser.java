@@ -7,7 +7,6 @@ package itApplictaion;
 
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.security.Security;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,9 +14,6 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.crypto.*;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 
 /**
  *
@@ -27,17 +23,6 @@ public class LoginUser extends javax.swing.JFrame {
 
     LoginDB loginDb;
     Connection conn;
-
-//    //-------------------------------------------------------
-//    byte[] input;
-//    byte[] keyBytes = "12345678".getBytes();
-//    byte[] ivBytes = "input123".getBytes();
-//    SecretKeySpec key = new SecretKeySpec(keyBytes, "DES");
-//    IvParameterSpec ivSpec = new IvParameterSpec(ivBytes);
-//    Cipher cipher;
-//    byte[] cipherThext;
-//    int ctLength;
-//    //-------------------------------------------------------          
     /**
      * Creates new form LoginUser
      */

@@ -25,10 +25,10 @@
         <div class="header">
             <ul>
                 <li><a href="Home.php">Home</a></li>
-                <li><a href="Requests.php">Requests</a></li>
+                <li><a class="active" href="Requests.php">Requests</a></li>
                 <li><a href="contactUs.php">Contact us</a></li>
                 <li><a href="FAQ.php">FAQs</a></li>
-                <li><a class="active" href="About.php">About</a></li>
+                <li><a href="About.php">About</a></li>
                 <li style="float:right">
                     <?php
                         require "tools/session.php"; 
@@ -95,7 +95,7 @@
         		}
         		$DBName = "helpdeskdb";
         		mysqli_select_db($DBConnect,$DBName);
-        		$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, date) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate') ";
+        		$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate') ";
         		$QueryResult = mysqli_query($DBConnect,$QueryString)
         		     Or die("<p> Unable to execute query. </p>"
         		     . "<p> Error code  " .  mysqli_errno($DBConnect)

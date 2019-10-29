@@ -86,7 +86,7 @@
                     echo "</td><td>"; 
                     echo $row['description'];
                     echo "</td><td>";
-                    echo $row['date'];
+                    echo $row['requestCreated'];
                     echo "</td><td>";  
                     echo $row['state'];
                     echo "</td></tr>";
