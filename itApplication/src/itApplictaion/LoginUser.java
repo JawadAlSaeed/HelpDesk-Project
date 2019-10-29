@@ -24,10 +24,10 @@ import javax.crypto.spec.SecretKeySpec;
  * @author jawad.saeed
  */
 public class LoginUser extends javax.swing.JFrame {
-    
+
     LoginDB loginDb;
-    Connection conn; 
-    
+    Connection conn;
+
 //    //-------------------------------------------------------
 //    byte[] input;
 //    byte[] keyBytes = "12345678".getBytes();
@@ -38,7 +38,6 @@ public class LoginUser extends javax.swing.JFrame {
 //    byte[] cipherThext;
 //    int ctLength;
 //    //-------------------------------------------------------          
-    
     /**
      * Creates new form LoginUser
      */
@@ -47,10 +46,10 @@ public class LoginUser extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setTitle("HelpDesk");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
-        
+
         loginDb = new LoginDB("helpdeskdb", "root", "");
         conn = loginDb.getConnection();
-        
+
     }
 
     /**
@@ -176,11 +175,14 @@ public class LoginUser extends javax.swing.JFrame {
         String userLogin = usernameField.getText();
         String passLogin = passwordField.getText();
         String SQL;
-        
-        if ( "".equals(userLogin) ||  passLogin == null){
+
+        if ("".equals(userLogin) || passLogin == null) {
             JOptionPane.showMessageDialog(this, "Please Enter the Username and the Password", "Error", JOptionPane.ERROR_MESSAGE);
+            usernameField.setText("");
+            passwordField.setText("");
+            usernameField.requestFocus();
         } else {
-            SQL = "select * from employees where uidEmployees = '"+ userLogin + "' AND pwdEmployees = '" + passLogin + "';";
+            SQL = "select * from employees where uidEmployees = '" + userLogin + "' AND pwdEmployees = '" + passLogin + "';";
             System.out.println(SQL);
             Statement statement;
             try {
@@ -192,27 +194,30 @@ public class LoginUser extends javax.swing.JFrame {
                     ServerUI app = new ServerUI();
                     app.setVisible(true);
                     setVisible(false);
-                 }
-                if (!found){
+                }
+                if (!found) {
                     JOptionPane.showMessageDialog(this, "Wrong Username or password", "Error", JOptionPane.ERROR_MESSAGE);
+                    usernameField.setText("");
+                    passwordField.setText("");
+                    usernameField.requestFocus();
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             String userLogin = usernameField.getText();
             String passLogin = passwordField.getText();
             String SQL;
 
-            if ( "".equals(userLogin) ||  passLogin == null){
+            if ("".equals(userLogin) || passLogin == null) {
                 JOptionPane.showMessageDialog(this, "Please Enter the Username and the Password", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                SQL = "select * from employees where uidEmployees = '"+ userLogin + "' AND pwdEmployees = '" + passLogin + "';";
+                SQL = "select * from employees where uidEmployees = '" + userLogin + "' AND pwdEmployees = '" + passLogin + "';";
                 System.out.println(SQL);
                 Statement statement;
                 try {
@@ -224,9 +229,12 @@ public class LoginUser extends javax.swing.JFrame {
                         ServerUI app = new ServerUI();
                         app.setVisible(true);
                         setVisible(false);
-                     }
-                    if (!found){
+                    }
+                    if (!found) {
                         JOptionPane.showMessageDialog(this, "Wrong Username or password", "Error", JOptionPane.ERROR_MESSAGE);
+                        usernameField.setText("");
+                        passwordField.setText("");
+                        usernameField.requestFocus();
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
