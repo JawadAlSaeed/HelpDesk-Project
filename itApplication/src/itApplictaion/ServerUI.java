@@ -488,6 +488,7 @@ public class ServerUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButttonActionPerformed
@@ -636,8 +637,10 @@ public class ServerUI extends javax.swing.JFrame {
         if (requestTable.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "please select a row", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            MailApp popup = new MailApp();
-            popup.setVisible(true);
+            int index = requestTable.getSelectedRow();
+            TableModel model = requestTable.getModel();
+            String email = model.getValueAt(index, 2).toString();
+            new MailApp(email).setVisible(true);
         }
     }//GEN-LAST:event_emailButtonActionPerformed
 
@@ -777,12 +780,6 @@ public class ServerUI extends javax.swing.JFrame {
         }
     }
     
-    public void getEmail (){
-        int index = requestTable.getSelectedRow();
-        TableModel model = requestTable.getModel();
-        String email = model.getValueAt(index, 2).toString();
-    }
-
     /**
      * @param args the command line arguments
      */
