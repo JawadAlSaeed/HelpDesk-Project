@@ -6,6 +6,7 @@
 package itApplictaion;
 
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,7 +25,9 @@ public class MailApp extends javax.swing.JFrame {
     }
     public MailApp(String email) {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
+        setTitle("HelpDesk");
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
         emailTextField.setText(email);
         subjectTextField.requestFocus();
     }
@@ -128,7 +131,6 @@ public class MailApp extends javax.swing.JFrame {
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
         if (evt.getSource() == sendButton) {
-
             String to = emailTextField.getText();
             String subject = subjectTextField.getText();
             String message = msgTextArea.getText();

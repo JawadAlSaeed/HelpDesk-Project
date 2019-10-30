@@ -27,7 +27,6 @@ public class ServerUI extends javax.swing.JFrame {
 
     LoginDB loginDb;
     Connection conn;
-    String email;
 
     /**
      * Creates new form ServerUI
@@ -111,7 +110,15 @@ public class ServerUI extends javax.swing.JFrame {
             new String [] {
                 "ID", "User ID", "Email", "Telephone", "Department", "Priority", "Title", "Description", "Date", "State"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         requestTable.setGridColor(new java.awt.Color(204, 255, 255));
         requestTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -259,8 +266,9 @@ public class ServerUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(closedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(closedPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel5)
-                        .addGap(28, 28, 28)
+                        .addGap(18, 18, 18)
                         .addComponent(closedLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, closedPanel1Layout.createSequentialGroup()
@@ -356,23 +364,25 @@ public class ServerUI extends javax.swing.JFrame {
                                 .addComponent(endDate, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(startDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(closedPanel2Layout.createSequentialGroup()
-                        .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(closedPanel2Layout.createSequentialGroup()
-                                .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(213, 213, 213)
-                                .addComponent(closedLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, closedPanel2Layout.createSequentialGroup()
                         .addComponent(emailButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(closeOpenButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(confirmLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(confirmLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(closedPanel2Layout.createSequentialGroup()
+                        .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(closedPanel2Layout.createSequentialGroup()
+                                .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(213, 213, 213)
+                                .addComponent(closedLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(closedPanel2Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel4)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         closedPanel2Layout.setVerticalGroup(
@@ -463,15 +473,15 @@ public class ServerUI extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(footerLabel)
                     .addComponent(footerLabel1))
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addComponent(sideMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(sideMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 576, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -482,9 +492,7 @@ public class ServerUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -594,7 +602,7 @@ public class ServerUI extends javax.swing.JFrame {
         TableModel model = requestTable.getModel();
         String title = model.getValueAt(index, 6).toString();
         String description = model.getValueAt(index, 7).toString();
-        serverTextArea.setText("title:\n" + title + "\n\nDescription:\n" + description);
+        serverTextArea.setText("Title:-\n" + title + "\n---------------------------------------------\nDescription:-\n" + description);
     }//GEN-LAST:event_requestTableMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -645,16 +653,20 @@ public class ServerUI extends javax.swing.JFrame {
     }//GEN-LAST:event_emailButtonActionPerformed
 
     private void searchIdButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchIdButttonActionPerformed
-        try {
-            String requestId = requestIdTextField.getText();
-            DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
-            model.setRowCount(0);
-            String SQL;
+        if (!"".equals(requestIdTextField.getText())) {
+            try {
+                String requestId = requestIdTextField.getText();
+                DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
+                model.setRowCount(0);
+                String SQL;
 
-            SQL = "SELECT * FROM `requests` WHERE requestID = " + requestId + ";";
-            sqlDisplayer(SQL);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
+                SQL = "SELECT * FROM `requests` WHERE requestID = " + requestId + ";";
+                sqlDisplayer(SQL);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please enter a request ID", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
 
@@ -779,7 +791,7 @@ public class ServerUI extends javax.swing.JFrame {
             });
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
