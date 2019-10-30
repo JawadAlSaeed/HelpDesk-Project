@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2019 at 08:07 AM
+-- Generation Time: Oct 30, 2019 at 08:02 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -25,17 +25,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `employees`
+--
+
+CREATE TABLE `employees` (
+  `idEmployees` int(11) NOT NULL,
+  `uidEmployees` tinytext NOT NULL,
+  `pwdEmployees` tinytext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`idEmployees`, `uidEmployees`, `pwdEmployees`) VALUES
+(1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `requests`
 --
 
 CREATE TABLE `requests` (
-  `requestID` int(11) NOT NULL,
-  `uidUsers` tinytext NOT NULL,
-  `telephone` varchar(13) NOT NULL,
-  `dpartment` tinytext NOT NULL,
+  `requestID` int(6) UNSIGNED ZEROFILL NOT NULL,
+  `uidUsers` varchar(20) NOT NULL,
+  `emailUsers` tinytext NOT NULL,
+  `telephone` int(13) NOT NULL,
+  `department` tinytext NOT NULL,
   `priority` tinytext NOT NULL,
+  `title` tinytext NOT NULL,
   `description` longtext NOT NULL,
-  `date` tinytext NOT NULL,
+  `requestCreated` date NOT NULL DEFAULT current_timestamp(),
   `state` tinytext NOT NULL DEFAULT 'open'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -43,11 +64,11 @@ CREATE TABLE `requests` (
 -- Dumping data for table `requests`
 --
 
-INSERT INTO `requests` (`requestID`, `uidUsers`, `telephone`, `dpartment`, `priority`, `description`, `date`, `state`) VALUES
-(4, 'dany', '+966536960662', 'Network Department', 'Low', 'adfafsd', '2019-10-02 10:19:35am', 'open'),
-(5, 'dany', '+966536960662', 'Network Department', 'High', 'adfadsf', '2019-10-02 10:55:09am', 'open'),
-(6, 'dany', '+966536960662', 'Support Department', 'High', 'BRUH BRUH BRUH BURH\r\n\r\nbruh bru bruh?\r\n\r\nburhBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURHBRUH BRUH BRUH BURH.\r\n\r\nbruh,\r\nbruh bruh', '2019-10-02 11:08:09am', 'open'),
-(7, 'Jawadalsaeed', '+966536960662', 'fdfa', 'Moderate', 'sdfasdadf', '2019-10-02 11:11:05am', 'open');
+INSERT INTO `requests` (`requestID`, `uidUsers`, `emailUsers`, `telephone`, `department`, `priority`, `title`, `description`, `requestCreated`, `state`) VALUES
+(000005, 'JawadAlsaeed266', 'jawadalsaeed266@gmail.com', 2147483647, 'System Department', 'Moderate', 'helolo i wnat user', 'sdajflk;jasjk;lfdas;jlkadsfjklfds', '2019-10-29', 'open'),
+(000006, 'JawadAlsaeed266', 'jawadalsaeed266@gmail.com', 2147483647, 'Support Department', 'Moderate', 'sdfsda', 'asdfasdfs', '2019-10-29', 'open'),
+(000007, 'JawadAlsaeed266', 'jawadalsaeed266@gmail.com', 2147483647, 'Sales Department', 'High', 'fsdafsad', 'sadfadsafd', '2019-10-29', 'open'),
+(000008, 'JawadAlsaeed266', 'jawadalsaeed266@gmail.com', 2147483647, 'Support Department', 'High', 'kjlafaa', 'dasfdsa', '2019-10-29', 'closed');
 
 -- --------------------------------------------------------
 
@@ -67,13 +88,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idUsers`, `uidUsers`, `emailUsers`, `pwdUsers`) VALUES
-(9, 'Jawadalsaeed', 'jawadalsaeed266@gmail.com', '$2y$10$gwRzytLYOBbbssztEmMiKe7Xj/uApbD4YK5GwX820Mri1uP/yQEeO'),
-(14, 'dany', 'bob@hotmail.com', '$2y$10$QsH3qMmF1Xzp.31UpkRi0.Iz/aCt2kwsdwPJaZ4S7imEX5SduaRhS'),
-(15, 'dragonx1x1x1', 'drdaonx1x1x1@hotmail.com', '$2y$10$P0NGhiv63QBd0FTMmyfUGuo4ExgyMMtV34IS9pybR6DCJPL6xj3BS');
+(1, 'JawadAlsaeed266', 'jawadalsaeed266@gmail.com', '$2y$10$0oMcrL/KvYKHt/yhygeWfOOaJ8h7AZzDaFlOkKBk/M5npeeG6iUzi');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `employees`
+--
+ALTER TABLE `employees`
+  ADD PRIMARY KEY (`idEmployees`);
 
 --
 -- Indexes for table `requests`
@@ -92,16 +117,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `employees`
+--
+ALTER TABLE `employees`
+  MODIFY `idEmployees` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `requestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `requestID` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
