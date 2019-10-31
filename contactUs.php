@@ -4,6 +4,11 @@
     $response="";
 
     if(isset($_POST['submit'])){
+        if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['subject']) || empty($_POST['body']) ) {
+        header("location: contactUs.php?error=emptyfields");
+        exit();
+        }
+
         require 'tools/PHPMailer/PHPMailerAutoload.php';
         require 'tools/PHPMailer/class.phpmailer.php';
         $mail = new PHPMailer;
@@ -69,8 +74,11 @@
             </ul>
         </div>
         <br>
-        <div class="contactErrors">
-            <p><?= $response; ?></p>
+        <div class="contactUsErrors">
+            <?php 
+                require "tools/contactUsErrors.php";
+            ?>
+        </p>
         </div>
         <br>
         <div class="subTitle">

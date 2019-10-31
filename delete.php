@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button class="submitBtn" type="submit" name="delete-submit"  onclick="myFunction()">Submit</button>
+                    <button class="submitBtn" type="submit" name="delete-submit"  onclick="confirm()">Submit</button>
                 </div>
             </form>
         </div> 
@@ -82,7 +82,7 @@
     <br>
 
 <script>
-function myFunction() {
+function confirm() {
   confirm("Are you sure you want to delete your account?");
 }
 </script>
