@@ -130,7 +130,7 @@ public class ServerUI extends javax.swing.JFrame {
         sideMenuPanel.setBackground(new java.awt.Color(37, 67, 88));
         sideMenuPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 49)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("HelpDesk");
 
@@ -424,7 +424,7 @@ public class ServerUI extends javax.swing.JFrame {
             .addComponent(closedPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
             .addComponent(closedPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
             .addGroup(sideMenuPanelLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(51, 51, 51)
                 .addComponent(jLabel7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
