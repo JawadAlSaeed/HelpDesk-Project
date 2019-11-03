@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+//btn.setEnabled(false);
 /**
  *
  * @author jawad.saeed
@@ -38,6 +39,12 @@ public class ServerUI extends javax.swing.JFrame {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
         loginDb = new LoginDB("helpdeskdb", "root", "");
         conn = loginDb.getConnection();
+
+        if (requestTable.getSelectedRow() == -1) {
+            deleteButton.setEnabled(false);
+            emailButton.setEnabled(false);
+            stateButton.setEnabled(false);
+        }
     }
 
     /**
@@ -78,11 +85,12 @@ public class ServerUI extends javax.swing.JFrame {
         endDate = new com.toedter.calendar.JDateChooser();
         departmentComboBox = new javax.swing.JComboBox<>();
         searchButtton = new javax.swing.JButton();
-        closeOpenButton = new javax.swing.JButton();
-        emailButton = new javax.swing.JButton();
         confirmLabel = new javax.swing.JLabel();
         footerLabel = new javax.swing.JLabel();
         footerLabel1 = new javax.swing.JLabel();
+        stateButton = new javax.swing.JButton();
+        emailButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 255));
@@ -328,21 +336,6 @@ public class ServerUI extends javax.swing.JFrame {
             }
         });
 
-        closeOpenButton.setText("Close/Open");
-        closeOpenButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                closeOpenButtonActionPerformed(evt);
-            }
-        });
-
-        emailButton.setText("Email user");
-        emailButton.setActionCommand("");
-        emailButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailButtonActionPerformed(evt);
-            }
-        });
-
         confirmLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         confirmLabel.setForeground(new java.awt.Color(255, 255, 255));
         confirmLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -365,10 +358,7 @@ public class ServerUI extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(startDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, closedPanel2Layout.createSequentialGroup()
-                        .addComponent(emailButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(closeOpenButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(confirmLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(closedPanel2Layout.createSequentialGroup()
@@ -404,10 +394,7 @@ public class ServerUI extends javax.swing.JFrame {
                         .addComponent(departmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(closeOpenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(confirmLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -454,6 +441,29 @@ public class ServerUI extends javax.swing.JFrame {
         footerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         footerLabel1.setText("Copyright 2019, HelpDeskProject");
 
+        stateButton.setText("Close/Open");
+        stateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stateButtonActionPerformed(evt);
+            }
+        });
+
+        emailButton.setText("Email user");
+        emailButton.setActionCommand("");
+        emailButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailButtonActionPerformed(evt);
+            }
+        });
+
+        deleteButton.setText("Delete");
+        deleteButton.setActionCommand("");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -464,19 +474,37 @@ public class ServerUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(footerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(footerLabel1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(footerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 691, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(footerLabel1))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(emailButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(stateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(stateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(footerLabel)
                     .addComponent(footerLabel1))
@@ -555,7 +583,7 @@ public class ServerUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchButttonActionPerformed
 
-    private void closeOpenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeOpenButtonActionPerformed
+    private void stateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateButtonActionPerformed
         rquestsCounter();
         String SQL;
         if (requestTable.getSelectedRow() == -1) {
@@ -595,9 +623,14 @@ public class ServerUI extends javax.swing.JFrame {
             }
         }
         rquestsCounter();
-    }//GEN-LAST:event_closeOpenButtonActionPerformed
+    }//GEN-LAST:event_stateButtonActionPerformed
 
     private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
+
+        deleteButton.setEnabled(true);
+        emailButton.setEnabled(true);
+        stateButton.setEnabled(true);
+        //-----------------------------------
         int index = requestTable.getSelectedRow();
         TableModel model = requestTable.getModel();
         String title = model.getValueAt(index, 6).toString();
@@ -608,7 +641,7 @@ public class ServerUI extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
         rquestsCounter();
-
+        confirmLabel.setText("welcome Back!");
         //-------------------------------------------------------------------------    
         requestTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         requestTable.getColumnModel().getColumn(0).setPreferredWidth(36);
@@ -714,11 +747,37 @@ public class ServerUI extends javax.swing.JFrame {
             confirmLabel.setText("All open reqeuests displayed");
 
             sqlDisplayer(SQL);
+            if (model.getColumnCount() == -1) {
+                JOptionPane.showMessageDialog(this, "Reqeust not found", "Error", JOptionPane.ERROR_MESSAGE);
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_closedPanelMouseClicked
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this request?\n This would completely remove it from the database.", "Warning", dialogButton);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            String SQL;
+            int index = requestTable.getSelectedRow();
+            DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
+            model.removeRow(index);
+            String rID = model.getValueAt(index, 0).toString();
+            SQL = "DELETE FROM requests WHERE `requests`.`requestID` = " + rID;
+            System.out.println(SQL);
+            confirmLabel.setText("Request deleted");
+            Statement statement;
+            try {
+                statement = conn.createStatement();
+                statement.executeUpdate(SQL);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        rquestsCounter();
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void rquestsCounter() {
         //-------------------------------------------------------------------------
@@ -790,6 +849,7 @@ public class ServerUI extends javax.swing.JFrame {
                 rs.getString(10)
             });
         }
+
     }
 
     /**
@@ -830,7 +890,6 @@ public class ServerUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel allLabel;
     private javax.swing.JPanel allPanel;
-    private javax.swing.JButton closeOpenButton;
     private javax.swing.JLabel closedLabel;
     private javax.swing.JLabel closedLabel1;
     private javax.swing.JLabel closedLabel2;
@@ -838,6 +897,7 @@ public class ServerUI extends javax.swing.JFrame {
     private javax.swing.JPanel closedPanel1;
     private javax.swing.JPanel closedPanel2;
     private javax.swing.JLabel confirmLabel;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JComboBox<String> departmentComboBox;
     private javax.swing.JButton emailButton;
     private com.toedter.calendar.JDateChooser endDate;
@@ -864,5 +924,6 @@ public class ServerUI extends javax.swing.JFrame {
     private javax.swing.JTextArea serverTextArea;
     private javax.swing.JPanel sideMenuPanel;
     private com.toedter.calendar.JDateChooser startDate;
+    private javax.swing.JButton stateButton;
     // End of variables declaration//GEN-END:variables
 }
