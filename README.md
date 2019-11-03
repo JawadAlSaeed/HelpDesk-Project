@@ -12,15 +12,17 @@ This is a website/application is for the graduation project. it's intended to sh
 
 with this website, I'm hoping to show you the programming abilities I'm capable of. 
 
-the HelpDesk system has two main parts, the website you currently in, and the IT application. First off, well talk about the website. the website contains three main features:
+The HelpDesk system has two main parts, the website you currently in, and the IT application. First off, well talk about the website. the website contains three main features:
   1. Requests/View Requests
   2. Contact Us Form
   3. Frequently Asked Questions (FAQs)
  
 In the IT application, it will have the basic functions to view requests such as:
-  1. Requests/View Requests
-  2. Contact Us Form
-  3. Frequently Asked Questions (FAQs)
+  1. View  all requests and search through them.
+  2. switch the state of the requests.
+  3. Email users of requests.
+  4. Delete requests.
+
 
 ## The Website
 
@@ -44,3 +46,12 @@ these questions can be configured by IT Employees.
 ## The IT Application
 The applications is a java program that is used in the IT side which shows the requests of the users.
 This program will bring the info from the database into a table that the IT employee can sort and search through.
+
+### Search and view  all requests:
+You can view all rquests and search through them by Rquest ID, date, or by department.
+
+### switch the state of the requests:
+You can "close" the request that are done with or "open" them.
+
+### Email users of requests:
+Selecting a reuqest would enable the button to email the requester.
