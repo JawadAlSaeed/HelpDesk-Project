@@ -88,9 +88,10 @@ public class ServerUI extends javax.swing.JFrame {
         startDate = new com.toedter.calendar.JDateChooser();
         endDate = new com.toedter.calendar.JDateChooser();
         departmentComboBox = new javax.swing.JComboBox<>();
-        searchButtton = new javax.swing.JButton();
+        searchInfoButtton = new javax.swing.JButton();
         confirmLabel = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        requestIdTextField1 = new javax.swing.JTextField();
         footerLabel = new javax.swing.JLabel();
         footerLabel1 = new javax.swing.JLabel();
         reopenButton = new javax.swing.JButton();
@@ -336,10 +337,10 @@ public class ServerUI extends javax.swing.JFrame {
 
         departmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Network Department", "Support Department", "System Department", "Sales Department" }));
 
-        searchButtton.setText("Search");
-        searchButtton.addActionListener(new java.awt.event.ActionListener() {
+        searchInfoButtton.setText("Search");
+        searchInfoButtton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButttonActionPerformed(evt);
+                searchInfoButttonActionPerformed(evt);
             }
         });
 
@@ -362,7 +363,7 @@ public class ServerUI extends javax.swing.JFrame {
                 .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, closedPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(searchInfoButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(confirmLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(closedPanel2Layout.createSequentialGroup()
                         .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,7 +375,8 @@ public class ServerUI extends javax.swing.JFrame {
                             .addGroup(closedPanel2Layout.createSequentialGroup()
                                 .addComponent(endDate, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(startDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(startDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(requestIdTextField1)))
                     .addGroup(closedPanel2Layout.createSequentialGroup()
                         .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(closedPanel2Layout.createSequentialGroup()
@@ -392,8 +394,10 @@ public class ServerUI extends javax.swing.JFrame {
             .addGroup(closedPanel2Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel4)
-                .addGap(10, 10, 10)
-                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addComponent(requestIdTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(closedPanel2Layout.createSequentialGroup()
@@ -407,8 +411,8 @@ public class ServerUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(departmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchInfoButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(confirmLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -548,7 +552,7 @@ public class ServerUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButttonActionPerformed
+    private void searchInfoButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInfoButttonActionPerformed
         try {
             String SQL;
             String dep = departmentComboBox.getSelectedItem().toString();
@@ -601,7 +605,7 @@ public class ServerUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_searchButttonActionPerformed
+    }//GEN-LAST:event_searchInfoButttonActionPerformed
 
     private void reopenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reopenButtonActionPerformed
         rquestsCounter();
@@ -980,9 +984,10 @@ public class ServerUI extends javax.swing.JFrame {
     private javax.swing.JPanel openPanel;
     private javax.swing.JButton reopenButton;
     private javax.swing.JTextField requestIdTextField;
+    private javax.swing.JTextField requestIdTextField1;
     private javax.swing.JTable requestTable;
-    private javax.swing.JButton searchButtton;
     private javax.swing.JButton searchIdButtton;
+    private javax.swing.JButton searchInfoButtton;
     private javax.swing.JTextArea serverTextArea;
     private javax.swing.JPanel sideMenuPanel;
     private com.toedter.calendar.JDateChooser startDate;

@@ -577,7 +577,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="searchButtton" min="-2" pref="89" max="-2" attributes="0"/>
+                                  <Component id="searchInfoButtton" min="-2" pref="89" max="-2" attributes="0"/>
                               </Group>
                               <Component id="confirmLabel" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
@@ -593,6 +593,7 @@
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="startDate" max="32767" attributes="0"/>
+                                      <Component id="requestIdTextField1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -619,8 +620,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <Component id="requestIdTextField1" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
@@ -638,8 +642,8 @@
                               </Group>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Component id="searchButtton" min="-2" pref="51" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Component id="searchInfoButtton" min="-2" pref="51" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="confirmLabel" min="-2" pref="24" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -737,12 +741,12 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="searchButtton">
+                <Component class="javax.swing.JButton" name="searchInfoButtton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Search"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchButttonActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchInfoButttonActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="confirmLabel">
@@ -774,6 +778,8 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Username"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="requestIdTextField1">
                 </Component>
               </SubComponents>
             </Container>
