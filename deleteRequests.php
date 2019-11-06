@@ -89,7 +89,7 @@
                     echo $row['requestCreated'];
                     echo "</td><td>";
                     echo $row['state'];
-                    echo "</td><td>";  
+                    echo "</td><td>";
                     echo $row['closedOn'];
                     echo "</td></tr>";
                 } 
