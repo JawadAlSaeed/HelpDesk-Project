@@ -51,6 +51,7 @@
         <br>
         <div class="container">
             <?php
+            if (isset($_POST['request-submit'])){
                 $uidUsers = $_SESSION['userUid'];
                 $emailUsers = $_SESSION['userEmail'];
         		$telephone =  $_POST["telephone"];
@@ -58,6 +59,37 @@
         		$priority =  $_POST["priority"];
                 $title =  $_POST["title"];
         		$description =  $_POST["description"];
+                // -------------------------------------
+                if(file_exists($_FILES['file']['tmp_name']) || is_uploaded_file($_FILES['file']['tmp_name'])) {
+                    $file = $_FILES['file'];
+                    $fileName = $_FILES['file']['name'];
+                    $fileTmpName = $_FILES['file']['tmp_name'];
+                    $fileSize = $_FILES['file']['size'];
+                    $fileError = $_FILES['file']['error'];
+                    $filetype = $_FILES['file']['type'];
+                    $fileExt = explode('.',$fileName);
+                    $fileActualExt = strtolower(end($fileExt));
+                    $alllowed = array('jpg', 'jpeg', 'png', 'pdf');
+                    if (in_array($fileActualExt,$alllowed)){
+                        if ($fileError === 0) {
+                            if ($fileSize < 50000) {
+                                $fileNameNew = uniqid('',true).".".$fileActualExt;
+                                $fileDestinatoin = 'uploads/'.$fileNameNew;
+                                move_uploaded_file($fileTmpName, $fileDestinatoin);
+                            }else{
+                                header("location: newRequests.php?error=bigsize");
+                                exit();
+                            }
+                        }else{
+                            header("location: newRequests.php?error=errormessage");
+                            exit();
+                        }
+                    }else{
+                        header("location: newRequests.php?error=wrongtype");
+                        exit();
+                    }
+                } 
+                
 
                 if (empty($uidUsers) || empty($emailUsers) || empty($telephone) || empty($department) || empty($priority) || empty($description)){
                     header("location: newRequests.php?error=emptyfields");
@@ -87,6 +119,8 @@
                 echo "<strong>Title</strong>: $title<br>";
         		echo "<strong>Description</strong>: $description<br>";
                 echo "<strong>Date created</strong>: $theDate<br>";
+                // echo '<strong>image</strong>: <img src="<?=$file ?>" alt="test" /><br>';
+
 
         		$DBConnect = mysqli_connect("localhost","root","");
         		if (!$DBConnect) 
@@ -102,6 +136,7 @@
         		     .  ": " . mysqli_error($DBConnect)) . "</p>" ;
 
         		mysqli_close($DBConnect);
+            }
     		?>
         </div>
         <br>

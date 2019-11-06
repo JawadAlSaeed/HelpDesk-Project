@@ -54,7 +54,7 @@
             <br><br>
         </div>
         <div class="container">
-            <form action="postRequest.php" method="post">
+            <form action="postRequest.php" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-25">
                         <label for="telephone">Phone number</label>
@@ -104,6 +104,15 @@
                     </div>
                     <div class="col-75">
                         <textarea id="description" name="description" style="height:200px"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25" style="margin-top: 16px">
+                        <label for="message">Add Attachment (if needed)</label>
+                    </div>
+                    <div class="col-75">
+                        <br>
+                        <input type="file" name="file">
                     </div>
                 </div>
                 <br>
