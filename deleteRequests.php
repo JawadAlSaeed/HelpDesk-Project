@@ -70,10 +70,10 @@
                      .  ": " . mysqli_error($DBConnect)) . "</p>" ;
                 //-------------------------------------------------------------------------
                 echo "<center> <table class='tab'>";
-                echo "<tr> <th>Requests ID</th> <th>Username</th> <th>Telephone</th> <th>Department</th> <th>priority</th> <th>description</th> <th>Date created</th> <th>state</th> <th>Date closed</th></tr>";
+                echo "<tr> <th>Requests ID</th> <th>Username</th> <th>Telephone</th> <th>Department</th> <th>priority</th> <th>description</th> <th>Date created</th> <th>state</th> <th>Date closed</th><th>Delete</th></tr>";
                 // keeps getting the next row until there are no more to get
                 while($row = mysqli_fetch_array( $QueryResult )) {
-                    echo "<tr> <td>"; 
+                    echo '<form action="" method="post" ><tr> <td>'; 
                     echo $row['requestID'];
                     echo "</td><td>"; 
                     echo $row['uidUsers'];
@@ -91,7 +91,23 @@
                     echo $row['state'];
                     echo "</td><td>";
                     echo $row['closedOn'];
-                    echo "</td></tr>";
+                    echo "</td><td>";
+                    echo '<button class="submitBtn" type="submit" name="del-submit">Delete</button>';
+                        if (isset($_POST['del-submit'])) {
+                            $row = mysqli_fetch_array( $QueryResult );
+                            $rId=$row['requestID'];
+                            $DBConnect = mysqli_connect("localhost","root","");
+                            if (!$DBConnect) 
+                            {
+                                die('Could not connect: ' . mysqli_error());
+                            }
+                            $DBName = "helpdeskdb";
+                            mysqli_select_db($DBConnect,$DBName);
+                            $QueryString = "DELETE FROM `requests` WHERE `requests`.`requestID` = '$rId'";
+                            $QueryResult = mysqli_query($DBConnect,$QueryString) Or die("<p> Unable to execute query. </p>" . "<p> Error code  " .  mysqli_errno($DBConnect) .  ": " . mysqli_error($DBConnect)) . "</p>" ;
+                            header("location: deleteRequests.php?requestdeleted=success");
+                        }
+                    echo "</td></tr></form>";
                 } 
                 echo "</table></center>";
                 mysqli_close($DBConnect);
