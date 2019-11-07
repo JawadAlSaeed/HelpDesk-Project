@@ -48,6 +48,7 @@ public class ServerUI extends javax.swing.JFrame {
             emailButton.setEnabled(false);
             reopenButton.setEnabled(false);
             closeButton.setEnabled(false);
+            attachmentButtton.setEnabled(false);
         }
     }
 
@@ -99,6 +100,7 @@ public class ServerUI extends javax.swing.JFrame {
         deleteButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        attachmentButtton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 255));
@@ -489,6 +491,14 @@ public class ServerUI extends javax.swing.JFrame {
             }
         });
 
+        attachmentButtton.setText("View attachment");
+        attachmentButtton.setActionCommand("");
+        attachmentButtton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attachmentButttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -504,10 +514,11 @@ public class ServerUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 738, Short.MAX_VALUE)
                         .addComponent(footerLabel1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(attachmentButtton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(emailButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(reopenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -526,7 +537,8 @@ public class ServerUI extends javax.swing.JFrame {
                     .addComponent(reopenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(attachmentButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -840,6 +852,10 @@ public class ServerUI extends javax.swing.JFrame {
         rquestsCounter();
     }//GEN-LAST:event_closeButtonActionPerformed
 
+    private void attachmentButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attachmentButttonActionPerformed
+        
+    }//GEN-LAST:event_attachmentButttonActionPerformed
+
     private void rquestsCounter() {
         //-------------------------------------------------------------------------
         int number = 0;
@@ -952,6 +968,7 @@ public class ServerUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel allLabel;
     private javax.swing.JPanel allPanel;
+    private javax.swing.JButton attachmentButtton;
     private javax.swing.JButton closeButton;
     private javax.swing.JLabel closedLabel;
     private javax.swing.JLabel closedLabel1;

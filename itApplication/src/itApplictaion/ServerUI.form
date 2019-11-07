@@ -69,11 +69,12 @@
                           <Component id="footerLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="deleteButton" min="-2" pref="89" max="-2" attributes="0"/>
+                          <Component id="attachmentButtton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="emailButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="deleteButton" min="-2" pref="89" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="reopenButton" min="-2" pref="117" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="closeButton" min="-2" max="-2" attributes="0"/>
@@ -96,6 +97,7 @@
                       <Component id="emailButton" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="deleteButton" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="closeButton" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                      <Component id="attachmentButtton" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -838,6 +840,15 @@
           </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
+        </Component>
+        <Component class="javax.swing.JButton" name="attachmentButtton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="View attachment"/>
+            <Property name="actionCommand" type="java.lang.String" value=""/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="attachmentButttonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
