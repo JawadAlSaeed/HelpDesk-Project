@@ -88,7 +88,9 @@
                         header("location: newRequests.php?error=wrongtype");
                         exit();
                     }
-                } 
+                }else{
+                    $file = NULL;
+                }
                 
 
                 if (empty($uidUsers) || empty($emailUsers) || empty($telephone) || empty($department) || empty($priority) || empty($description)){
@@ -119,7 +121,6 @@
                 echo "<strong>Title</strong>: $title<br>";
         		echo "<strong>Description</strong>: $description<br>";
                 echo "<strong>Date created</strong>: $theDate<br>";
-                // echo '<strong>image</strong>: <img src="<?=$file ?>" alt="test" /><br>';
 
 
         		$DBConnect = mysqli_connect("localhost","root","");
@@ -129,7 +130,7 @@
         		}
         		$DBName = "helpdeskdb";
         		mysqli_select_db($DBConnect,$DBName);
-        		$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate') ";
+        		$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated,attachment) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate', '$file') ";
         		$QueryResult = mysqli_query($DBConnect,$QueryString)
         		     Or die("<p> Unable to execute query. </p>"
         		     . "<p> Error code  " .  mysqli_errno($DBConnect)
