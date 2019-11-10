@@ -18,10 +18,22 @@
                 Choose a department
             </div>';
         }
-                else if ($_GET['error'] == "invaildpriority") {
+        else if ($_GET['error'] == "bigsize") {
         echo '    <div class="isa_error">
                 <i class="fa fa-times-circle"></i>
-                choose priority level
+                The size of the file is too big. files below 2mb are only accepted.
+            </div>';
+        }
+        else if ($_GET['error'] == "errormessage") {
+        echo '    <div class="isa_error">
+                <i class="fa fa-times-circle"></i>
+                error with the file, try again please.
+            </div>';
+        }
+        else if ($_GET['error'] == "wrongtype") {
+        echo '    <div class="isa_error">
+                <i class="fa fa-times-circle"></i>
+                Wrong file type/Extension
             </div>';
         }
     }

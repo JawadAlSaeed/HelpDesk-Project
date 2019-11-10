@@ -539,9 +539,9 @@ public class ServerUI extends javax.swing.JFrame {
                     .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(attachmentButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(footerLabel1)
                     .addComponent(footerLabel))
@@ -853,7 +853,48 @@ public class ServerUI extends javax.swing.JFrame {
     }//GEN-LAST:event_closeButtonActionPerformed
 
     private void attachmentButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attachmentButttonActionPerformed
-        
+        String SQL;
+        if (requestTable.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "please select a row", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int index = requestTable.getSelectedRow();
+            TableModel modell = requestTable.getModel();
+            String rID = modell.getValueAt(index, 0).toString();
+            SQL = "select * from requests where state = 'closed'";
+            
+            System.out.println(SQL);
+            DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
+            model.setRowCount(0);
+            ResultSet rs = loginDb.getResultSet(conn, SQL);
+            boolean hasNext = false;
+
+            try {
+                while (rs.next()) {
+                    hasNext = true;
+                    String closedOn = null;
+                    try {
+                        model.addRow(new Object[]{
+                            rs.getInt(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5),
+                            rs.getString(6),
+                            rs.getString(7),
+                            rs.getString(8),
+                            rs.getTimestamp(9),
+                            rs.getString(10),
+                            rs.getTimestamp(11)
+                        });
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
     }//GEN-LAST:event_attachmentButttonActionPerformed
 
     private void rquestsCounter() {
