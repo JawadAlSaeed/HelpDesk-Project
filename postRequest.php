@@ -64,6 +64,7 @@
                     $file = $_FILES['file'];
                     $fileName = $_FILES['file']['name'];
                     $fileTmpName = $_FILES['file']['tmp_name'];
+                    $image = base64_encode(file_get_contents(addslashes($fileTmpName)));
                     $fileSize = $_FILES['file']['size'];
                     $fileError = $_FILES['file']['error'];
                     $filetype = $_FILES['file']['type'];
@@ -72,7 +73,7 @@
                     $alllowed = array('jpg', 'jpeg', 'png', 'pdf');
                     if (in_array($fileActualExt,$alllowed)){
                         if ($fileError === 0) {
-                            if ($fileSize < 50000) {
+                            if ($fileSize <= 200000) {
                                 $fileNameNew = uniqid('',true).".".$fileActualExt;
                                 $fileDestinatoin = 'uploads/'.$fileNameNew;
                                 move_uploaded_file($fileTmpName, $fileDestinatoin);
@@ -122,7 +123,6 @@
         		echo "<strong>Description</strong>: $description<br>";
                 echo "<strong>Date created</strong>: $theDate<br>";
 
-
         		$DBConnect = mysqli_connect("localhost","root","");
         		if (!$DBConnect) 
         		{
@@ -130,7 +130,7 @@
         		}
         		$DBName = "helpdeskdb";
         		mysqli_select_db($DBConnect,$DBName);
-        		$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated,attachment) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate', '$file') ";
+        		$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated,attachment) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate', '$image') ";
         		$QueryResult = mysqli_query($DBConnect,$QueryString)
         		     Or die("<p> Unable to execute query. </p>"
         		     . "<p> Error code  " .  mysqli_errno($DBConnect)

@@ -869,8 +869,8 @@ public class ServerUI extends javax.swing.JFrame {
             int index = requestTable.getSelectedRow();
             TableModel modell = requestTable.getModel();
             String rID = modell.getValueAt(index, 0).toString();
-            SQL = "select * from requests where requestID = '"+rID+"'";
-            
+            SQL = "select * from requests where requestID = '" + rID + "'";
+
             System.out.println(SQL);
             ResultSet rs = loginDb.getResultSet(conn, SQL);
             boolean hasNext = false;
@@ -880,9 +880,8 @@ public class ServerUI extends javax.swing.JFrame {
                     hasNext = true;
                     byte[] img = rs.getBytes("attachment");
                     new attachmentApp(img).setVisible(true);
-                }
-                else{
-                    JOptionPane.showMessageDialog(null,"no data");
+                } else {
+                    JOptionPane.showMessageDialog(null, "no data");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);

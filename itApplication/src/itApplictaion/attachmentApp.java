@@ -29,7 +29,7 @@ public class attachmentApp extends javax.swing.JFrame {
         setTitle("HelpDesk");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        
+
         ImageIcon attachments = new ImageIcon(attachment);
         Image im = attachments.getImage();
         Image myImg = im.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
