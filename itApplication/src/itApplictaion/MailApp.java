@@ -6,6 +6,7 @@
 package itApplictaion;
 
 import java.awt.Toolkit;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,14 +23,18 @@ public class MailApp extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setTitle("HelpDesk");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
     public MailApp(String email) {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("HelpDesk");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        
         emailTextField.setText(email);
         subjectTextField.requestFocus();
+        
     }
 
     /**

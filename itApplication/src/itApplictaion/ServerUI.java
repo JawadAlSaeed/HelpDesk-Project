@@ -5,6 +5,7 @@
  */
 package itApplictaion;
 
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import javax.swing.ImageIcon;
 
 //btn.setEnabled(false);
 /**
@@ -101,6 +103,7 @@ public class ServerUI extends javax.swing.JFrame {
         closeButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         attachmentButtton = new javax.swing.JButton();
+        label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 255));
@@ -499,6 +502,8 @@ public class ServerUI extends javax.swing.JFrame {
             }
         });
 
+        label.setText("  ");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -517,6 +522,8 @@ public class ServerUI extends javax.swing.JFrame {
                         .addComponent(attachmentButtton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(emailButton)
+                        .addGap(215, 215, 215)
+                        .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -538,7 +545,8 @@ public class ServerUI extends javax.swing.JFrame {
                     .addComponent(emailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(attachmentButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(attachmentButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
@@ -669,6 +677,7 @@ public class ServerUI extends javax.swing.JFrame {
             closeButton.setEnabled(true);
         }
         deleteButton.setEnabled(true);
+        attachmentButtton.setEnabled(true);
         emailButton.setEnabled(true);
         serverTextArea.setText("***********Informaiotn About the request***********\n\nTitle:-\n" + title + "\n---------------------------------------------\nDescription:-\n" + description);
     }//GEN-LAST:event_requestTableMouseClicked
@@ -860,35 +869,20 @@ public class ServerUI extends javax.swing.JFrame {
             int index = requestTable.getSelectedRow();
             TableModel modell = requestTable.getModel();
             String rID = modell.getValueAt(index, 0).toString();
-            SQL = "select * from requests where state = 'closed'";
+            SQL = "select * from requests where requestID = '"+rID+"'";
             
             System.out.println(SQL);
-            DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
-            model.setRowCount(0);
             ResultSet rs = loginDb.getResultSet(conn, SQL);
             boolean hasNext = false;
 
             try {
-                while (rs.next()) {
+                if (rs.next()) {
                     hasNext = true;
-                    String closedOn = null;
-                    try {
-                        model.addRow(new Object[]{
-                            rs.getInt(1),
-                            rs.getString(2),
-                            rs.getString(3),
-                            rs.getString(4),
-                            rs.getString(5),
-                            rs.getString(6),
-                            rs.getString(7),
-                            rs.getString(8),
-                            rs.getTimestamp(9),
-                            rs.getString(10),
-                            rs.getTimestamp(11)
-                        });
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    byte[] img = rs.getBytes("attachment");
+                    new attachmentApp(img).setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"no data");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1038,6 +1032,7 @@ public class ServerUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel label;
     private javax.swing.JLabel openLabel;
     private javax.swing.JPanel openPanel;
     private javax.swing.JButton reopenButton;
