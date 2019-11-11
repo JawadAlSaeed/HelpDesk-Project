@@ -26,6 +26,7 @@ In the IT application, it will have the basic functions to view requests such as
   
 --------------------------------------------------------------------------------------------
 ## The Website
+The website is the main place for the employee that needs help, here he can make an account to assign each reuqests by its owner. In hte website, you can configure the account by changing the name and the password, you can also delete the account.
 
 ### Requests/View Requests:
 This is a feature that a user can use to request something from the company. In this page a user can do two things:
