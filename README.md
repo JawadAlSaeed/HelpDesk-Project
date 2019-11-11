@@ -18,11 +18,12 @@ The HelpDesk system has two main parts, the website you currently in, and the IT
   3. Frequently Asked Questions (FAQs)
  
 In the IT application, it will have the basic functions to view requests such as:
-  1. View all requests and search through them.
-  2. Switch the state of the requests.
-  3. Email users of requests.
-  4. Delete requests.
-
+  1. View all requests and search through them
+  2. Switch the state of the requests
+  3. Email users of requests
+  4. Delete requests
+  5. View attachment
+  
 --------------------------------------------------------------------------------------------
 ## The Website
 
