@@ -25,16 +25,17 @@ public class MailApp extends javax.swing.JFrame {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
+
     public MailApp(String email) {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("HelpDesk");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        
+
         emailTextField.setText(email);
         subjectTextField.requestFocus();
-        
+
     }
 
     /**
@@ -136,13 +137,18 @@ public class MailApp extends javax.swing.JFrame {
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
         if (evt.getSource() == sendButton) {
+
             String to = emailTextField.getText();
             String subject = subjectTextField.getText();
             String message = msgTextArea.getText();
             String user = "helpdeskproject266@gmail.com";
             String pass = "J35110266d";
 
-            SendMail.send(to, subject, message, user, pass);
+            if ("".equals(to) || "".equals(subject) || "".equals(message)) {
+                JOptionPane.showMessageDialog(null, "enter all fields");
+            } else {
+                SendMail.send(to, subject, message, user, pass);
+            }
         }
     }//GEN-LAST:event_sendButtonActionPerformed
 

@@ -20,8 +20,10 @@ public class SendMail {
         props.put("mail.smtp.port", "587");
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
+        props.setProperty("mail.imap.ssl.enable", "true");
 
         Session session = Session.getDefaultInstance(props, new Authenticator() {
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(user, pass);
             }
