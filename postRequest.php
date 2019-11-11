@@ -90,7 +90,7 @@
                         exit();
                     }
                 }else{
-                    $file = NULL;
+                    $image = NULL;
                 }
                 
 
