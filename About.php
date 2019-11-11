@@ -51,11 +51,19 @@
             <br><br>
             with this website, I'm hoping to show you the programming abilities I'm capable of. 
             <br><br>
-            the HelpDesk system has two main parts, the website you currently in, and the IT application. First off, well talk about the website. the website contains three main features:
+            The HelpDesk system has two main parts, the website you currently in, and the IT application. First off, well talk about the website. the website contains three main features:
             <ol>
                 <li>Requests/View Requests</li>
                 <li>Contact Us Form</li>
                 <li>Frequently Asked Questions (FAQs)</li>
+            </ol>
+            In the IT application, it will have the basic functions to view requests such as:
+            <ol>
+                <li>View all requests and search through them</li>
+                <li>Switch the state of the requests</li>
+                <li>Email users of requests</li>
+                <li>Delete requests</li>
+                <li>View attachment</li>
             </ol>
             <h2>The Website</h2>
             <h3>Requests/View Requests:</h3>
@@ -70,12 +78,21 @@
             The feedback will be sent to the companies via Email.
             <h3>FAQs:</h3>
             Frequently asked questions on the site, these questions are categorized to help users find related questions.
-            <br><br>
-            FAQs have a search feature to find a specific question faster
-            <br><br>
+            <br>
             these questions can be configured by IT Employees.
+            <br><br>
             <h2>The IT Application</h2>
-            The applications is a java program that is used in the IT side which shows the requests of the users. This program will bring the info from the database into a table that the IT employee can sort and search through.
+            The applications is a java program that is used in the IT side which shows the requests of the users.
+            <br><br>
+            <h3>Search and view all requests:</h3>
+            You can view all rquests and search through them by Rquest ID, date, or by department.
+            <br><br>
+            <h3>Switch the state of the requests:</h3>
+            You can "close" the request that are done with or "open" them.
+            <br><br>
+            <h3>Email users of requests:</h3>
+            Selecting a reuqest would enable the button to email the requester.
+            <br><br>
         </div>
         </center>
 
