@@ -94,7 +94,7 @@ public class ServerUI extends javax.swing.JFrame {
         searchInfoButtton = new javax.swing.JButton();
         confirmLabel = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        requestIdTextField1 = new javax.swing.JTextField();
+        usernameTextField = new javax.swing.JTextField();
         footerLabel = new javax.swing.JLabel();
         footerLabel1 = new javax.swing.JLabel();
         reopenButton = new javax.swing.JButton();
@@ -381,7 +381,7 @@ public class ServerUI extends javax.swing.JFrame {
                                 .addComponent(endDate, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(startDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(requestIdTextField1)))
+                            .addComponent(usernameTextField)))
                     .addGroup(closedPanel2Layout.createSequentialGroup()
                         .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(closedPanel2Layout.createSequentialGroup()
@@ -402,7 +402,7 @@ public class ServerUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
-                    .addComponent(requestIdTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(closedPanel2Layout.createSequentialGroup()
@@ -575,50 +575,97 @@ public class ServerUI extends javax.swing.JFrame {
 
     private void searchInfoButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInfoButttonActionPerformed
         try {
+            colorReset();
             String SQL;
+            String username = usernameTextField.getText();
             String dep = departmentComboBox.getSelectedItem().toString();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            if ("".equals(username)) {
+                if (startDate.getDate() == null && endDate.getDate() == null) {
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed");
+                    }
+                    sqlDisplayer(SQL);
 
-            if (startDate.getDate() == null && endDate.getDate() == null) {
-                if ("All".equals(dep)) {
-                    SQL = "select * from requests";
-                    confirmLabel.setText("All reqeuests displayed");
+                } else if (startDate.getDate() == null && endDate.getDate() != null) {
+                    String eDate = sdf.format(endDate.getDate());
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where requestCreated < '" + eDate + "'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and requestCreated < '" + eDate + "'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    }
+                    sqlDisplayer(SQL);
+                } else if (startDate.getDate() != null && endDate.getDate() == null) {
+                    String sDate = sdf.format(startDate.getDate());
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where requestCreated > '" + sDate + "'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and requestCreated > '" + sDate + "'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    }
+                    sqlDisplayer(SQL);
+
                 } else {
-                    SQL = "select * from requests where department = '" + dep + "'";
-                    confirmLabel.setText("All " + dep + " reqeuests displayed");
+                    String sDate = sdf.format(startDate.getDate());
+                    String eDate = sdf.format(endDate.getDate());
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where requestCreated > '" + sDate + "' and requestCreated < '" + eDate + "'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and requestCreated > '" + sDate + "'and requestCreated < '" + eDate + "'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    }
                 }
                 sqlDisplayer(SQL);
-
-            } else if (startDate.getDate() == null && endDate.getDate() != null) {
-                String eDate = sdf.format(endDate.getDate());
-                if ("All".equals(dep)) {
-                    SQL = "select * from requests where requestCreated < '" + eDate + "'";
-                    confirmLabel.setText("All reqeuests displayed");
-                } else {
-                    SQL = "select * from requests where department = '" + dep + "' and requestCreated < '" + eDate + "'";
-                    confirmLabel.setText("All " + dep + " reqeuests displayed ");
-                }
-                sqlDisplayer(SQL);
-            } else if (startDate.getDate() != null && endDate.getDate() == null) {
-                String sDate = sdf.format(startDate.getDate());
-                if ("All".equals(dep)) {
-                    SQL = "select * from requests where requestCreated > '" + sDate + "'";
-                    confirmLabel.setText("All reqeuests displayed");
-                } else {
-                    SQL = "select * from requests where department = '" + dep + "' and requestCreated > '" + sDate + "'";
-                    confirmLabel.setText("All " + dep + " reqeuests displayed ");
-                }
-                sqlDisplayer(SQL);
-
             } else {
-                String sDate = sdf.format(startDate.getDate());
-                String eDate = sdf.format(endDate.getDate());
-                if ("All".equals(dep)) {
-                    SQL = "select * from requests where requestCreated > '" + sDate + "' and requestCreated < '" + eDate + "'";
-                    confirmLabel.setText("All reqeuests displayed");
+                if (startDate.getDate() == null && endDate.getDate() == null) {
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where uidUsers ='"+ username +"'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and uidUsers ='"+ username +"'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed");
+                    }
+                    sqlDisplayer(SQL);
+
+                } else if (startDate.getDate() == null && endDate.getDate() != null) {
+                    String eDate = sdf.format(endDate.getDate());
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where requestCreated < '" + eDate + "' and uidUsers ='"+ username +"'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and requestCreated < '" + eDate + "' and uidUsers ='"+ username +"'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    }
+                    sqlDisplayer(SQL);
+                } else if (startDate.getDate() != null && endDate.getDate() == null) {
+                    String sDate = sdf.format(startDate.getDate());
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where requestCreated > '" + sDate + "' and uidUsers ='"+ username +"'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and requestCreated > '" + sDate + "' and uidUsers ='"+ username +"'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    }
+                    sqlDisplayer(SQL);
+
                 } else {
-                    SQL = "select * from requests where department = '" + dep + "' and requestCreated > '" + sDate + "'and requestCreated < '" + eDate + "'";
-                    confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    String sDate = sdf.format(startDate.getDate());
+                    String eDate = sdf.format(endDate.getDate());
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where requestCreated > '" + sDate + "' and requestCreated < '" + eDate + "' and uidUsers ='"+ username +"'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and requestCreated > '" + sDate + "'and requestCreated < '" + eDate + "' and uidUsers ='" + username + "'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    }
                 }
                 sqlDisplayer(SQL);
             }
@@ -684,7 +731,7 @@ public class ServerUI extends javax.swing.JFrame {
     }//GEN-LAST:event_requestTableMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        colorReset();
         rquestsCounter();
         confirmLabel.setText("welcome Back!");
         //-------------------------------------------------------------------------    
@@ -732,6 +779,7 @@ public class ServerUI extends javax.swing.JFrame {
     }//GEN-LAST:event_emailButtonActionPerformed
 
     private void searchIdButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchIdButttonActionPerformed
+        colorReset();
         if (!"".equals(requestIdTextField.getText())) {
             try {
                 String requestId = requestIdTextField.getText();
@@ -753,6 +801,9 @@ public class ServerUI extends javax.swing.JFrame {
 
     private void allPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_allPanelMouseClicked
         try {
+            allPanel.setBackground(new java.awt.Color(93, 112, 126));
+            openPanel.setBackground(new java.awt.Color(17, 45, 50));
+            closedPanel.setBackground(new java.awt.Color(17, 45, 50));
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
             model.setRowCount(0);
             String SQL;
@@ -769,6 +820,9 @@ public class ServerUI extends javax.swing.JFrame {
 
     private void openPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openPanelMouseClicked
         try {
+            allPanel.setBackground(new java.awt.Color(17, 45, 50));
+            openPanel.setBackground(new java.awt.Color(93, 112, 126));
+            closedPanel.setBackground(new java.awt.Color(17, 45, 50));
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
             model.setRowCount(0);
             String SQL;
@@ -785,6 +839,9 @@ public class ServerUI extends javax.swing.JFrame {
 
     private void closedPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closedPanelMouseClicked
         try {
+            allPanel.setBackground(new java.awt.Color(17, 45, 50));
+            openPanel.setBackground(new java.awt.Color(17, 45, 50));
+            closedPanel.setBackground(new java.awt.Color(93, 112, 126));
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
             model.setRowCount(0);
             String SQL;
@@ -939,6 +996,12 @@ public class ServerUI extends javax.swing.JFrame {
         //-------------------------------------------------------------------------
     }
 
+    private void colorReset() {
+        allPanel.setBackground(new java.awt.Color(17, 45, 50));
+        openPanel.setBackground(new java.awt.Color(17, 45, 50));
+        closedPanel.setBackground(new java.awt.Color(17, 45, 50));
+    }
+
     private void sqlDisplayer(String SQL) throws SQLException {
         System.out.println(SQL);
         DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
@@ -1037,12 +1100,12 @@ public class ServerUI extends javax.swing.JFrame {
     private javax.swing.JPanel openPanel;
     private javax.swing.JButton reopenButton;
     private javax.swing.JTextField requestIdTextField;
-    private javax.swing.JTextField requestIdTextField1;
     private javax.swing.JTable requestTable;
     private javax.swing.JButton searchIdButtton;
     private javax.swing.JButton searchInfoButtton;
     private javax.swing.JTextArea serverTextArea;
     private javax.swing.JPanel sideMenuPanel;
     private com.toedter.calendar.JDateChooser startDate;
+    private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }

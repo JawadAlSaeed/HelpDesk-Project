@@ -600,7 +600,7 @@
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="startDate" max="32767" attributes="0"/>
-                                      <Component id="requestIdTextField1" max="32767" attributes="0"/>
+                                      <Component id="usernameTextField" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -630,7 +630,7 @@
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <Component id="requestIdTextField1" min="-2" max="-2" attributes="0"/>
+                              <Component id="usernameTextField" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -786,7 +786,7 @@
                     <Property name="text" type="java.lang.String" value="Username"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="requestIdTextField1">
+                <Component class="javax.swing.JTextField" name="usernameTextField">
                 </Component>
               </SubComponents>
             </Container>
