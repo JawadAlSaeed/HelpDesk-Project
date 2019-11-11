@@ -23,7 +23,7 @@ In the IT application, it will have the basic functions to view requests such as
   3. Email users of requests.
   4. Delete requests.
 
-
+--------------------------------------------------------------------------------------------
 ## The Website
 
 ### Requests/View Requests:
@@ -43,7 +43,7 @@ FAQs have a search feature to find a specific question faster.
 
 these questions can be configured by IT Employees.
 
-
+--------------------------------------------------------------------------------------------
 ## The IT Application
 The applications is a java program that is used in the IT side which shows the requests of the users.
 
