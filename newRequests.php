@@ -78,7 +78,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-25">
                         <label for="category">Category of the problem</label>
                     </div>
@@ -190,7 +190,7 @@
                             <option value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email Related Issue</option>
                         </select>
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="col-25">
                         <label for="priority">Priority</label>
