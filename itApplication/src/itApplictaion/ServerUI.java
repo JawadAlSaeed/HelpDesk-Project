@@ -942,10 +942,10 @@ public class ServerUI extends javax.swing.JFrame {
                 if (rs.next()) {
                     hasNext = true;
                     byte[] img = rs.getBytes("attachment");
-                    if (img != null){
+                    if (img == null) {
+                        JOptionPane.showMessageDialog(null, "this request doesnt have an attachment");
+                    } else {
                         new attachmentApp(img).setVisible(true);
-                    }else{
-                        JOptionPane.showMessageDialog(null, "This requests doesn't have an attachment");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "no data");

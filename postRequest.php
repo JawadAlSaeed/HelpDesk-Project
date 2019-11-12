@@ -64,7 +64,6 @@
                     $file = $_FILES['file'];
                     $fileName = $_FILES['file']['name'];
                     $fileTmpName = $_FILES['file']['tmp_name'];
-                    $image = base64_encode(file_get_contents(addslashes($fileTmpName)));
                     $fileSize = $_FILES['file']['size'];
                     $fileError = $_FILES['file']['error'];
                     $filetype = $_FILES['file']['type'];
@@ -77,6 +76,7 @@
                                 $fileNameNew = uniqid('',true).".".$fileActualExt;
                                 $fileDestinatoin = 'uploads/'.$fileNameNew;
                                 move_uploaded_file($fileTmpName, $fileDestinatoin);
+                                $image = base64_encode(file_get_contents(addslashes($fileTmpName)));
                             }else{
                                 header("location: newRequests.php?error=bigsize");
                                 exit();
@@ -93,7 +93,6 @@
                     $image = NULL;
                 }
                 
-
                 if (empty($uidUsers) || empty($emailUsers) || empty($telephone) || empty($department) || empty($priority) || empty($description)){
                     header("location: newRequests.php?error=emptyfields");
                     exit();
@@ -130,7 +129,11 @@
         		}
         		$DBName = "helpdeskdb";
         		mysqli_select_db($DBConnect,$DBName);
-        		$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated,attachment) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate', '$image') ";
+        		if ($image == null){
+        			$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate') ";
+        		}else{
+        			$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated,attachment) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate', '$image') ";
+        		}
         		$QueryResult = mysqli_query($DBConnect,$QueryString)
         		     Or die("<p> Unable to execute query. </p>"
         		     . "<p> Error code  " .  mysqli_errno($DBConnect)
