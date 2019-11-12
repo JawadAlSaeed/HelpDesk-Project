@@ -69,6 +69,7 @@
                     $filetype = $_FILES['file']['type'];
                     $fileExt = explode('.',$fileName);
                     $fileActualExt = strtolower(end($fileExt));
+                    $imgContent = addslashes(file_get_contents($_FILES['file']['tmp_name']));
                     $alllowed = array('jpg', 'jpeg', 'png', 'pdf');
                     if (in_array($fileActualExt,$alllowed)){
                         if ($fileError === 0) {
@@ -76,7 +77,6 @@
                                 $fileNameNew = uniqid('',true).".".$fileActualExt;
                                 $fileDestinatoin = 'uploads/'.$fileNameNew;
                                 move_uploaded_file($fileTmpName, $fileDestinatoin);
-                                $image = base64_encode(file_get_contents(addslashes($fileTmpName)));
                             }else{
                                 header("location: newRequests.php?error=bigsize");
                                 exit();
@@ -90,7 +90,7 @@
                         exit();
                     }
                 }else{
-                    $image = NULL;
+                    $imgContent = NULL;
                 }
                 
                 if (empty($uidUsers) || empty($emailUsers) || empty($telephone) || empty($department) || empty($priority) || empty($description)){
@@ -121,6 +121,11 @@
                 echo "<strong>Title</strong>: $title<br>";
         		echo "<strong>Description</strong>: $description<br>";
                 echo "<strong>Date created</strong>: $theDate<br>";
+                if($imgContent != null){
+                	$imgContent = base64_encode(file_get_contents($_FILES['file']['tmp_name']));
+					echo '<img src="data:image/png;base64,' . base64_encode($imgContent) . '"/>';
+                }
+                
 
         		$DBConnect = mysqli_connect("localhost","root","");
         		if (!$DBConnect) 
@@ -129,10 +134,10 @@
         		}
         		$DBName = "helpdeskdb";
         		mysqli_select_db($DBConnect,$DBName);
-        		if ($image == null){
+        		if ($imgContent == null){
         			$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate') ";
         		}else{
-        			$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated,attachment) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate', '$image') ";
+        			$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated,attachment) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate', '$imgContent') ";
         		}
         		$QueryResult = mysqli_query($DBConnect,$QueryString)
         		     Or die("<p> Unable to execute query. </p>"
