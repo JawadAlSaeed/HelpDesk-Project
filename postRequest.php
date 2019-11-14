@@ -70,7 +70,7 @@
                     $fileExt = explode('.',$fileName);
                     $fileActualExt = strtolower(end($fileExt));
                     $imgContent = addslashes(file_get_contents($_FILES['file']['tmp_name']));
-                    $alllowed = array('jpg', 'jpeg', 'png', 'pdf');
+                    $alllowed = array('jpg', 'jpeg', 'png');
                     if (in_array($fileActualExt,$alllowed)){
                         if ($fileError === 0) {
                             if ($fileSize <= 200000) {
@@ -121,10 +121,9 @@
                 echo "<strong>Title</strong>: $title<br>";
         		echo "<strong>Description</strong>: $description<br>";
                 echo "<strong>Date created</strong>: $theDate<br>";
-                if($imgContent != null){
-                	$imgContent = base64_encode(file_get_contents($_FILES['file']['tmp_name']));
-					echo '<img src="data:image/png;base64,' . base64_encode($imgContent) . '"/>';
-                }
+     //            if($imgContent != null){
+					// echo '<img src="data:image/png;base64,' . base64_encode($imgContent) . '"/>';
+     //            }
                 
 
         		$DBConnect = mysqli_connect("localhost","root","");

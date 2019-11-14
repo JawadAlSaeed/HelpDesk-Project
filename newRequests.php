@@ -221,7 +221,7 @@
                 </div>
                 <div class="row">
                     <div class="col-25" style="margin-top: 16px">
-                        <label for="message">Add Attachment (if needed)</label>
+                        <label for="message">Add Attachment (If needed)<br>(Max 2mb, only images)</label>
                     </div>
                     <div class="col-75">
                         <br>
