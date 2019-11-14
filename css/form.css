@@ -6,6 +6,11 @@
     margin-left: 10%;
 }
 
+textarea{
+    white-space: pre-line;
+    white-space: pre-wrap;
+}
+
 .col-75 input[type=text],
 .col-75 input[type=password],
 select,

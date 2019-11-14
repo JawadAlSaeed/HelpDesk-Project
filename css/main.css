@@ -83,6 +83,11 @@ div h1 {
     font-size: 24px;
 }
 
+textarea{
+    white-space: pre-line;
+    white-space: pre-wrap;
+}
+
 .session{
     margin-top:20px;
     margin-left:20px;

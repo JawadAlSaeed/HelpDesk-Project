@@ -1,48 +1,42 @@
 <?php 
     session_start();
 
+    $response="";
+
     if(isset($_POST['submit'])){
         if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['subject']) || empty($_POST['body']) ) {
-            header("location: contactUs.php?error=emptyfields");
-            exit();
+        header("location: contactUs.php?error=emptyfields");
+        exit();
         }
-        require 'tools/PHPMailer/PHPMailerAutoload.php';
 
+        require 'tools/PHPMailer/PHPMailerAutoload.php';
+        require 'tools/PHPMailer/class.phpmailer.php';
         $mail = new PHPMailer;
 
-        //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+        $mail->isSMTP();                                            // Set mailer to use SMTP
+        $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+        $mail->Username   = 'helpdiskproject266@gmail.com';                     // SMTP username
+        $mail->Password   = 'J35110266d';                               // SMTP password
+        $mail->Port       = 587;                                    // TCP port to connect to
+        $mail->SMTPSecure = "tls";                       // Enable TLS encryption, 
 
-        $mail->isSMTP();                                      // Set mailer to use SMTP
-        $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-        $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = 'helpdeskproject266@gmail.com';                 // SMTP username
-        $mail->Password = 'J35110266d';                           // SMTP password
-        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 587;                                    // TCP port to connect to
-
-        $mail->setFrom($_POST['email'], $_POST['name']);
-        $mail->addAddress('helpdeskproject266@gmail.com', 'HelpDesk');     // Add a recipient
-        //$mail->addAddress('ellen@example.com');               // Name is optional
-        //$mail->addReplyTo('info@example.com', 'Information');
-        //$mail->addCC('cc@example.com');
-        //$mail->addBCC('bcc@example.com');
-
-        //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-        //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+        //Recipients
         $mail->isHTML(true);                                  // Set email format to HTML
-
+        $mail->setFrom($_POST['email'], $_POST['name']);
+        $mail->addAddress('jawadalsaeed266@gmail.com');     // Add a recipient
         $mail->Subject = $_POST['subject'];
         $mail->Body    = $_POST['body'];
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-        if(!$mail->send()) {
-            echo 'Message could not be sent.';
-            echo 'Mailer Error: ' . $mail->ErrorInfo;
-        } else {
-            header("location: home.php?emailsent=success");
-            exit();
-        }  
-    }   
+        if ($mail->send()){
+            $response = 'Message has been sent';
+        }
+        else{
+            $response = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+
+        exit(json_encode(array("response" => $response)));
+    }
 ?>
 
 <html>
