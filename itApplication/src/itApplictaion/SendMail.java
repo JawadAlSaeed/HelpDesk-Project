@@ -13,37 +13,37 @@ import javax.swing.JOptionPane;
 
 public class SendMail {
 
-    public static void send(String to, String sub, String msg, final String user, final String pass) {
-        Properties props = new Properties();
+    public static void send(String to, String sub, String msg) {
 
-        props.put("mail.smtp.auth", "true");
+        final String username = "helpdeskproject266@gmail.com";
+        final String password = "J35110266d";
+
+        Properties props = new Properties();
         props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
 
-        Session session = Session.getDefaultInstance(props, new Authenticator() {
-            @Override
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(user, pass);
+                return new PasswordAuthentication(username, password);
             }
         });
 
         try {
             Message message = new MimeMessage(session);
-
-            message.setFrom(new InternetAddress(user));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setFrom(new InternetAddress("helpdeskproject266@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(to));
             message.setSubject(sub);
             message.setText(msg);
 
             Transport.send(message);
 
-            JOptionPane.showMessageDialog(null, "Email sent!");
+            System.out.println("Done");
 
         } catch (MessagingException e) {
-            JOptionPane.showMessageDialog(null, "Something happened!");
-
             throw new RuntimeException(e);
         }
 

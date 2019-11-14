@@ -141,13 +141,11 @@ public class MailApp extends javax.swing.JFrame {
             String to = emailTextField.getText();
             String subject = subjectTextField.getText();
             String message = msgTextArea.getText();
-            String user = "helpdeskproject266@gmail.com";
-            String pass = "J35110266d";
 
             if ("".equals(to) || "".equals(subject) || "".equals(message)) {
                 JOptionPane.showMessageDialog(null, "enter all fields");
             } else {
-                SendMail.send(to, subject, message, user, pass);
+                SendMail.send(to, subject, message);
             }
         }
     }//GEN-LAST:event_sendButtonActionPerformed
