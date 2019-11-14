@@ -136,18 +136,17 @@ public class MailApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
-        if (evt.getSource() == sendButton) {
 
-            String to = emailTextField.getText();
-            String subject = subjectTextField.getText();
-            String message = msgTextArea.getText();
+        String to = emailTextField.getText();
+        String subject = subjectTextField.getText();
+        String message = msgTextArea.getText();
 
-            if ("".equals(to) || "".equals(subject) || "".equals(message)) {
-                JOptionPane.showMessageDialog(null, "enter all fields");
-            } else {
-                SendMail.send(to, subject, message);
-            }
+        if ("".equals(to) || "".equals(subject) || "".equals(message)) {
+            JOptionPane.showMessageDialog(null, "enter all fields");
+        } else {
+            SendMail.send(to, subject, message);
         }
+
     }//GEN-LAST:event_sendButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
