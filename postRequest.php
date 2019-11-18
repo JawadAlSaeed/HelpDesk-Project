@@ -56,6 +56,7 @@
                 $emailUsers = $_SESSION['userEmail'];
         		$telephone =  $_POST["telephone"];
         		$department =  $_POST["department"];
+                $category =  $_POST["category"];
         		$priority =  $_POST["priority"];
                 $title =  $_POST["title"];
         		$description =  $_POST["description"];
@@ -93,7 +94,7 @@
                     $imgContent = NULL;
                 }
                 
-                if (empty($uidUsers) || empty($emailUsers) || empty($telephone) || empty($department) || empty($priority) || empty($description)){
+                if (empty($uidUsers) || empty($emailUsers) || empty($telephone) || empty($department) || empty($category) || empty($priority) || empty($description)){
                     header("location: newRequests.php?error=emptyfields");
                     exit();
                 }
@@ -117,14 +118,11 @@
                 echo "<strong>Email</strong>: $emailUsers<br>";
                 echo "<strong>Phone number</strong>: $telephone<br>";
         		echo "<strong>Department</strong>: $department<br>";
+                echo "<strong>Category</strong>: $category<br>";
         		echo "<strong>Priority</strong>: $priority<br>";
                 echo "<strong>Title</strong>: $title<br>";
         		echo "<strong>Description</strong>: $description<br>";
-                echo "<strong>Date created</strong>: $theDate<br>";
-     //            if($imgContent != null){
-					// echo '<img src="data:image/png;base64,' . base64_encode($imgContent) . '"/>';
-     //            }
-                
+                echo "<strong>Date created</strong>: $theDate<br>";                
 
         		$DBConnect = mysqli_connect("localhost","root","");
         		if (!$DBConnect) 
@@ -134,9 +132,9 @@
         		$DBName = "helpdeskdb";
         		mysqli_select_db($DBConnect,$DBName);
         		if ($imgContent == null){
-        			$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate') ";
+        			$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, category, priority, title, description, requestCreated) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department', '$category','$priority', '$title', '$description', '$theDate') ";
         		}else{
-        			$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated,attachment) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate', '$imgContent') ";
+        			$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, category, priority, title, description, requestCreated,attachment) VALUES ( '$uidUsers', '$emailUsers', '$telephone', '$category', '$department','$priority', '$title', '$description', '$theDate', '$imgContent') ";
         		}
         		$QueryResult = mysqli_query($DBConnect,$QueryString)
         		     Or die("<p> Unable to execute query. </p>"

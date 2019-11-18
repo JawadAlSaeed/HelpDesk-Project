@@ -84,6 +84,7 @@
                     </div>
                     <div class="col-75">                   
                         <select id="category" name="category">
+                            <option value=" "> </option>
                             <option value="Others">Others</option>
                             <option value="Service Related Issues">Service Related Issues</option>
                             <option value="Conferencing">&nbsp;&nbsp;&nbsp;Telephone &amp; Conferencing</option>
