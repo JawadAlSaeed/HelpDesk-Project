@@ -70,7 +70,7 @@
                      .  ": " . mysqli_error($DBConnect)) . "</p>" ;
                 //-------------------------------------------------------------------------
                 echo "<center> <table class='tab'>";
-                echo "<tr> <th>Requests ID</th> <th>Username</th> <th>Telephone</th> <th>Department</th> <th>priority</th> <th>description</th> <th>Date created</th> <th>state</th> <th>Date closed</th></tr>";
+                echo "<tr> <th>Requests ID</th> <th>Username</th> <th>Telephone</th> <th>Department</th> <th>Category</th> <th>priority</th> <th>description</th> <th>Date created</th> <th>state</th> <th>Date closed</th></tr>";
                 // keeps getting the next row until there are no more to get
                 while($row = mysqli_fetch_array( $QueryResult )) {
                     echo "<tr> <td>"; 
@@ -81,6 +81,8 @@
                     echo $row['telephone'];
                     echo "</td><td>"; 
                     echo $row['department'];        
+                    echo "</td><td>"; 
+                    echo $row['category'];        
                     echo "</td><td>"; 
                     echo $row['priority'];
                     echo "</td><td>"; 
