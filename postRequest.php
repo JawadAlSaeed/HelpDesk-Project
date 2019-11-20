@@ -51,14 +51,49 @@
         <br>
         <div class="container">
             <?php
+            if (isset($_POST['request-submit'])){
                 $uidUsers = $_SESSION['userUid'];
                 $emailUsers = $_SESSION['userEmail'];
         		$telephone =  $_POST["telephone"];
         		$department =  $_POST["department"];
+                $category =  $_POST["category"];
         		$priority =  $_POST["priority"];
                 $title =  $_POST["title"];
         		$description =  $_POST["description"];
-
+                // -------------------------------------
+                if(file_exists($_FILES['file']['tmp_name']) || is_uploaded_file($_FILES['file']['tmp_name'])) {
+                    $file = $_FILES['file'];
+                    $fileName = $_FILES['file']['name'];
+                    $fileTmpName = $_FILES['file']['tmp_name'];
+                    $fileSize = $_FILES['file']['size'];
+                    $fileError = $_FILES['file']['error'];
+                    $filetype = $_FILES['file']['type'];
+                    $fileExt = explode('.',$fileName);
+                    $fileActualExt = strtolower(end($fileExt));
+                    $imgContent = addslashes(file_get_contents($_FILES['file']['tmp_name']));
+                    $alllowed = array('jpg', 'jpeg', 'png');
+                    if (in_array($fileActualExt,$alllowed)){
+                        if ($fileError === 0) {
+                            if ($fileSize <= 200000) {
+                                $fileNameNew = uniqid('',true).".".$fileActualExt;
+                                $fileDestinatoin = 'uploads/'.$fileNameNew;
+                                move_uploaded_file($fileTmpName, $fileDestinatoin);
+                            }else{
+                                header("location: newRequests.php?error=bigsize");
+                                exit();
+                            }
+                        }else{
+                            header("location: newRequests.php?error=errormessage");
+                            exit();
+                        }
+                    }else{
+                        header("location: newRequests.php?error=wrongtype");
+                        exit();
+                    }
+                }else{
+                    $imgContent = NULL;
+                }
+                
                 if (empty($uidUsers) || empty($emailUsers) || empty($telephone) || empty($department) || empty($priority) || empty($description)){
                     header("location: newRequests.php?error=emptyfields");
                     exit();
@@ -83,10 +118,11 @@
                 echo "<strong>Email</strong>: $emailUsers<br>";
                 echo "<strong>Phone number</strong>: $telephone<br>";
         		echo "<strong>Department</strong>: $department<br>";
+                echo "<strong>Category</strong>: $category<br>";
         		echo "<strong>Priority</strong>: $priority<br>";
                 echo "<strong>Title</strong>: $title<br>";
         		echo "<strong>Description</strong>: $description<br>";
-                echo "<strong>Date created</strong>: $theDate<br>";
+                echo "<strong>Date created</strong>: $theDate<br>";                
 
         		$DBConnect = mysqli_connect("localhost","root","");
         		if (!$DBConnect) 
@@ -95,13 +131,18 @@
         		}
         		$DBName = "helpdeskdb";
         		mysqli_select_db($DBConnect,$DBName);
-        		$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, priority, title, description, requestCreated) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department','$priority', '$title', '$description', '$theDate') ";
+        		if ($imgContent == null){
+        			$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, category, priority, title, description, requestCreated) VALUES ( '$uidUsers', '$emailUsers', '$telephone','$department', '$category','$priority', '$title', '$description', '$theDate') ";
+        		}else{
+        			$QueryString = "INSERT INTO requests (uidUsers, emailUsers, telephone, department, category, priority, title, description, requestCreated,attachment) VALUES ( '$uidUsers', '$emailUsers', '$telephone', '$category', '$department','$priority', '$title', '$description', '$theDate', '$imgContent') ";
+        		}
         		$QueryResult = mysqli_query($DBConnect,$QueryString)
         		     Or die("<p> Unable to execute query. </p>"
         		     . "<p> Error code  " .  mysqli_errno($DBConnect)
         		     .  ": " . mysqli_error($DBConnect)) . "</p>" ;
 
         		mysqli_close($DBConnect);
+            }
     		?>
         </div>
         <br>

@@ -54,6 +54,7 @@
                 &nbsp;
                 <a href="viewRequests.php"><button class="btn"><i class="fas fa-eye fa-5x"></i><br><br>View requests</button></a>
                 &nbsp;
+                <a href="deleteRequests.php"><button class="btn"><i class="fas fa-trash-alt fa-5x"></i><br><br>Delete requests</button></a>
             </center>
         </div>
     </div>

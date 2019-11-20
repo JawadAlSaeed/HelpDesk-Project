@@ -1,4 +1,3 @@
-
 <?php 
     session_start();
 ?>
@@ -69,7 +68,7 @@
                     </div>
                     <div class="col-75">
                        <input type="password" name="pwd" placeholder="password">
-                    </div>
+                    </div>d
                 </div>
                 <div class="row">
                     <button class="submitBtn" type="submit" name="delete-submit"  onclick="confirm()">Submit</button>

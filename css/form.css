@@ -2,14 +2,19 @@
     border-radius: 2px;
     background-color: #254358;
     padding: 20px;
-    margin-right: 15%;
-    margin-left: 15%;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+textarea{
+    white-space: pre-line;
+    white-space: pre-wrap;
 }
 
 .col-75 input[type=text],
 .col-75 input[type=password],
 select,
-textarea {
+textarea,datalist,input,.category {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;

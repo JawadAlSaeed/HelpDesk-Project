@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
     <link href="css/alerts.css" rel="stylesheet" type="text/css" />
     <link href="css/form.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -54,7 +55,7 @@
             <br><br>
         </div>
         <div class="container">
-            <form action="postRequest.php" method="post">
+            <form action="postRequest.php" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-25">
                         <label for="telephone">Phone number</label>
@@ -74,7 +75,70 @@
                             <option value="Support Department">Support Department</option>
                             <option value="System Department">System Department</option>
                             <option value="Sales Department">Sales Department</option>
+                            <option value="HR Department">HR Department</option>
                         </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="category">Category</label>
+                    </div>
+                    <div class="col-75">
+						<input list="category" name="category">
+						<datalist id="category" name="category">
+						  	<option value=" "> </option>
+                            <option value="Others">Others</option>
+                            <option value="Service Related Issues">Service Related Issues</option>
+                            <option value="Conferencing">&nbsp;&nbsp;&nbsp;Telephone &amp; Conferencing</option>
+                            <option value="Issue in Telephone Set">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issue in Telephone Set</option>
+                            <option value="Issue in Telephone Line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issue in Telephone Line</option>
+                            <option value="Issue in Conferencing">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issue in Conferencing</option>
+                            <option value="Tranfer Telephone Extension">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tranfer Telephone Extension</option>
+                            <option value="Issue in Telephone Cable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issue in Telephone Cable</option>
+                            <option value="Authorization Issue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Authorization Issue</option>
+                            <option value="Skype Business Communications">&nbsp;&nbsp;&nbsp;Skype Business Communications</option>
+                            <option value="Voice Call Issues">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Voice Call Issues</option>
+                            <option value="Service Degradation Issues">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Service Degradation Issues</option>
+                            <option value="skype not working">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skype not working</option>
+                            <option value="Time Attendance">&nbsp;&nbsp;&nbsp;Time Attendance</option>
+                            <option value="Timesheet related Issue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Timesheet related Issue</option>
+                            <option value="Punching Authorization Issue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Punching Authorization Issue</option>
+                            <option value="File Sharing Service">&nbsp;&nbsp;&nbsp;File Sharing Service</option>
+                            <option value="Unable to Access File Folder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unable to Access File Folder</option>
+                            <option value="Internet">&nbsp;&nbsp;&nbsp;Internet</option>
+                            <option value="Slowness Issues">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Slowness Issues</option>
+                            <option value="Internet Issues">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Internet Issues</option>
+                            <option value="Blocked Websites">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blocked Websites</option>
+                            <option value="Email">&nbsp;&nbsp;&nbsp;Email</option>
+                            <option value="Signature Issue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signature Issue</option>
+                            <option value="Update Information">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update Information</option>
+                            <option value="Email Service Issue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email Service Issue</option>
+                            <option value="Quota related Issues">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quota related Issues</option>
+                            <option value="Network Service">&nbsp;&nbsp;&nbsp;Network Service</option>
+                            <option value="List Value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List Value</option>
+                            <option value="Network is Unstable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Network is Unstable</option>
+                            <option value="Network Slowness Issue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Network Slowness Issue</option>
+                            <option value="VPN">&nbsp;&nbsp;&nbsp;VPN</option>
+                            <option value="Software Related Issues">Software Related Issues</option>
+                            <option value="Time Attendance">&nbsp;&nbsp;&nbsp;Time Attendance</option>
+                            <option value="Hardware Related Issues">Hardware Related Issues</option>
+                            <option value="Industerial Workstations">&nbsp;&nbsp;&nbsp;Industerial Workstations</option>
+                            <option value="CPU Issue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPU Issue</option>
+                            <option value="Mouse replacement">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mouse replacement</option>
+                            <option value="Keyboard issue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Keyboard issue</option>
+                            <option value="Backup Issue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Backup Issue</option>
+                            <option value="Network Connectivity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Network Connectivity</option>
+                            <option value="Monitor issue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monitor issue</option>
+                            <option value="Power Failure">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Power Failure</option>
+                            <option value="Fan Problem">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fan Problem</option>
+                            <option value="Hard Disk Failior">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hard Disk Failior</option>
+                            <option value="Camera Devices">&nbsp;&nbsp;&nbsp;Camera Devices</option>
+                            <option value="Scanner">&nbsp;&nbsp;&nbsp;Scanner</option>
+                            <option value="Issue in Scanner Software">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issue in Scanner Software</option>
+                            <option value="Issue in Scanner Hardware">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issue in Scanner Hardware</option>
+                            <option value="Mobile Devices">&nbsp;&nbsp;&nbsp;Mobile Devices</option>
+                            <option value="Email Related Issue<">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email Related Issue</option>
+						</datalist>                    
                     </div>
                 </div>
                 <div class="row">
@@ -103,6 +167,15 @@
                     </div>
                     <div class="col-75">
                         <textarea id="description" name="description" style="height:200px"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25" style="margin-top: 16px">
+                        <label for="message">Add Attachment (If needed)<br>(Max 2mb, only images)</label>
+                    </div>
+                    <div class="col-75">
+                        <br>
+                        <input type="file" name="file">
                     </div>
                 </div>
                 <br>

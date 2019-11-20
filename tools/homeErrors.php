@@ -16,13 +16,19 @@
     else if (isset($_GET['accountdeleted']) == "success") {
     echo '    <div class="isa_success">
             <i class="fa fa-check"></i>
-            account deleted!
+            Account deleted!
         </div>';
     }
     else if (isset($_GET['login']) == "success") {
     echo '    <div class="isa_success">
             <i class="fa fa-check"></i>
-            login is successful!
+            Login is successful!
+        </div>';
+    }
+    else if (isset($_GET['emailsent']) == "success") {
+    echo '    <div class="isa_success">
+            <i class="fa fa-check"></i>
+            Email sent successfully!
         </div>';
     }
 

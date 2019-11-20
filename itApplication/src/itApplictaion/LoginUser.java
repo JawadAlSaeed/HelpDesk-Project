@@ -31,10 +31,8 @@ public class LoginUser extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setTitle("HelpDesk");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
-
         loginDb = new LoginDB("helpdeskdb", "root", "");
         conn = loginDb.getConnection();
-
     }
 
     /**

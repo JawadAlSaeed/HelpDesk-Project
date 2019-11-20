@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 //btn.setEnabled(false);
 /**
@@ -37,13 +39,16 @@ public class ServerUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setTitle("HelpDesk");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("help.png")));
+        serverTextArea.setText("***********Click on a request to view its informations***********");
         loginDb = new LoginDB("helpdeskdb", "root", "");
         conn = loginDb.getConnection();
 
         if (requestTable.getSelectedRow() == -1) {
             deleteButton.setEnabled(false);
             emailButton.setEnabled(false);
-            stateButton.setEnabled(false);
+            reopenButton.setEnabled(false);
+            closeButton.setEnabled(false);
+            attachmentButtton.setEnabled(false);
         }
     }
 
@@ -84,13 +89,18 @@ public class ServerUI extends javax.swing.JFrame {
         startDate = new com.toedter.calendar.JDateChooser();
         endDate = new com.toedter.calendar.JDateChooser();
         departmentComboBox = new javax.swing.JComboBox<>();
-        searchButtton = new javax.swing.JButton();
+        searchInfoButtton = new javax.swing.JButton();
         confirmLabel = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        usernameTextField = new javax.swing.JTextField();
         footerLabel = new javax.swing.JLabel();
         footerLabel1 = new javax.swing.JLabel();
-        stateButton = new javax.swing.JButton();
+        reopenButton = new javax.swing.JButton();
         emailButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        attachmentButtton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 255));
@@ -116,11 +126,11 @@ public class ServerUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "User ID", "Email", "Telephone", "Department", "Priority", "Title", "Description", "Date", "State"
+                "ID", "User ID", "Email", "Telephone", "Department", "Category", "Priority", "Title", "Description", "Date Created", "State", "Date Closed"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -164,7 +174,7 @@ public class ServerUI extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(allLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(allLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         allPanelLayout.setVerticalGroup(
@@ -200,7 +210,7 @@ public class ServerUI extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(closedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(closedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         closedPanelLayout.setVerticalGroup(
@@ -236,7 +246,7 @@ public class ServerUI extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(openLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(openLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         openPanelLayout.setVerticalGroup(
@@ -271,19 +281,17 @@ public class ServerUI extends javax.swing.JFrame {
         closedPanel1Layout.setHorizontalGroup(
             closedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(closedPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(closedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(closedPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(closedLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, closedPanel1Layout.createSequentialGroup()
-                        .addComponent(requestIdTextField)
+                        .addComponent(closedLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(closedPanel1Layout.createSequentialGroup()
+                        .addComponent(requestIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchIdButtton)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         closedPanel1Layout.setVerticalGroup(
             closedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,10 +337,10 @@ public class ServerUI extends javax.swing.JFrame {
 
         departmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Network Department", "Support Department", "System Department", "Sales Department" }));
 
-        searchButtton.setText("Search");
-        searchButtton.addActionListener(new java.awt.event.ActionListener() {
+        searchInfoButtton.setText("Search");
+        searchInfoButtton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButttonActionPerformed(evt);
+                searchInfoButttonActionPerformed(evt);
             }
         });
 
@@ -341,60 +349,72 @@ public class ServerUI extends javax.swing.JFrame {
         confirmLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         confirmLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Username");
+
         javax.swing.GroupLayout closedPanel2Layout = new javax.swing.GroupLayout(closedPanel2);
         closedPanel2.setLayout(closedPanel2Layout);
         closedPanel2Layout.setHorizontalGroup(
             closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(closedPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(closedPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(86, 86, 86)
-                        .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(departmentComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(closedPanel2Layout.createSequentialGroup()
-                                .addComponent(endDate, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(startDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, closedPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(confirmLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(closedPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(closedPanel2Layout.createSequentialGroup()
                                 .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel4)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(213, 213, 213)
-                                .addComponent(closedLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(closedPanel2Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel4)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, closedPanel2Layout.createSequentialGroup()
+                                .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(confirmLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(searchInfoButtton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, closedPanel2Layout.createSequentialGroup()
+                                        .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel2))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(endDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(usernameTextField)
+                                            .addComponent(startDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(departmentComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 168, Short.MAX_VALUE))))
+                                .addGap(10, 10, 10))))
+                    .addGroup(closedPanel2Layout.createSequentialGroup()
+                        .addGap(281, 281, 281)
+                        .addComponent(closedLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(13, 13, 13))
         );
         closedPanel2Layout.setVerticalGroup(
             closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(closedPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(10, 10, 10)
+                .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(startDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(6, 6, 6)
+                .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(closedPanel2Layout.createSequentialGroup()
-                        .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(startDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(endDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(departmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(searchButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(closedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(departmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10))
+                    .addGroup(closedPanel2Layout.createSequentialGroup()
+                        .addComponent(endDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)))
+                .addComponent(searchInfoButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(confirmLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -418,15 +438,15 @@ public class ServerUI extends javax.swing.JFrame {
         sideMenuPanelLayout.setVerticalGroup(
             sideMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sideMenuPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(allPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(openPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(closedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(closedPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(closedPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -441,10 +461,10 @@ public class ServerUI extends javax.swing.JFrame {
         footerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         footerLabel1.setText("Copyright 2019, HelpDeskProject");
 
-        stateButton.setText("Close/Open");
-        stateButton.addActionListener(new java.awt.event.ActionListener() {
+        reopenButton.setText("Re-open Request");
+        reopenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stateButtonActionPerformed(evt);
+                reopenButtonActionPerformed(evt);
             }
         });
 
@@ -464,6 +484,21 @@ public class ServerUI extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setText("Close Request");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
+
+        attachmentButtton.setText("View attachment");
+        attachmentButtton.setActionCommand("");
+        attachmentButtton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attachmentButttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -473,24 +508,22 @@ public class ServerUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(footerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 691, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(footerLabel1))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(emailButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(stateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(footerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 738, Short.MAX_VALUE)
+                        .addComponent(footerLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(attachmentButtton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(emailButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(reopenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(closeButton))
+                    .addComponent(jSeparator1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -498,18 +531,22 @@ public class ServerUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(reopenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(attachmentButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(footerLabel)
-                    .addComponent(footerLabel1))
+                    .addComponent(footerLabel1)
+                    .addComponent(footerLabel))
                 .addContainerGap())
-            .addComponent(sideMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 576, Short.MAX_VALUE)
+            .addComponent(sideMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 586, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -527,53 +564,99 @@ public class ServerUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButttonActionPerformed
+    private void searchInfoButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInfoButttonActionPerformed
         try {
+            colorReset();
             String SQL;
+            String username = usernameTextField.getText();
             String dep = departmentComboBox.getSelectedItem().toString();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            if ("".equals(username)) {
+                if (startDate.getDate() == null && endDate.getDate() == null) {
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed");
+                    }
+                    sqlDisplayer(SQL);
 
-            if (startDate.getDate() == null && endDate.getDate() == null) {
-                if ("All".equals(dep)) {
-                    SQL = "select * from requests";
-                    confirmLabel.setText("All reqeuests displayed");
+                } else if (startDate.getDate() == null && endDate.getDate() != null) {
+                    String eDate = sdf.format(endDate.getDate());
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where requestCreated < '" + eDate + "'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and requestCreated < '" + eDate + "'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    }
+                    sqlDisplayer(SQL);
+                } else if (startDate.getDate() != null && endDate.getDate() == null) {
+                    String sDate = sdf.format(startDate.getDate());
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where requestCreated > '" + sDate + "'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and requestCreated > '" + sDate + "'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    }
+                    sqlDisplayer(SQL);
+
                 } else {
-                    SQL = "select * from requests where department = '" + dep + "'";
-                    confirmLabel.setText("All " + dep + " reqeuests displayed");
+                    String sDate = sdf.format(startDate.getDate());
+                    String eDate = sdf.format(endDate.getDate());
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where requestCreated > '" + sDate + "' and requestCreated < '" + eDate + "'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and requestCreated > '" + sDate + "'and requestCreated < '" + eDate + "'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    }
                 }
                 sqlDisplayer(SQL);
-
-            } else if (startDate.getDate() == null && endDate.getDate() != null) {
-                String eDate = sdf.format(endDate.getDate());
-                if ("All".equals(dep)) {
-                    SQL = "select * from requests where requestCreated < '" + eDate + "'";
-                    confirmLabel.setText("All reqeuests displayed");
-                } else {
-                    SQL = "select * from requests where department = '" + dep + "' and requestCreated < '" + eDate + "'";
-                    confirmLabel.setText("All " + dep + " reqeuests displayed ");
-                }
-                sqlDisplayer(SQL);
-
-            } else if (startDate.getDate() != null && endDate.getDate() == null) {
-                String sDate = sdf.format(startDate.getDate());
-                if ("All".equals(dep)) {
-                    SQL = "select * from requests where requestCreated > '" + sDate + "'";
-                    confirmLabel.setText("All reqeuests displayed");
-                } else {
-                    SQL = "select * from requests where department = '" + dep + "' and requestCreated > '" + sDate + "'";
-                    confirmLabel.setText("All " + dep + " reqeuests displayed ");
-                }
-                sqlDisplayer(SQL);
-
             } else {
-                String sDate = sdf.format(startDate.getDate());
-                String eDate = sdf.format(endDate.getDate());
-                if ("All".equals(dep)) {
-                    SQL = "select * from requests where requestCreated > '" + sDate + "' and requestCreated < '" + eDate + "'";
-                    confirmLabel.setText("All reqeuests displayed");
+                if (startDate.getDate() == null && endDate.getDate() == null) {
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where uidUsers ='" + username + "'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and uidUsers ='" + username + "'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed");
+                    }
+                    sqlDisplayer(SQL);
+
+                } else if (startDate.getDate() == null && endDate.getDate() != null) {
+                    String eDate = sdf.format(endDate.getDate());
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where requestCreated < '" + eDate + "' and uidUsers ='" + username + "'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and requestCreated < '" + eDate + "' and uidUsers ='" + username + "'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    }
+                    sqlDisplayer(SQL);
+                } else if (startDate.getDate() != null && endDate.getDate() == null) {
+                    String sDate = sdf.format(startDate.getDate());
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where requestCreated > '" + sDate + "' and uidUsers ='" + username + "'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and requestCreated > '" + sDate + "' and uidUsers ='" + username + "'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    }
+                    sqlDisplayer(SQL);
+
                 } else {
-                    SQL = "select * from requests where department = '" + dep + "' and requestCreated > '" + sDate + "'and requestCreated < '" + eDate + "'";
-                    confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    String sDate = sdf.format(startDate.getDate());
+                    String eDate = sdf.format(endDate.getDate());
+                    if ("All".equals(dep)) {
+                        SQL = "select * from requests where requestCreated > '" + sDate + "' and requestCreated < '" + eDate + "' and uidUsers ='" + username + "'";
+                        confirmLabel.setText("All reqeuests displayed");
+                    } else {
+                        SQL = "select * from requests where department = '" + dep + "' and requestCreated > '" + sDate + "'and requestCreated < '" + eDate + "' and uidUsers ='" + username + "'";
+                        confirmLabel.setText("All " + dep + " reqeuests displayed ");
+                    }
                 }
                 sqlDisplayer(SQL);
             }
@@ -581,36 +664,25 @@ public class ServerUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_searchButttonActionPerformed
+    }//GEN-LAST:event_searchInfoButttonActionPerformed
 
-    private void stateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateButtonActionPerformed
+    private void reopenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reopenButtonActionPerformed
         rquestsCounter();
         String SQL;
-        if (requestTable.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(this, "please select a row", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to re-open this request?", "Warning", dialogButton);
+        if (dialogResult == JOptionPane.YES_OPTION) {
             int index = requestTable.getSelectedRow();
             TableModel model = requestTable.getModel();
             String rID = model.getValueAt(index, 0).toString();
-            String state = model.getValueAt(index, 9).toString();
+            String state = model.getValueAt(index, 10).toString();
 
-            if ("open".equals(state)) {
-                model.setValueAt("closed", index, 9);
-                SQL = "UPDATE `requests` SET `state` = 'closed' WHERE `requests`.`requestID` = '" + rID + "'";
+            if ("closed".equals(state)) {
+                model.setValueAt("open", index, 10);
+                model.setValueAt("", index, 11);
+                SQL = "UPDATE `requests` SET `state` = 'open', closedOn = DEFAULT WHERE `requests`.`requestID` = '" + rID + "'";
                 System.out.println(SQL);
-                confirmLabel.setText("Request closed");
-                Statement statement;
-                try {
-                    statement = conn.createStatement();
-                    statement.executeUpdate(SQL);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else if ("closed".equals(state)) {
-                model.setValueAt("open", index, 9);
-                SQL = "UPDATE `requests` SET `state` = 'open' WHERE `requests`.`requestID` = '" + rID + "'";
-                System.out.println(SQL);
-                confirmLabel.setText("Request opened");
+                confirmLabel.setText("Request re-opened");
                 Statement statement;
                 try {
                     statement = conn.createStatement();
@@ -619,27 +691,38 @@ public class ServerUI extends javax.swing.JFrame {
                     Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
-                System.out.println("error: worng state, restart");
+                reopenButton.setEnabled(false);
             }
         }
+        reopenButton.setEnabled(false);
+        closeButton.setEnabled(true);
         rquestsCounter();
-    }//GEN-LAST:event_stateButtonActionPerformed
+    }//GEN-LAST:event_reopenButtonActionPerformed
 
     private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
 
-        deleteButton.setEnabled(true);
-        emailButton.setEnabled(true);
-        stateButton.setEnabled(true);
         //-----------------------------------
         int index = requestTable.getSelectedRow();
         TableModel model = requestTable.getModel();
-        String title = model.getValueAt(index, 6).toString();
-        String description = model.getValueAt(index, 7).toString();
-        serverTextArea.setText("Title:-\n" + title + "\n---------------------------------------------\nDescription:-\n" + description);
+        String title = model.getValueAt(index, 7).toString();
+        String description = model.getValueAt(index, 8).toString();
+        String state = model.getValueAt(index, 10).toString();
+        System.out.println(state);
+        if ("closed".equals(state)) {
+            reopenButton.setEnabled(true);
+            closeButton.setEnabled(false);
+        } else if ("open".equals(state)) {
+            reopenButton.setEnabled(false);
+            closeButton.setEnabled(true);
+        }
+        deleteButton.setEnabled(true);
+        attachmentButtton.setEnabled(true);
+        emailButton.setEnabled(true);
+        serverTextArea.setText("***********Informaiotn About the request***********\n\nTitle:-\n" + title + "\n---------------------------------------------\nDescription:-\n" + description);
     }//GEN-LAST:event_requestTableMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        colorReset();
         rquestsCounter();
         confirmLabel.setText("welcome Back!");
         //-------------------------------------------------------------------------    
@@ -649,11 +732,13 @@ public class ServerUI extends javax.swing.JFrame {
         requestTable.getColumnModel().getColumn(2).setPreferredWidth(160);
         requestTable.getColumnModel().getColumn(3).setPreferredWidth(80);
         requestTable.getColumnModel().getColumn(4).setPreferredWidth(105);
-        requestTable.getColumnModel().getColumn(5).setPreferredWidth(55);
-        requestTable.getColumnModel().getColumn(6).setPreferredWidth(130);
-        requestTable.getColumnModel().getColumn(7).setPreferredWidth(250);
-        requestTable.getColumnModel().getColumn(8).setPreferredWidth(65);
-        requestTable.getColumnModel().getColumn(9).setPreferredWidth(55);
+        requestTable.getColumnModel().getColumn(5).setPreferredWidth(150);
+        requestTable.getColumnModel().getColumn(6).setPreferredWidth(55);
+        requestTable.getColumnModel().getColumn(7).setPreferredWidth(130);
+        requestTable.getColumnModel().getColumn(8).setPreferredWidth(200);
+        requestTable.getColumnModel().getColumn(9).setPreferredWidth(115);
+        requestTable.getColumnModel().getColumn(10).setPreferredWidth(55);
+        requestTable.getColumnModel().getColumn(11).setPreferredWidth(115);
         //-------------------------------------------------------------------------
 
         //-------------------------------------------------------------------------
@@ -686,6 +771,7 @@ public class ServerUI extends javax.swing.JFrame {
     }//GEN-LAST:event_emailButtonActionPerformed
 
     private void searchIdButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchIdButttonActionPerformed
+        colorReset();
         if (!"".equals(requestIdTextField.getText())) {
             try {
                 String requestId = requestIdTextField.getText();
@@ -707,6 +793,9 @@ public class ServerUI extends javax.swing.JFrame {
 
     private void allPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_allPanelMouseClicked
         try {
+            allPanel.setBackground(new java.awt.Color(93, 112, 126));
+            openPanel.setBackground(new java.awt.Color(17, 45, 50));
+            closedPanel.setBackground(new java.awt.Color(17, 45, 50));
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
             model.setRowCount(0);
             String SQL;
@@ -723,6 +812,9 @@ public class ServerUI extends javax.swing.JFrame {
 
     private void openPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openPanelMouseClicked
         try {
+            allPanel.setBackground(new java.awt.Color(17, 45, 50));
+            openPanel.setBackground(new java.awt.Color(93, 112, 126));
+            closedPanel.setBackground(new java.awt.Color(17, 45, 50));
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
             model.setRowCount(0);
             String SQL;
@@ -739,6 +831,9 @@ public class ServerUI extends javax.swing.JFrame {
 
     private void closedPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closedPanelMouseClicked
         try {
+            allPanel.setBackground(new java.awt.Color(17, 45, 50));
+            openPanel.setBackground(new java.awt.Color(17, 45, 50));
+            closedPanel.setBackground(new java.awt.Color(93, 112, 126));
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
             model.setRowCount(0);
             String SQL;
@@ -778,6 +873,76 @@ public class ServerUI extends javax.swing.JFrame {
         }
         rquestsCounter();
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        rquestsCounter();
+        String SQL;
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Close this request?", "Warning", dialogButton);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            int index = requestTable.getSelectedRow();
+            TableModel model = requestTable.getModel();
+            String rID = model.getValueAt(index, 0).toString();
+            String state = model.getValueAt(index, 10).toString();
+
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            System.out.println(dtf.format(now));
+
+            if ("open".equals(state)) {
+                model.setValueAt("closed", index, 10);
+                model.setValueAt(dtf.format(now), index, 11);
+                SQL = "UPDATE `requests` SET `state` = 'closed', closedOn = '" + dtf.format(now) + "' WHERE `requests`.`requestID` = '" + rID + "'";
+                System.out.println(SQL);
+                confirmLabel.setText("Request closed");
+                Statement statement;
+                try {
+                    statement = conn.createStatement();
+                    statement.executeUpdate(SQL);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                closeButton.setEnabled(false);
+            }
+        }
+        closeButton.setEnabled(false);
+        reopenButton.setEnabled(true);
+        rquestsCounter();
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void attachmentButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attachmentButttonActionPerformed
+        String SQL;
+        if (requestTable.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "please select a row", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int index = requestTable.getSelectedRow();
+            TableModel modell = requestTable.getModel();
+            String rID = modell.getValueAt(index, 0).toString();
+            SQL = "select * from requests where requestID = '" + rID + "'";
+
+            System.out.println(SQL);
+            ResultSet rs = loginDb.getResultSet(conn, SQL);
+            boolean hasNext = false;
+
+            try {
+                if (rs.next()) {
+                    hasNext = true;
+                    byte[] img = rs.getBytes("attachment");
+                    if (img == null) {
+                        JOptionPane.showMessageDialog(null, "this request doesnt have an attachment");
+                    } else {
+                        new attachmentApp(img).setVisible(true);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "no data");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ServerUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_attachmentButttonActionPerformed
 
     private void rquestsCounter() {
         //-------------------------------------------------------------------------
@@ -827,6 +992,12 @@ public class ServerUI extends javax.swing.JFrame {
         //-------------------------------------------------------------------------
     }
 
+    private void colorReset() {
+        allPanel.setBackground(new java.awt.Color(17, 45, 50));
+        openPanel.setBackground(new java.awt.Color(17, 45, 50));
+        closedPanel.setBackground(new java.awt.Color(17, 45, 50));
+    }
+
     private void sqlDisplayer(String SQL) throws SQLException {
         System.out.println(SQL);
         DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
@@ -836,6 +1007,7 @@ public class ServerUI extends javax.swing.JFrame {
 
         while (rs.next()) {
             hasNext = true;
+            String closedOn = null;
             model.addRow(new Object[]{
                 rs.getInt(1),
                 rs.getString(2),
@@ -845,11 +1017,12 @@ public class ServerUI extends javax.swing.JFrame {
                 rs.getString(6),
                 rs.getString(7),
                 rs.getString(8),
-                rs.getDate(9),
-                rs.getString(10)
+                rs.getString(9),
+                rs.getTimestamp(10),
+                rs.getString(11),
+                rs.getTimestamp(12)
             });
         }
-
     }
 
     /**
@@ -890,6 +1063,8 @@ public class ServerUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel allLabel;
     private javax.swing.JPanel allPanel;
+    private javax.swing.JButton attachmentButtton;
+    private javax.swing.JButton closeButton;
     private javax.swing.JLabel closedLabel;
     private javax.swing.JLabel closedLabel1;
     private javax.swing.JLabel closedLabel2;
@@ -909,21 +1084,24 @@ public class ServerUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel openLabel;
     private javax.swing.JPanel openPanel;
+    private javax.swing.JButton reopenButton;
     private javax.swing.JTextField requestIdTextField;
     private javax.swing.JTable requestTable;
-    private javax.swing.JButton searchButtton;
     private javax.swing.JButton searchIdButtton;
+    private javax.swing.JButton searchInfoButtton;
     private javax.swing.JTextArea serverTextArea;
     private javax.swing.JPanel sideMenuPanel;
     private com.toedter.calendar.JDateChooser startDate;
-    private javax.swing.JButton stateButton;
+    private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }
