@@ -94,7 +94,7 @@
                     $imgContent = NULL;
                 }
                 
-                if (empty($uidUsers) || empty($emailUsers) || empty($telephone) || empty($department) || empty($category) || empty($priority) || empty($description)){
+                if (empty($uidUsers) || empty($emailUsers) || empty($telephone) || empty($department) || empty($priority) || empty($description)){
                     header("location: newRequests.php?error=emptyfields");
                     exit();
                 }

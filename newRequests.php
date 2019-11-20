@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
     <link href="css/alerts.css" rel="stylesheet" type="text/css" />
     <link href="css/form.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -80,11 +81,12 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label for="category">Category of the problem</label>
+                        <label for="category">Category</label>
                     </div>
-                    <div class="col-75">                   
-                        <select id="category" name="category">
-                            <option value=" "> </option>
+                    <div class="col-75">
+						<input list="category" name="category">
+						<datalist id="category" name="category">
+						  	<option value=" "> </option>
                             <option value="Others">Others</option>
                             <option value="Service Related Issues">Service Related Issues</option>
                             <option value="Conferencing">&nbsp;&nbsp;&nbsp;Telephone &amp; Conferencing</option>
@@ -136,7 +138,7 @@
                             <option value="Issue in Scanner Hardware">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issue in Scanner Hardware</option>
                             <option value="Mobile Devices">&nbsp;&nbsp;&nbsp;Mobile Devices</option>
                             <option value="Email Related Issue<">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email Related Issue</option>
-                        </select>
+						</datalist>                    
                     </div>
                 </div>
                 <div class="row">

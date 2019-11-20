@@ -14,7 +14,7 @@ textarea{
 .col-75 input[type=text],
 .col-75 input[type=password],
 select,
-textarea {
+textarea,datalist,input,.category {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
