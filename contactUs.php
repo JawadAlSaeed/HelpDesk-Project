@@ -2,8 +2,12 @@
     session_start();
 
     if(isset($_POST['submit'])){
-        if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['subject']) || empty($_POST['body']) ) {
+        if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['telephone']) || empty($_POST['subject']) || empty($_POST['body']) ) {
             header("location: contactUs.php?error=emptyfields");
+            exit();
+        }
+        else if (!preg_match("/^(966)([0-9]{9})$/", $telephone)) {
+            header("location: contactUs.php?error=invaildtelephone");
             exit();
         }
         require 'tools/PHPMailer/PHPMailerAutoload.php';
@@ -31,7 +35,7 @@
         //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
         $mail->isHTML(true);                                  // Set email format to HTML
 
-        $mail->Subject = $_POST['subject'];
+        $mail->Subject = $_POST['subject'] ."\n".$_POST['subject'];
         $mail->Body    = $_POST['body'];
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
@@ -113,6 +117,14 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
+                        <label for="telephone">Telephone</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="name" name="telephone" placeholder="966512345678">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
                         <label for="subject">Subject</label>
                     </div>
                     <div class="col-75">
@@ -128,7 +140,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <input type="submit" name="submit" id="submit" value="Send">
+                    <button class="submitBtn" type="submit" name="submit">Send request</button>
                 </div>
             </form>
         </div>
