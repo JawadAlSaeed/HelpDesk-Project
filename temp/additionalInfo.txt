@@ -1,0 +1,4 @@
+                else if (!preg_match("/^(966)([0-9]{9})$/", $telephone)) {
+                    header("location: newRequests.php?error=invaildtelephone");
+                    exit();
+                }

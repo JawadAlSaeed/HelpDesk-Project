@@ -58,14 +58,6 @@
             <form action="postRequest.php" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-25">
-                        <label for="telephone">Phone number</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" id="telephone" name="telephone" placeholder="966123456789">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
                         <label for="area">Request area</label>
                     </div>
                     <div class="col-75">                   

@@ -8,11 +8,12 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
 
 public class SendMail {
 
     public static void send(String to, String sub, String msg) {
-
+        int flag = 0;
         final String username = "helpdeskproject266@gmail.com";
         final String password = "J35110266d";
 
@@ -39,7 +40,11 @@ public class SendMail {
 
             Transport.send(message);
 
+            JOptionPane.showMessageDialog(null, "Email sent!"); 
+            
         } catch (MessagingException e) {
+            JOptionPane.showMessageDialog(null, "Error, Try again later...");
+
             throw new RuntimeException(e);
         }
 

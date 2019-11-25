@@ -145,6 +145,7 @@ public class MailApp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "enter all fields");
         } else {
             SendMail.send(to, subject, message);
+            setVisible(false);
         }
 
     }//GEN-LAST:event_sendButtonActionPerformed

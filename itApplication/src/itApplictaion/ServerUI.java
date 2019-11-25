@@ -126,11 +126,11 @@ public class ServerUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "User ID", "Email", "Telephone", "Department", "Category", "Priority", "Title", "Description", "Date Created", "State", "Date Closed"
+                "ID", "User ID", "Email", "Department", "Category", "Priority", "Title", "Description", "Date Created", "State", "Date Closed"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -675,11 +675,11 @@ public class ServerUI extends javax.swing.JFrame {
             int index = requestTable.getSelectedRow();
             TableModel model = requestTable.getModel();
             String rID = model.getValueAt(index, 0).toString();
-            String state = model.getValueAt(index, 10).toString();
+            String state = model.getValueAt(index, 9).toString();
 
             if ("closed".equals(state)) {
-                model.setValueAt("open", index, 10);
-                model.setValueAt("", index, 11);
+                model.setValueAt("open", index, 9);
+                model.setValueAt("", index, 10);
                 SQL = "UPDATE `requests` SET `state` = 'open', closedOn = DEFAULT WHERE `requests`.`requestID` = '" + rID + "'";
                 System.out.println(SQL);
                 confirmLabel.setText("Request re-opened");
@@ -704,9 +704,9 @@ public class ServerUI extends javax.swing.JFrame {
         //-----------------------------------
         int index = requestTable.getSelectedRow();
         TableModel model = requestTable.getModel();
-        String title = model.getValueAt(index, 7).toString();
-        String description = model.getValueAt(index, 8).toString();
-        String state = model.getValueAt(index, 10).toString();
+        String title = model.getValueAt(index, 6).toString();
+        String description = model.getValueAt(index, 7).toString();
+        String state = model.getValueAt(index, 9).toString();
         System.out.println(state);
         if ("closed".equals(state)) {
             reopenButton.setEnabled(true);
@@ -730,15 +730,14 @@ public class ServerUI extends javax.swing.JFrame {
         requestTable.getColumnModel().getColumn(0).setPreferredWidth(36);
         requestTable.getColumnModel().getColumn(1).setPreferredWidth(103);
         requestTable.getColumnModel().getColumn(2).setPreferredWidth(160);
-        requestTable.getColumnModel().getColumn(3).setPreferredWidth(80);
-        requestTable.getColumnModel().getColumn(4).setPreferredWidth(105);
-        requestTable.getColumnModel().getColumn(5).setPreferredWidth(150);
-        requestTable.getColumnModel().getColumn(6).setPreferredWidth(55);
-        requestTable.getColumnModel().getColumn(7).setPreferredWidth(130);
-        requestTable.getColumnModel().getColumn(8).setPreferredWidth(200);
-        requestTable.getColumnModel().getColumn(9).setPreferredWidth(115);
-        requestTable.getColumnModel().getColumn(10).setPreferredWidth(55);
-        requestTable.getColumnModel().getColumn(11).setPreferredWidth(115);
+        requestTable.getColumnModel().getColumn(3).setPreferredWidth(105);
+        requestTable.getColumnModel().getColumn(4).setPreferredWidth(150);
+        requestTable.getColumnModel().getColumn(5).setPreferredWidth(55);
+        requestTable.getColumnModel().getColumn(6).setPreferredWidth(130);
+        requestTable.getColumnModel().getColumn(7).setPreferredWidth(200);
+        requestTable.getColumnModel().getColumn(8).setPreferredWidth(115);
+        requestTable.getColumnModel().getColumn(9).setPreferredWidth(55);
+        requestTable.getColumnModel().getColumn(10).setPreferredWidth(115);
         //-------------------------------------------------------------------------
 
         //-------------------------------------------------------------------------
@@ -883,15 +882,15 @@ public class ServerUI extends javax.swing.JFrame {
             int index = requestTable.getSelectedRow();
             TableModel model = requestTable.getModel();
             String rID = model.getValueAt(index, 0).toString();
-            String state = model.getValueAt(index, 10).toString();
+            String state = model.getValueAt(index, 9).toString();
 
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
             System.out.println(dtf.format(now));
 
             if ("open".equals(state)) {
-                model.setValueAt("closed", index, 10);
-                model.setValueAt(dtf.format(now), index, 11);
+                model.setValueAt("closed", index, 9);
+                model.setValueAt(dtf.format(now), index, 10);
                 SQL = "UPDATE `requests` SET `state` = 'closed', closedOn = '" + dtf.format(now) + "' WHERE `requests`.`requestID` = '" + rID + "'";
                 System.out.println(SQL);
                 confirmLabel.setText("Request closed");
@@ -1017,10 +1016,9 @@ public class ServerUI extends javax.swing.JFrame {
                 rs.getString(6),
                 rs.getString(7),
                 rs.getString(8),
-                rs.getString(9),
-                rs.getTimestamp(10),
-                rs.getString(11),
-                rs.getTimestamp(12)
+                rs.getTimestamp(9),
+                rs.getString(10),
+                rs.getTimestamp(11)
             });
         }
     }
