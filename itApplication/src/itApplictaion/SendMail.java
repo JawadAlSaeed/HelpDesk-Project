@@ -44,6 +44,7 @@ public class SendMail {
             
         } catch (MessagingException e) {
             JOptionPane.showMessageDialog(null, "Error, Try again later...");
+
             throw new RuntimeException(e);
         }
 
