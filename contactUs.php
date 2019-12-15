@@ -6,10 +6,10 @@
             header("location: contactUs.php?error=emptyfields");
             exit();
         }
-        else if (!preg_match("/^(966)([0-9]{9})$/", $telephone)) {
-            header("location: contactUs.php?error=invaildtelephone");
-            exit();
-        }
+        // else if (!preg_match("/^(966)([0-9]{9})$/", $telephone)) {
+        //     header("location: contactUs.php?error=invaildtelephone");
+        //     exit();
+        // }
         require 'tools/PHPMailer/PHPMailerAutoload.php';
 
         $mail = new PHPMailer;
@@ -35,8 +35,8 @@
         //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
         $mail->isHTML(true);                                  // Set email format to HTML
 
-        $mail->Subject = $_POST['subject'] ."\n".$_POST['subject'];
-        $mail->Body    = $_POST['body'];
+        $mail->Subject = $_POST['subject'];
+        $mail->Body    = "Name: ".$_POST['name']."<br><br>telephone: ".$_POST['telephone']."<br><br>".$_POST['body'];
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         if(!$mail->send()) {
@@ -140,7 +140,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button class="submitBtn" type="submit" name="submit">Send request</button>
+                    <button class="submitBtn" type="submit" name="submit">Submit</button>
                 </div>
             </form>
         </div>
