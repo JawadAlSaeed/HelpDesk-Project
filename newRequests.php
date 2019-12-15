@@ -66,7 +66,7 @@
                             <option value="Network Department">Network Department</option>
                             <option value="Support Department">Support Department</option>
                             <option value="System Department">System Department</option>
-                            <option value="Sales Department">Sales Department</option>
+                            <option value="Purchase Department">Purchase Department</option>
                             <option value="HR Department">HR Department</option>
                         </select>
                     </div>
@@ -126,6 +126,7 @@
                             <option value="Hard Disk Failior">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hard Disk Failior</option>
                             <option value="Camera Devices">&nbsp;&nbsp;&nbsp;Camera Devices</option>
                             <option value="Scanner">&nbsp;&nbsp;&nbsp;Scanner</option>
+                            <option value="Printer">&nbsp;&nbsp;&nbsp;Printer</option>
                             <option value="Issue in Scanner Software">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issue in Scanner Software</option>
                             <option value="Issue in Scanner Hardware">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issue in Scanner Hardware</option>
                             <option value="Mobile Devices">&nbsp;&nbsp;&nbsp;Mobile Devices</option>
